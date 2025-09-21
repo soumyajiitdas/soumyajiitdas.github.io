@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Caveat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GitHub Theme Variables */
+@layer base {
+  :root {
+    /* GitHub Light Theme */
+    --github-canvas-default: #ffffff;
+    --github-canvas-overlay: #ffffff;
+    --github-canvas-inset: #f6f8fa;
+    --github-canvas-subtle: #f6f8fa;
+    --github-border-default: #d0d7de;
+    --github-border-muted: #d8dee4;
+    --github-neutral-muted: #656d76;
+    --github-accent-fg: #0969da;
+    --github-accent-emphasis: #0969da;
+    --github-accent-muted: rgba(84, 174, 255, 0.4);
+    --github-accent-subtle: #ddf4ff;
+    --github-success-fg: #1a7f37;
+    --github-attention-fg: #9a6700;
+    --github-severe-fg: #bc4c00;
+    --github-danger-fg: #d1242f;
+    --github-open-fg: #1a7f37;
+    --github-closed-fg: #d1242f;
+    --github-done-fg: #8250df;
+    --github-sponsors-fg: #bf8700;
+    --github-fg-default: #1f2328;
+    --github-fg-muted: #656d76;
+    --github-fg-subtle: #6e7781;
+    --github-fg-on-emphasis: #ffffff;
+  }
+
+  .dark {
+    /* GitHub Dark Theme */
+    --github-canvas-default: #010409;
+    --github-canvas-overlay: #161b22;
+    --github-canvas-inset: #0d1117;
+    --github-canvas-subtle: #161b22;
+    --github-border-default: #30363d;
+    --github-border-muted: #21262d;
+    --github-neutral-muted: #656d76;
+    --github-accent-fg: #2f81f7;
+    --github-accent-emphasis: #1f6feb;
+    --github-accent-muted: rgba(56, 139, 253, 0.4);
+    --github-accent-subtle: #0d419d;
+    --github-success-fg: #3fb950;
+    --github-attention-fg: #d29922;
+    --github-severe-fg: #db6d28;
+    --github-danger-fg: #f85149;
+    --github-open-fg: #3fb950;
+    --github-closed-fg: #f85149;
+    --github-done-fg: #a5a5ff;
+    --github-sponsors-fg: #db61a2;
+    --github-fg-default: #e6edf3;
+    --github-fg-muted: #7d8590;
+    --github-fg-subtle: #6e7681;
+    --github-fg-on-emphasis: #ffffff;
+  }
+}
+
+/* Apply GitHub Theme Classes */
+@layer utilities {
+  .bg-github-canvas { background-color: var(--github-canvas-default); }
+  .bg-github-canvas-overlay { background-color: var(--github-canvas-overlay); }
+  .bg-github-canvas-inset { background-color: var(--github-canvas-inset); }
+  .bg-github-canvas-subtle { background-color: var(--github-canvas-subtle); }
+  .bg-github-canvas-default { background-color: var(--github-canvas-default); }
+  
+  .border-github-border { border-color: var(--github-border-default); }
+  .border-github-border-muted { border-color: var(--github-border-muted); }
+  
+  .text-github-fg-default { color: var(--github-fg-default); }
+  .text-github-fg-muted { color: var(--github-fg-muted); }
+  .text-github-fg-subtle { color: var(--github-fg-subtle); }
+  .text-github-fg-on-emphasis { color: var(--github-fg-on-emphasis); }
+  
+  .text-github-accent-fg { color: var(--github-accent-fg); }
+  .bg-github-accent-emphasis { background-color: var(--github-accent-emphasis); }
+  .bg-github-accent-muted { background-color: var(--github-accent-muted); }
+  .bg-github-accent-subtle { background-color: var(--github-accent-subtle); }
+  .border-github-accent-muted { border-color: var(--github-accent-muted); }
+  
+  .text-github-success-fg { color: var(--github-success-fg); }
+  .text-github-danger-fg { color: var(--github-danger-fg); }
+  .text-github-attention-fg { color: var(--github-attention-fg); }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--github-canvas-default);
+  color: var(--github-fg-default);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom scrollbar for better aesthetics */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--github-canvas-inset);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--github-border-default);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--github-fg-muted);
+}
+
+/* Focus styles */
+input:focus, textarea:focus, button:focus {
+  outline: 2px solid var(--github-accent-emphasis);
+  outline-offset: 2px;
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--github-accent-muted);
+  color: var(--github-fg-default);
+}
+
+/* Shadcn overrides for GitHub theme */
+@layer base {
+  :root {
+        --background: var(--github-canvas-default);
+        --foreground: var(--github-fg-default);
+        --card: var(--github-canvas-subtle);
+        --card-foreground: var(--github-fg-default);
+        --popover: var(--github-canvas-overlay);
+        --popover-foreground: var(--github-fg-default);
+        --primary: var(--github-accent-emphasis);
+        --primary-foreground: var(--github-fg-on-emphasis);
+        --secondary: var(--github-canvas-subtle);
+        --secondary-foreground: var(--github-fg-default);
+        --muted: var(--github-canvas-subtle);
+        --muted-foreground: var(--github-fg-muted);
+        --accent: var(--github-canvas-subtle);
+        --accent-foreground: var(--github-fg-default);
+        --destructive: var(--github-danger-fg);
+        --destructive-foreground: var(--github-fg-on-emphasis);
+        --border: var(--github-border-default);
+        --input: var(--github-border-default);
+        --ring: var(--github-accent-emphasis);
+        --radius: 0.5rem;
+    }
+}
+
+/* Note-Style Custom CSS */
+@layer components {
+  /* Highlight Styles */
+  .highlight-yellow {
+    background: linear-gradient(120deg, #fff59d 0%, #fff59d 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 85%;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+  
+  .highlight-pink {
+    background: linear-gradient(120deg, #f8bbd9 0%, #f8bbd9 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 85%;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+  
+  .highlight-green {
+    background: linear-gradient(120deg, #c8e6c9 0%, #c8e6c9 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 85%;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+  
+  .highlight-blue {
+    background: linear-gradient(120deg, #bbdefb 0%, #bbdefb 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 85%;
+    padding: 2px 4px;
+    border-radius: 2px;
+  }
+
+  /* Underline Styles */
+  .underline-yellow {
+    border-bottom: 2px solid #ffd54f;
+    padding-bottom: 2px;
+  }
+  
+  .underline-pink {
+    border-bottom: 2px solid #f06292;
+    padding-bottom: 2px;
+  }
+  
+  .underline-green {
+    border-bottom: 2px solid #66bb6a;
+    padding-bottom: 2px;
+  }
+  
+  .underline-blue {
+    border-bottom: 2px solid #42a5f5;
+    padding-bottom: 2px;
+  }
+
+  /* Doodle Elements */
+  .doodle-arrow::after {
+    content: '→';
+    font-size: 1.2em;
+    color: #ff7043;
+    margin-left: 8px;
+    font-family: 'Caveat', cursive;
+    font-weight: bold;
+  }
+  
+  .doodle-star::before {
+    content: '★';
+    color: #ffb74d;
+    margin-right: 6px;
+    font-size: 1.1em;
+  }
+  
+  .doodle-heart::before {
+    content: '♥';
+    color: #e91e63;
+    margin-right: 6px;
+    font-size: 1em;
+  }
+  
+  .doodle-check::before {
+    content: '✓';
+    color: #4caf50;
+    margin-right: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+
+  /* Note Paper Effect */
+  .note-paper {
+    background-image: 
+      linear-gradient(90deg, #e3f2fd 1px, transparent 1px),
+      linear-gradient(180deg, rgba(0,0,0,0.1) 0px, transparent 1px);
+    background-size: 100% 1.5em;
+    background-position: 0 1.5em;
+    position: relative;
+  }
+
+  /* Sticky Note Style */
+  .sticky-note {
+    background: #fff59d;
+    transform: rotate(-2deg);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 0 0 0 20px;
+    position: relative;
+  }
+
+  /* Annotation styles */
+  .annotation {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .annotation::after {
+    content: attr(data-note);
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff59d;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-family: 'Caveat', cursive;
+    color: #333;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  
+  .annotation:hover::after {
+    opacity: 1;
+  }
+}
