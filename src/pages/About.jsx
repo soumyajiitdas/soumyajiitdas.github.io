@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { aboutMe, typewriterTexts } from '../data/data';
 import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import profileImg from '/assets/profileImg.jpg';
+import myResume from "/assets/Sample_Resume.pdf";
 
 const About = () => {
     const navigate = useNavigate();
@@ -38,7 +40,7 @@ const About = () => {
 
     const handleDownloadResume = () => {
         const link = document.createElement('a');
-        link.href = '/assets/files/Sample_Resume.pdf';
+        link.href = {myResume};
         link.download = 'Sample_Resume.pdf';
         document.body.appendChild(link);
         link.click();
@@ -115,7 +117,7 @@ const About = () => {
                         {/* Main image container */}
                         <div className="w-full h-full rounded-lg overflow-hidden border-4 border-background-subtle shadow-2xl bg-gradient-to-br from-accent/5 to-background-subtle opacity-85 hover:opacity-100 group-hover:shadow-accent/20 dark:border-black dark:hover:border-background-subtle group-hover:border-accent/30 transition-all duration-500">
                             <img
-                                src='/assets/files/profileImg.jpg'
+                                src={profileImg}
                                 alt="<profileImg.src=Null>"
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />

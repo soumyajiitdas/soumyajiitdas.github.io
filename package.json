@@ -1,8 +1,8 @@
 {
-    "name": "frontend",
+    "name": "my-portfolio",
     "version": "0.1.0",
     "private": true,
-    "license": "MIT",
+    "homepage": "https://soumyajiitdas.github.io/",
     "dependencies": {
         "@hookform/resolvers": "^5.0.1",
         "@radix-ui/react-accordion": "^1.2.8",
@@ -58,7 +58,9 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "serve": "vite preview"
+        "serve": "vite preview",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "devDependencies": {
         "@eslint/js": "9.23.0",
@@ -67,6 +69,7 @@
         "eslint-plugin-import": "2.31.0",
         "eslint-plugin-jsx-a11y": "6.10.2",
         "eslint-plugin-react": "7.37.4",
+        "gh-pages": "^6.3.0",
         "globals": "15.15.0",
         "postcss": "^8.4.49",
         "tailwindcss": "^3.4.17"
