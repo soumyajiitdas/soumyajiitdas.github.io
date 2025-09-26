@@ -4,88 +4,145 @@
 @tailwind components;
 @tailwind utilities;
 
-/* GitHub Theme Variables */
+/* Theme Variables */
 @layer base {
   :root {
-    /* GitHub Light Theme */
-    --github-canvas-default: #ffffff;
-    --github-canvas-overlay: #ffffff;
-    --github-canvas-inset: #f6f8fa;
-    --github-canvas-subtle: #f6f8fa;
-    --github-border-default: #d0d7de;
-    --github-border-muted: #d8dee4;
-    --github-neutral-muted: #656d76;
-    --github-accent-fg: #0969da;
-    --github-accent-emphasis: #0969da;
-    --github-accent-muted: rgba(84, 174, 255, 0.4);
-    --github-accent-subtle: #ddf4ff;
-    --github-success-fg: #1a7f37;
-    --github-attention-fg: #9a6700;
-    --github-severe-fg: #bc4c00;
-    --github-danger-fg: #d1242f;
-    --github-open-fg: #1a7f37;
-    --github-closed-fg: #d1242f;
-    --github-done-fg: #8250df;
-    --github-sponsors-fg: #bf8700;
-    --github-fg-default: #1f2328;
-    --github-fg-muted: #656d76;
-    --github-fg-subtle: #6e7781;
-    --github-fg-on-emphasis: #ffffff;
+    /* Light Theme */
+    --background: #ffffff;
+    --background-overlay: #ffffff;
+    --background-subtle: #f6f8fa;
+    --background-muted: #f6f8fa;
+    
+    --foreground: #1f2328;
+    --foreground-muted: #656d76;
+    --foreground-subtle: #6e7781;
+    --foreground-on-emphasis: #ffffff;
+    
+    --border: #d0d7de;
+    --border-muted: #d8dee4;
+    
+    --primary: #0969da;
+    --primary-emphasis: #0969da;
+    --primary-muted: rgba(84, 174, 255, 0.4);
+    --primary-subtle: #ddf4ff;
+    
+    --accent: #0969da;
+    --accent-foreground: #ffffff;
+    
+    --success: #1a7f37;
+    --success-foreground: #ffffff;
+    
+    --warning: #9a6700;
+    --warning-foreground: #ffffff;
+    
+    --destructive: #d1242f;
+    --destructive-foreground: #ffffff;
+    
+    --info: #8250df;
+    --info-foreground: #ffffff;
+    
+    --neutral-muted: #656d76;
+    --sponsors: #bf8700;
+    
+    --card: #f6f8fa;
+    --card-foreground: #1f2328;
+    
+    --popover: #ffffff;
+    --popover-foreground: #1f2328;
+    
+    --secondary: #f6f8fa;
+    --secondary-foreground: #1f2328;
+    
+    --muted: #f6f8fa;
+    --muted-foreground: #656d76;
+    
+    --input: #d0d7de;
+    --ring: #0969da;
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* GitHub Dark Theme */
-    --github-canvas-default: #010409;
-    --github-canvas-overlay: #161b22;
-    --github-canvas-inset: #0d1117;
-    --github-canvas-subtle: #161b22;
-    --github-border-default: #30363d;
-    --github-border-muted: #21262d;
-    --github-neutral-muted: #656d76;
-    --github-accent-fg: #2f81f7;
-    --github-accent-emphasis: #1f6feb;
-    --github-accent-muted: rgba(56, 139, 253, 0.4);
-    --github-accent-subtle: #0d419d;
-    --github-success-fg: #3fb950;
-    --github-attention-fg: #d29922;
-    --github-severe-fg: #db6d28;
-    --github-danger-fg: #f85149;
-    --github-open-fg: #3fb950;
-    --github-closed-fg: #f85149;
-    --github-done-fg: #a5a5ff;
-    --github-sponsors-fg: #db61a2;
-    --github-fg-default: #e6edf3;
-    --github-fg-muted: #7d8590;
-    --github-fg-subtle: #6e7681;
-    --github-fg-on-emphasis: #ffffff;
+    /* Dark Theme */
+    --background: #010409;
+    --background-overlay: #161b22;
+    --background-subtle: #0d1117;
+    --background-muted: #161b22;
+    
+    --foreground: #e6edf3;
+    --foreground-muted: #7d8590;
+    --foreground-subtle: #6e7681;
+    --foreground-on-emphasis: #ffffff;
+    
+    --border: #30363d;
+    --border-muted: #21262d;
+    
+    --primary: #2f81f7;
+    --primary-emphasis: #1f6feb;
+    --primary-muted: rgba(56, 139, 253, 0.4);
+    --primary-subtle: #0d419d;
+    
+    --accent: #1f6feb;
+    --accent-foreground: #ffffff;
+    
+    --success: #3fb950;
+    --success-foreground: #ffffff;
+    
+    --warning: #d29922;
+    --warning-foreground: #ffffff;
+    
+    --destructive: #f85149;
+    --destructive-foreground: #ffffff;
+    
+    --info: #a5a5ff;
+    --info-foreground: #ffffff;
+    
+    --neutral-muted: #656d76;
+    --sponsors: #db61a2;
+    
+    --card: #161b22;
+    --card-foreground: #e6edf3;
+    
+    --popover: #161b22;
+    --popover-foreground: #e6edf3;
+    
+    --secondary: #161b22;
+    --secondary-foreground: #e6edf3;
+    
+    --muted: #161b22;
+    --muted-foreground: #7d8590;
+    
+    --input: #30363d;
+    --ring: #1f6feb;
+    --radius: 0.5rem;
   }
 }
 
-/* Apply GitHub Theme Classes */
+/* Apply Theme Classes */
 @layer utilities {
-  .bg-github-canvas { background-color: var(--github-canvas-default); }
-  .bg-github-canvas-overlay { background-color: var(--github-canvas-overlay); }
-  .bg-github-canvas-inset { background-color: var(--github-canvas-inset); }
-  .bg-github-canvas-subtle { background-color: var(--github-canvas-subtle); }
-  .bg-github-canvas-default { background-color: var(--github-canvas-default); }
+  .bg-canvas { background-color: var(--background); }
+  .bg-canvas-overlay { background-color: var(--background-overlay); }
+  .bg-canvas-subtle { background-color: var(--background-subtle); }
+  .bg-canvas-muted { background-color: var(--background-muted); }
+  .bg-canvas-default { background-color: var(--background); }
   
-  .border-github-border { border-color: var(--github-border-default); }
-  .border-github-border-muted { border-color: var(--github-border-muted); }
+  .border-default { border-color: var(--border); }
+  .border-muted { border-color: var(--border-muted); }
   
-  .text-github-fg-default { color: var(--github-fg-default); }
-  .text-github-fg-muted { color: var(--github-fg-muted); }
-  .text-github-fg-subtle { color: var(--github-fg-subtle); }
-  .text-github-fg-on-emphasis { color: var(--github-fg-on-emphasis); }
+  .text-default { color: var(--foreground); }
+  .text-muted { color: var(--foreground-muted); }
+  .text-subtle { color: var(--foreground-subtle); }
+  .text-on-emphasis { color: var(--foreground-on-emphasis); }
   
-  .text-github-accent-fg { color: var(--github-accent-fg); }
-  .bg-github-accent-emphasis { background-color: var(--github-accent-emphasis); }
-  .bg-github-accent-muted { background-color: var(--github-accent-muted); }
-  .bg-github-accent-subtle { background-color: var(--github-accent-subtle); }
-  .border-github-accent-muted { border-color: var(--github-accent-muted); }
+  .text-primary { color: var(--primary); }
+  .bg-primary-emphasis { background-color: var(--primary-emphasis); }
+  .bg-primary-muted { background-color: var(--primary-muted); }
+  .bg-primary-subtle { background-color: var(--primary-subtle); }
+  .border-primary-muted { border-color: var(--primary-muted); }
   
-  .text-github-success-fg { color: var(--github-success-fg); }
-  .text-github-danger-fg { color: var(--github-danger-fg); }
-  .text-github-attention-fg { color: var(--github-attention-fg); }
+  .text-success { color: var(--success); }
+  .text-destructive { color: var(--destructive); }
+  .text-warning { color: var(--warning); }
+  .text-info { color: var(--info); }
 }
 
 body {
@@ -95,8 +152,8 @@ body {
       "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--github-canvas-default);
-  color: var(--github-fg-default);
+  background-color: var(--background);
+  color: var(--foreground);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -116,55 +173,31 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--github-canvas-inset);
+  background: var(--background-subtle);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--github-border-default);
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--github-fg-muted);
+  background: var(--foreground-muted);
 }
 
 /* Focus styles */
 input:focus, textarea:focus, button:focus {
-  outline: 2px solid var(--github-accent-emphasis);
+  outline: 2px solid var(--primary-emphasis);
   outline-offset: 2px;
 }
 
 /* Selection styles */
 ::selection {
-  background-color: var(--github-accent-muted);
-  color: var(--github-fg-default);
+  background-color: var(--primary-muted);
+  color: var(--foreground);
 }
 
-/* Shadcn overrides for GitHub theme */
-@layer base {
-  :root {
-        --background: var(--github-canvas-default);
-        --foreground: var(--github-fg-default);
-        --card: var(--github-canvas-subtle);
-        --card-foreground: var(--github-fg-default);
-        --popover: var(--github-canvas-overlay);
-        --popover-foreground: var(--github-fg-default);
-        --primary: var(--github-accent-emphasis);
-        --primary-foreground: var(--github-fg-on-emphasis);
-        --secondary: var(--github-canvas-subtle);
-        --secondary-foreground: var(--github-fg-default);
-        --muted: var(--github-canvas-subtle);
-        --muted-foreground: var(--github-fg-muted);
-        --accent: var(--github-canvas-subtle);
-        --accent-foreground: var(--github-fg-default);
-        --destructive: var(--github-danger-fg);
-        --destructive-foreground: var(--github-fg-on-emphasis);
-        --border: var(--github-border-default);
-        --input: var(--github-border-default);
-        --ring: var(--github-accent-emphasis);
-        --radius: 0.5rem;
-    }
-}
+
 
 /* Note-Style Custom CSS */
 @layer components {

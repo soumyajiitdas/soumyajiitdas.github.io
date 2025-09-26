@@ -11,13 +11,12 @@ import {
     Instagram,
     Facebook,
     Twitter,
-    Globe,
+    ExternalLink,
     MessageCircle,
     Clock,
     CheckCircle,
     Heart,
     Code,
-    Coffee
 } from 'lucide-react';
 
 const Contact = () => {
@@ -126,9 +125,9 @@ const Contact = () => {
             color: "from-purple-500/10 to-purple-600/10 border-purple-500/20"
         },
         {
-            icon: Globe,
+            icon: ExternalLink,
             title: "Website",
-            value: "Portfolio Website",
+            value: "My Portfolio Website",
             href: personalInfo.website,
             description: "Visit my portfolio",
             color: "from-orange-500/10 to-orange-600/10 border-orange-500/20"
@@ -158,10 +157,10 @@ const Contact = () => {
             {/* Enhanced Page Header */}
             <section className="text-center lg:text-left space-y-6">
                 <div className="space-y-4">
-                    <h1 className="text-4xl lg:text-5xl font-bold text-github-fg-default">
-                        Let's <span className="text-github-accent-fg">Connect</span>
+                    <h1 className="text-4xl lg:text-5xl font-bold text-default">
+                        Let's <span className="text-primary">Connect...</span>
                     </h1>
-                    <p className="text-xl text-github-fg-muted max-w-3xl">
+                    <p className="text-xl text-muted max-w-3xl">
                         I'm always excited to discuss new opportunities, collaborate on interesting projects, or just have a conversation about technology and innovation.
                     </p>
                 </div>
@@ -171,12 +170,12 @@ const Contact = () => {
                     {responseInfo.map((info, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-3 p-4 bg-github-canvas-subtle rounded-lg border border-github-border hover:border-github-accent-muted transition-all duration-300"
+                            className="flex items-center gap-3 p-4 bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300"
                         >
-                            <info.icon className="text-github-accent-fg flex-shrink-0" size={20} />
+                            <info.icon className="text-primary flex-shrink-0" size={20} />
                             <div className="text-left">
-                                <p className="font-medium text-github-fg-default text-sm">{info.title}</p>
-                                <p className="text-xs text-github-fg-muted">{info.description}</p>
+                                <p className="font-medium text-default text-sm">{info.title}</p>
+                                <p className="text-xs text-muted">{info.description}</p>
                             </div>
                         </div>
                     ))}
@@ -188,33 +187,33 @@ const Contact = () => {
                 <div className="lg:col-span-2 space-y-6">
                     {/* Contact Methods */}
                     <div className="space-y-4">
-                        <h2 className="text-2xl font-bold text-github-fg-default mb-6">Get in touch</h2>
+                        <h2 className="text-2xl font-bold text-default mb-6">Get in touch</h2>
                         {contactMethods.map((method, index) => (
                             <div
                                 key={index}
-                                className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-github-border hover:border-github-accent-muted transition-all duration-300 transform hover:scale-[1.02]`}
+                                className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform hover:scale-[1.02]`}
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-github-canvas-default rounded-lg">
-                                        <method.icon className="text-github-accent-fg" size={20} />
+                                    <div className="p-2 bg-canvas rounded-lg">
+                                        <method.icon className="text-primary" size={20} />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="font-semibold text-github-fg-default mb-1">
+                                        <h3 className="font-semibold text-default mb-1">
                                             {method.title}
                                         </h3>
-                                        <p className="text-xs text-github-fg-muted mb-2">
+                                        <p className="text-xs text-muted mb-2">
                                             {method.description}
                                         </p>
                                         {method.href ? (
                                             <a
                                                 href={method.href}
                                                 {...(method.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                                                className="text-github-accent-fg hover:text-github-accent-emphasis transition-colors text-sm font-medium break-all"
+                                                className="text-primary hover:text-primary-emphasis transition-colors text-sm font-medium break-all"
                                             >
                                                 {method.value}
                                             </a>
                                         ) : (
-                                            <p className="text-github-fg-muted text-sm">{method.value}</p>
+                                            <p className="text-muted text-sm">{method.value}</p>
                                         )}
                                     </div>
                                 </div>
@@ -223,9 +222,9 @@ const Contact = () => {
                     </div>
 
                     {/* Enhanced Social Links */}
-                    <div className="bg-github-canvas-subtle rounded-lg p-6 border border-github-border">
-                        <h3 className="text-xl font-bold text-github-fg-default mb-6 flex items-center gap-2">
-                            <Code className="text-github-accent-fg" size={20} />
+                    <div className="bg-canvas-subtle rounded-lg p-6 border border-default">
+                        <h3 className="text-xl font-bold text-default mb-6 flex items-center gap-2">
+                            <Code className="text-primary" size={20} />
                             Follow my journey
                         </h3>
                         <div className="grid grid-cols-2 gap-3">
@@ -237,7 +236,7 @@ const Contact = () => {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-3 rounded-lg bg-github-canvas-default hover:bg-github-accent-emphasis hover:text-white transition-all duration-300 transform hover:scale-105 border border-github-border group"
+                                        className="flex items-center gap-3 p-3 rounded-lg bg-canvas hover:bg-primary-emphasis hover:text-white transition-all duration-300 transform hover:scale-105 border border-default group"
                                     >
                                         <Icon size={18} className="flex-shrink-0" />
                                         <span className="text-sm font-medium capitalize group-hover:text-white">
@@ -252,19 +251,19 @@ const Contact = () => {
 
                 {/* Enhanced Contact Form */}
                 <div className="lg:col-span-3">
-                    <div className="bg-github-canvas-subtle rounded-lg p-8 border border-github-border">
+                    <div className="bg-canvas-subtle rounded-lg p-8 border border-default">
                         <div className="flex items-center gap-3 mb-8">
-                            <MessageCircle className="text-github-accent-fg" size={28} />
+                            <MessageCircle className="text-primary" size={28} />
                             <div>
-                                <h2 className="text-2xl font-bold text-github-fg-default">Send me a message</h2>
-                                <p className="text-github-fg-muted text-sm">I'll get back to you as soon as possible</p>
+                                <h2 className="text-2xl font-bold text-default">Send me a message</h2>
+                                <p className="text-muted text-sm">I'll get back to you as soon as possible</p>
                             </div>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="block text-sm font-semibold text-github-fg-default">
+                                    <label htmlFor="name" className="block text-sm font-semibold text-default">
                                         Full Name *
                                     </label>
                                     <input
@@ -274,13 +273,13 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-github-canvas-default border-2 border-github-border rounded-lg focus:outline-none focus:ring-2 focus:ring-github-accent-emphasis focus:border-github-accent-emphasis text-github-fg-default placeholder-github-fg-muted transition-all duration-200"
+                                        className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
                                         placeholder="your name"
                                     />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="block text-sm font-semibold text-github-fg-default">
+                                    <label htmlFor="email" className="block text-sm font-semibold text-default">
                                         Email Address *
                                     </label>
                                     <input
@@ -290,14 +289,14 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-github-canvas-default border-2 border-github-border rounded-lg focus:outline-none focus:ring-2 focus:ring-github-accent-emphasis focus:border-github-accent-emphasis text-github-fg-default placeholder-github-fg-muted transition-all duration-200"
+                                        className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
                                         placeholder="your.name@example.com"
                                     />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="block text-sm font-semibold text-github-fg-default">
+                                <label htmlFor="subject" className="block text-sm font-semibold text-default">
                                     Subject
                                 </label>
                                 <input
@@ -306,13 +305,13 @@ const Contact = () => {
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-github-canvas-default border-2 border-github-border rounded-lg focus:outline-none focus:ring-2 focus:ring-github-accent-emphasis focus:border-github-accent-emphasis text-github-fg-default placeholder-github-fg-muted transition-all duration-200"
+                                    className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
                                     placeholder="What would you like to discuss?"
                                 />
                             </div>
 
                             <div className="space-y-2">
-                                <label htmlFor="message" className="block text-sm font-semibold text-github-fg-default">
+                                <label htmlFor="message" className="block text-sm font-semibold text-default">
                                     Message *
                                 </label>
                                 <textarea
@@ -322,7 +321,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     rows={6}
-                                    className="w-full px-4 py-3 bg-github-canvas-default border-2 border-github-border rounded-lg focus:outline-none focus:ring-2 focus:ring-github-accent-emphasis focus:border-github-accent-emphasis text-github-fg-default placeholder-github-fg-muted resize-none transition-all duration-200"
+                                    className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted resize-none transition-all duration-200"
                                     placeholder="Tell me about your project, ask a question, or just say hello! I'm always excited to hear from fellow developers and potential collaborators."
                                 />
                             </div>
@@ -331,7 +330,7 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="flex items-center justify-center gap-2 px-12 py-4 bg-github-accent-emphasis text-white rounded-lg hover:bg-github-accent-emphasis/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold shadow-lg hover:shadow-github-accent-muted/20 transform hover:scale-105"
+                                    className="flex items-center justify-center gap-2 px-12 py-4 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold shadow-lg hover:shadow-primary-muted/20 transform hover:scale-105"
                                 >
                                     {isSubmitting ? (
                                         <>
@@ -350,37 +349,37 @@ const Contact = () => {
                     </div>
 
                     {/* Additional Info */}
-                    <div className="mt-6 p-6 bg-gradient-to-r from-github-canvas-subtle to-github-canvas-inset rounded-lg border border-github-border">
-                        <h3 className="font-semibold text-github-fg-default mb-3">What can we discuss?</h3>
+                    <div className="mt-6 p-6 bg-gradient-to-r from-canvas-subtle to-canvas-muted rounded-lg border border-default">
+                        <h3 className="font-semibold text-default mb-3">What can we discuss?</h3>
                         <div className="grid sm:grid-cols-2 gap-3 text-sm">
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">Full-stack development projects</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">Full-stack development projects</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">AI/ML collaboration opportunities</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">AI/ML collaboration opportunities</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">Open source contributions</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">Open source contributions</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">Tech mentorship & guidance</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">Tech mentorship & guidance</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">Freelance & internship opportunities</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">Freelance & internship opportunities</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <span className="text-github-accent-fg">●</span>
-                                <span className="text-github-fg-muted">Just saying hello! 👋</span>
+                                <span className="text-primary">●</span>
+                                <span className="text-muted">Just saying hello! 👋</span>
                             </div>
                         </div>
                         <div className="flex items-center justify-center gap-8 mt-4">
                             <a href={`mailto:${personalInfo.email}`} className="flex items-center space-x-2">
-                                <Mail size={20} className='text-github-accent-fg' />
+                                <Mail size={20} className='text-primary' />
                                 <span>Email Me Directly</span>
                             </a>
                             <a
@@ -389,7 +388,7 @@ const Contact = () => {
                                 rel="noopener noreferrer"
                                 className="flex items-center space-x-2"
                             >
-                                <Linkedin size={20} className='text-github-accent-fg' />
+                                <Linkedin size={20} className='text-primary' />
                                 <span>Connect on LinkedIn</span>
                             </a>
                         </div>

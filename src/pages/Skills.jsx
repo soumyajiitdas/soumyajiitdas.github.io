@@ -34,9 +34,8 @@ import {
     SiMongodb,
     SiPostgresql
 } from 'react-icons/si';
-import { RiJavaLine } from "react-icons/ri";
 import { BiLogoVisualStudio } from "react-icons/bi";
-import { FaTools, FaDatabase, FaLightbulb, FaUsers, FaComments, FaSync, FaHandshake, FaHeart } from 'react-icons/fa';
+import { FaJava, FaTools, FaDatabase, FaLightbulb, FaUsers, FaComments, FaSync, FaHandshake, FaHeart } from 'react-icons/fa';
 import { GrLanguage } from "react-icons/gr";
 import { IoLibraryOutline } from "react-icons/io5";
 
@@ -58,7 +57,7 @@ const Skills = () => {
             'HTML': SiHtml5,
             'CSS': SiCss3,
             'C': SiC,
-            'Java': RiJavaLine,
+            'Java': FaJava,
             // Frameworks
             'TailwindCSS': SiTailwindcss,
             'Next.js': SiNextdotjs,
@@ -147,8 +146,8 @@ const Skills = () => {
         <div className="space-y-8">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="text-4xl font-bold text-github-fg-default mb-4">Skills & Certifications</h1>
-                <p className="text-github-fg-muted max-w-2xl">
+                <h1 className="text-4xl font-bold text-default mb-4">Skills & Certifications <span className='text-primary'>:</span></h1>
+                <p className="text-muted max-w-2xl">
                     My technical skills, tools I work with, and certifications I've earned throughout my learning journey.
                 </p>
             </div>
@@ -156,8 +155,8 @@ const Skills = () => {
             {/* Skills Section */}
             <section className="space-y-8">
                 <div className="flex items-center gap-3">
-                    <SiPython className="text-github-accent-fg" size={24} />
-                    <h2 className="text-3xl font-bold text-github-fg-default">Technical Skills</h2>
+                    <SiPython className="text-primary" size={24} />
+                    <h2 className="text-3xl font-bold text-default">Technical Skills</h2>
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-8">
@@ -168,11 +167,11 @@ const Skills = () => {
                         return (
                             <div
                                 key={category.key}
-                                className="bg-github-canvas-subtle rounded-lg p-6 border border-github-border hover:border-github-accent-muted transition-all duration-300"
+                                className="bg-canvas-subtle rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300"
                             >
                                 <div className="flex items-center gap-3 mb-4">
                                     <Icon className={`${category.color}`} size={20} />
-                                    <h3 className="text-lg font-semibold text-github-fg-default">
+                                    <h3 className="text-lg font-semibold text-default">
                                         {category.title}
                                     </h3>
                                 </div>
@@ -185,11 +184,11 @@ const Skills = () => {
                                         return (
                                             <div
                                                 key={index}
-                                                className="flex flex-col items-center p-4 bg-github-canvas-default rounded-xl border border-github-border hover:border-github-accent-muted transition-all duration-200 hover:shadow-md group"
+                                                className="flex flex-col items-center p-4 bg-canvas rounded-xl border border-default hover:border-primary-muted transition-all duration-200 hover:shadow-md group"
                                             >
                                                 <SkillIcon size={28} className={`${skillColor} mb-3 group-hover:scale-110 transition-transform duration-200`} />
                                                 <div className="text-center">
-                                                    <span className="text-sm font-medium text-github-fg-default block">
+                                                    <span className="text-sm font-medium text-default block">
                                                         {skill.name}
                                                     </span>
                                                 </div>
@@ -206,15 +205,15 @@ const Skills = () => {
             {/* Certifications Section */}
             <section className="space-y-6">
                 <div className="flex items-center gap-3">
-                    <Award className="text-github-accent-fg" size={24} />
-                    <h2 className="text-3xl font-bold text-github-fg-default">Certifications</h2>
+                    <Award className="text-primary" size={24} />
+                    <h2 className="text-3xl font-bold text-default">Certifications</h2>
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                     {certifications.map((cert) => (
                         <div
                             key={cert.id}
-                            className="bg-github-canvas-subtle rounded-lg border border-github-border hover:border-github-accent-muted transition-all duration-300 overflow-hidden"
+                            className="bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300 overflow-hidden"
                         >
                             {/* Certificate Image */}
                             <div className="relative">
@@ -233,14 +232,14 @@ const Skills = () => {
                             {/* Certificate Content */}
                             <div className="p-6">
                                 <div className="flex items-start justify-between mb-3">
-                                    <h3 className="text-lg font-semibold text-github-fg-default leading-tight">
+                                    <h3 className="text-lg font-semibold text-default leading-tight">
                                         {cert.title}
                                     </h3>
                                 </div>
 
-                                <p className="text-github-accent-fg font-medium mb-2">{cert.issuer}</p>
+                                <p className="text-primary font-medium mb-2">{cert.issuer}</p>
 
-                                <div className="flex items-center gap-4 text-sm text-github-fg-muted mb-4">
+                                <div className="flex items-center gap-4 text-sm text-muted mb-4">
                                     <div className="flex items-center gap-1">
                                         <Calendar size={14} />
                                         <span>{cert.date}</span>
@@ -253,8 +252,8 @@ const Skills = () => {
                                     )}
                                 </div>
 
-                                <div className="flex items-center justify-between text-xs text-github-fg-muted mb-4">
-                                    <span className="bg-github-accent-subtle text-github-accent-fg px-2 py-1 rounded">
+                                <div className="flex items-center justify-between text-xs text-muted mb-4">
+                                    <span className="bg-primary-subtle text-primary px-2 py-1 rounded">
                                         {cert.category}
                                     </span>
                                     <span>Expires: {cert.expiryDate}</span>
@@ -266,7 +265,7 @@ const Skills = () => {
                                         href={cert.verificationUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 bg-github-accent-emphasis text-white rounded-lg hover:bg-github-accent-emphasis/90 transition-colors text-sm font-medium"
+                                        className="inline-flex items-center gap-2 px-4 py-2 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-colors text-sm font-medium"
                                     >
                                         <ExternalLink size={14} />
                                         <span>Verify Certificate</span>
@@ -279,32 +278,32 @@ const Skills = () => {
             </section>
 
             {/* Skills Summary */}
-            <section className="bg-github-canvas-subtle rounded-lg p-6 border border-github-border">
-                <h3 className="text-lg font-semibold text-github-fg-default mb-4">Skills Summary</h3>
+            <section className="bg-canvas-subtle rounded-lg p-6 border border-default">
+                <h3 className="text-lg font-semibold text-default mb-4">Skills Summary</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {Object.values(skills).flat().length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Total Skills</div>
+                        <div className="text-sm text-muted">Total Skills</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {skills.languages.length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Languages</div>
+                        <div className="text-sm text-muted">Languages</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {skills.frameworks.length + skills.libraries.length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Frameworks</div>
+                        <div className="text-sm text-muted">Frameworks</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {certifications.length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Certifications</div>
+                        <div className="text-sm text-muted">Certifications</div>
                     </div>
                 </div>
             </section>

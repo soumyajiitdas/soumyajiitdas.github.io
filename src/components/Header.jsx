@@ -9,13 +9,13 @@ const Header = () => {
         <header className="flex justify-end items-center p-4 lg:p-6">
             <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-github-canvas-subtle hover:bg-github-canvas-inset transition-colors duration-200"
+                className="p-2 rounded-lg bg-canvas-subtle hover:bg-canvas-muted transition-colors duration-200"
                 title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
                 {theme === 'light' ? (
-                    <Moon size={20} className="text-github-fg-default" />
+                    <Moon size={20} className="text-default" />
                 ) : (
-                    <Sun size={20} className="text-github-fg-default" />
+                    <Sun size={20} className="text-default" />
                 )}
             </button>
         </header>

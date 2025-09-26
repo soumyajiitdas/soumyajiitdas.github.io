@@ -5,7 +5,7 @@ import Header from './Header';
 
 const Layout = () => {
     return (
-        <div className="min-h-screen bg-github-canvas transition-colors duration-300">
+        <div className="min-h-screen bg-canvas transition-colors duration-300">
             <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
                 {/* Sidebar */}
                 <div className="lg:w-80 lg:min-h-screen">

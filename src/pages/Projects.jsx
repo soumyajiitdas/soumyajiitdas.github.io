@@ -36,23 +36,23 @@ const Projects = () => {
         <div className="space-y-8">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="text-4xl font-bold text-github-fg-default mb-4">My Projects</h1>
-                <p className="text-github-fg-muted max-w-2xl">
+                <h1 className="text-4xl font-bold text-default mb-4">My Projects <span className='text-primary'>:</span></h1>
+                <p className="text-muted max-w-2xl">
                     A collection of projects I've built while learning and exploring different technologies.
                     Each project represents a step in my journey as a developer.
                 </p>
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 p-2 bg-github-canvas-subtle rounded-lg border border-github-border">
-                <Filter size={20} className="text-github-fg-muted mr-2 mt-2" />
+            <div className="flex flex-wrap gap-2 p-2 bg-canvas-subtle rounded-lg border border-default">
+                <Filter size={20} className="text-muted mr-2 mt-2" />
                 {filters.map((filter) => (
                     <button
                         key={filter.id}
                         onClick={() => setActiveFilter(filter.id)}
                         className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${activeFilter === filter.id
-                                ? 'bg-github-accent-emphasis text-white shadow-sm'
-                                : 'text-github-fg-muted hover:text-github-fg-default hover:bg-github-canvas-inset'
+                                ? 'bg-primary-emphasis text-white shadow-sm'
+                                : 'text-muted hover:text-default hover:bg-canvas-muted'
                             }`}
                     >
                         {filter.label}
@@ -61,7 +61,7 @@ const Projects = () => {
             </div>
 
             {/* Projects Count */}
-            <div className="text-sm text-github-fg-muted">
+            <div className="text-sm text-muted">
                 Showing {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
                 {activeFilter !== 'all' && ` in ${filters.find(f => f.id === activeFilter)?.label}`}
             </div>
@@ -72,9 +72,9 @@ const Projects = () => {
                     <div
                         key={project.id}
                         className={`
-              bg-github-canvas-subtle rounded-lg border border-github-border 
-              hover:border-github-accent-muted transition-all duration-300 hover:shadow-lg
-              ${project.featured ? 'ring-2 ring-github-accent-muted' : ''}
+              bg-canvas-subtle rounded-lg border border-default 
+              hover:border-primary-muted transition-all duration-300 hover:shadow-lg
+              ${project.featured ? 'ring-2 ring-primary-muted' : ''}
             `}
                     >
                         {/* Project Image */}
@@ -86,7 +86,7 @@ const Projects = () => {
                             />
                             {project.featured && (
                                 <div className="absolute top-3 left-3">
-                                    <div className="bg-github-accent-emphasis text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                                    <div className="bg-primary-emphasis text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
                                         <Star size={12} />
                                         Featured
                                     </div>
@@ -102,12 +102,12 @@ const Projects = () => {
                         {/* Project Content */}
                         <div className="p-6">
                             <div className="flex items-start justify-between mb-3">
-                                <h3 className="text-xl font-semibold text-github-fg-default">
+                                <h3 className="text-xl font-semibold text-default">
                                     {project.title}
                                 </h3>
                             </div>
 
-                            <p className="text-github-fg-muted text-sm mb-4 leading-relaxed">
+                            <p className="text-muted text-sm mb-4 leading-relaxed">
                                 {project.description}
                             </p>
 
@@ -117,7 +117,7 @@ const Projects = () => {
                                     {project.technologies.map((tech, techIndex) => (
                                         <span
                                             key={techIndex}
-                                            className="bg-github-accent-subtle text-github-accent-fg text-xs px-2 py-1 rounded"
+                                            className="bg-primary-subtle text-primary text-xs px-2 py-1 rounded"
                                         >
                                             {tech}
                                         </span>
@@ -126,7 +126,7 @@ const Projects = () => {
                             </div>
 
                             {/* Project Meta */}
-                            <div className="flex items-center justify-between text-xs text-github-fg-muted mb-4">
+                            <div className="flex items-center justify-between text-xs text-muted mb-4">
                                 <div className="flex items-center gap-1">
                                     <Calendar size={12} />
                                     <span>Updated {project.lastUpdated}</span>
@@ -144,7 +144,7 @@ const Projects = () => {
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 bg-github-canvas-default border border-github-border rounded-lg hover:bg-github-canvas-inset transition-colors text-sm font-medium text-github-fg-default"
+                                    className="flex items-center gap-2 px-4 py-2 bg-canvas border border-default rounded-lg hover:bg-canvas-muted transition-colors text-sm font-medium text-default"
                                 >
                                     <Github size={16} />
                                     <span>Code</span>
@@ -155,7 +155,7 @@ const Projects = () => {
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 bg-github-accent-emphasis text-white rounded-lg hover:bg-github-accent-emphasis/90 transition-colors text-sm font-medium"
+                                        className="flex items-center gap-2 px-4 py-2 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-colors text-sm font-medium"
                                     >
                                         <ExternalLink size={16} />
                                         <span>Live Demo</span>
@@ -171,40 +171,40 @@ const Projects = () => {
             {filteredProjects.length === 0 && (
                 <div className="text-center py-12">
                     <div className="text-6xl mb-4">🔍</div>
-                    <h3 className="text-xl font-semibold text-github-fg-default mb-2">
+                    <h3 className="text-xl font-semibold text-default mb-2">
                         No projects found
                     </h3>
-                    <p className="text-github-fg-muted">
+                    <p className="text-muted">
                         Try selecting a different filter or check back later for new projects.
                     </p>
                 </div>
             )}
 
             {/* Project Stats */}
-            <div className="bg-github-canvas-subtle rounded-lg p-6 border border-github-border">
-                <h3 className="text-lg font-semibold text-github-fg-default mb-4">Project Statistics</h3>
+            <div className="bg-canvas-subtle rounded-lg p-6 border border-default">
+                <h3 className="text-lg font-semibold text-default mb-4">Project Statistics</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">{projects.length}</div>
-                        <div className="text-sm text-github-fg-muted">Total Projects</div>
+                        <div className="text-2xl font-bold text-primary">{projects.length}</div>
+                        <div className="text-sm text-muted">Total Projects</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {projects.filter(p => p.featured).length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Featured</div>
+                        <div className="text-sm text-muted">Featured</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {projects.filter(p => p.isDeployed).length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Live Projects</div>
+                        <div className="text-sm text-muted">Live Projects</div>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-github-accent-fg">
+                        <div className="text-2xl font-bold text-primary">
                             {[...new Set(projects.flatMap(p => p.technologies))].length}
                         </div>
-                        <div className="text-sm text-github-fg-muted">Technologies</div>
+                        <div className="text-sm text-muted">Technologies</div>
                     </div>
                 </div>
             </div>

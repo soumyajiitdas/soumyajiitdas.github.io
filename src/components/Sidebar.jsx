@@ -15,7 +15,7 @@ import {
     Twitter,
     MapPin,
     Phone,
-    Globe,
+    ExternalLink,
     Menu,
     X
 } from 'lucide-react';
@@ -48,13 +48,13 @@ const Sidebar = () => {
     return (
         <>
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex justify-between items-center p-4 bg-github-canvas border-b border-github-border">
-                <h1 className="text-xl font-bold text-github-fg-default">
+            <div className="lg:hidden flex justify-between items-center p-4 bg-canvas border-b border-default">
+                <h1 className="text-xl font-bold text-default">
                     &lt; Somjit.03 /&gt;
                 </h1>
                 <button
                     onClick={toggleMobileMenu}
-                    className="p-2 rounded-lg hover:bg-github-canvas-subtle transition-colors"
+                    className="p-2 rounded-lg hover:bg-canvas-subtle transition-colors"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -62,45 +62,45 @@ const Sidebar = () => {
 
             {/* Sidebar */}
             <aside className={`
-        fixed inset-y-0 left-0 z-50 lg:relative lg:z-auto w-[55%] lg:w-full transform transition-transform duration-300 ease-in-out lg:transform-none ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} bg-github-canvas-overlay lg:bg-transparent lg:sticky lg:top-0 lg:h-screen overflow-y-auto border-r border-github-border lg:border-r-0
+        fixed inset-y-0 left-0 z-50 lg:relative lg:z-auto w-[55%] lg:w-full transform transition-transform duration-300 ease-in-out lg:transform-none ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'} bg-canvas-overlay lg:bg-transparent lg:sticky lg:top-0 lg:h-screen overflow-y-auto border-r border-default lg:border-r-0
         `}>
                 <div className="p-4 lg:p-8">
                     {/* Profile Section */}
                     <div className="text-center mb-6 lg:mb-8">
-                        <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-3 lg:mb-4 rounded-full overflow-hidden border-4 border-github-border bg-github-canvas-subtle">
+                        <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-3 lg:mb-4 rounded-full overflow-hidden border-4 border-default bg-canvas-subtle">
                             <img
                                 src="https://avatars.githubusercontent.com/u/116360739?v=4"
                                 alt={personalInfo.name}
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <h1 className="text-lg lg:text-2xl font-bold text-github-fg-default mb-1 lg:mb-2">
+                        <h1 className="text-lg lg:text-2xl font-bold text-default mb-1 lg:mb-2">
                             {personalInfo.name}
                         </h1>
-                        <p className="text-github-fg-muted text-xs lg:text-sm">
+                        <p className="text-muted text-xs lg:text-sm">
                             CS Undergrad | Learner | Tech Enthusiast
                         </p>
                     </div>
 
                     {/* Contact Info */}
                     <div className="mb-6 lg:mb-8 space-y-2 lg:space-y-3">
-                        <div className="flex items-center text-xs lg:text-sm text-github-fg-muted">
-                            <MapPin size={14} className="mr-2 lg:mr-3 text-github-accent-fg flex-shrink-0" />
+                        <div className="flex items-center text-xs lg:text-sm text-muted">
+                            <MapPin size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
                             <span className="truncate">{personalInfo.location}</span>
                         </div>
-                        <div className="flex items-center text-xs lg:text-sm text-github-fg-muted">
-                            <Phone size={14} className="mr-2 lg:mr-3 text-github-accent-fg flex-shrink-0" />
+                        <div className="flex items-center text-xs lg:text-sm text-muted">
+                            <Phone size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
                             <span>{personalInfo.phone}</span>
                         </div>
-                        <div className="flex items-center text-xs lg:text-sm text-github-fg-muted">
-                            <Globe size={14} className="mr-2 lg:mr-3 text-github-accent-fg flex-shrink-0" />
+                        <div className="flex items-center text-xs lg:text-sm text-muted">
+                            <ExternalLink size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
                             <a
                                 href={personalInfo.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-github-accent-fg transition-colors truncate"
+                                className="hover:text-primary transition-colors truncate"
                             >
-                                Portfolio Website
+                                Visit My Portfolio
                             </a>
                         </div>
                     </div>
@@ -120,8 +120,8 @@ const Sidebar = () => {
                                             className={`
                         flex items-center px-3 lg:px-4 py-2 lg:py-3 rounded-lg transition-colors text-sm
                         ${isActive
-                                                    ? 'bg-github-accent-emphasis text-white'
-                                                    : 'text-github-fg-default hover:bg-github-canvas-subtle hover:text-github-accent-fg'
+                                                    ? 'bg-primary-emphasis text-white'
+                                                    : 'text-default hover:bg-canvas-subtle hover:text-primary'
                                                 }
                                             `}
                                         >
@@ -135,8 +135,8 @@ const Sidebar = () => {
                     </nav>
 
                     {/* Social Links */}
-                    <div className="pt-3 lg:pt-4 border-t border-github-border">
-                        <p className="text-xs lg:text-sm font-medium text-github-fg-default mb-3 lg:mb-4">Connect with me</p>
+                    <div className="pt-3 lg:pt-4 border-t border-default">
+                        <p className="text-xs lg:text-sm font-medium text-default mb-3 lg:mb-4">Connect with me</p>
                         <div className="grid grid-cols-3 lg:flex lg:flex-wrap gap-2 lg:gap-3">
                             {Object.entries(personalInfo.socialLinks).map(([platform, url]) => {
                                 const Icon = socialIcons[platform];
@@ -146,7 +146,7 @@ const Sidebar = () => {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex flex-col items-center p-2 lg:p-2 rounded-lg bg-github-canvas-subtle hover:bg-github-accent-emphasis hover:text-white transition-all duration-200 transform hover:scale-105 border border-github-border"
+                                        className="flex flex-col items-center p-2 lg:p-2 rounded-lg bg-canvas-subtle hover:bg-primary-emphasis hover:text-white transition-all duration-200 transform hover:scale-105 border border-default"
                                         title={platform}
                                     >
                                         <Icon size={16} className="mb-1" />
