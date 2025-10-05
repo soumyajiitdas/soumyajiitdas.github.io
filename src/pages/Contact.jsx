@@ -155,26 +155,26 @@ const Contact = () => {
     return (
         <div className="space-y-12">
             {/* Enhanced Page Header */}
-            <section className="text-center lg:text-left space-y-6">
+            <section className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
-                    <h1 className="text-4xl lg:text-5xl font-bold text-default">
+                    <h1 className="text-4xl font-bold lg:text-5xl text-default">
                         Let's <span className="text-primary">Connect...</span>
                     </h1>
-                    <p className="text-xl text-muted max-w-3xl">
+                    <p className="max-w-3xl text-xl text-muted">
                         I'm always excited to discuss new opportunities, collaborate on interesting projects, or just have a conversation about technology and innovation.
                     </p>
                 </div>
 
                 {/* Response Info Cards */}
-                <div className="grid sm:grid-cols-3 gap-4 mt-8">
+                <div className="grid gap-4 mt-8 sm:grid-cols-3">
                     {responseInfo.map((info, index) => (
                         <div
                             key={index}
-                            className="flex items-center gap-3 p-4 bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300"
+                            className="flex items-center gap-3 p-4 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
                         >
-                            <info.icon className="text-primary flex-shrink-0" size={20} />
+                            <info.icon className="flex-shrink-0 text-primary" size={20} />
                             <div className="text-left">
-                                <p className="font-medium text-default text-sm">{info.title}</p>
+                                <p className="text-sm font-medium text-default">{info.title}</p>
                                 <p className="text-xs text-muted">{info.description}</p>
                             </div>
                         </div>
@@ -182,38 +182,38 @@ const Contact = () => {
                 </div>
             </section>
 
-            <div className="grid lg:grid-cols-5 gap-8">
+            <div className="grid gap-8 lg:grid-cols-5">
                 {/* Enhanced Contact Information Sidebar */}
-                <div className="lg:col-span-2 space-y-6">
+                <div className="space-y-6 lg:col-span-2">
                     {/* Contact Methods */}
                     <div className="space-y-4">
-                        <h2 className="text-2xl font-bold text-default mb-6">Get in touch</h2>
+                        <h2 className="mb-6 text-2xl font-bold text-default">Get in touch</h2>
                         {contactMethods.map((method, index) => (
                             <div
                                 key={index}
                                 className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform hover:scale-[1.02]`}
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 bg-canvas rounded-lg">
+                                    <div className="p-2 rounded-lg bg-canvas">
                                         <method.icon className="text-primary" size={20} />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="font-semibold text-default mb-1">
+                                        <h3 className="mb-1 font-semibold text-default">
                                             {method.title}
                                         </h3>
-                                        <p className="text-xs text-muted mb-2">
+                                        <p className="mb-2 text-xs text-muted">
                                             {method.description}
                                         </p>
                                         {method.href ? (
                                             <a
                                                 href={method.href}
                                                 {...(method.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                                                className="text-primary hover:text-primary-emphasis transition-colors text-sm font-medium break-all"
+                                                className="text-sm font-medium break-all transition-colors text-primary hover:text-primary-emphasis"
                                             >
                                                 {method.value}
                                             </a>
                                         ) : (
-                                            <p className="text-muted text-sm">{method.value}</p>
+                                            <p className="text-sm text-muted">{method.value}</p>
                                         )}
                                     </div>
                                 </div>
@@ -222,8 +222,8 @@ const Contact = () => {
                     </div>
 
                     {/* Enhanced Social Links */}
-                    <div className="bg-canvas-subtle rounded-lg p-6 border border-default">
-                        <h3 className="text-xl font-bold text-default mb-6 flex items-center gap-2">
+                    <div className="p-6 border rounded-lg bg-canvas-subtle border-default">
+                        <h3 className="flex items-center gap-2 mb-6 text-xl font-bold text-default">
                             <Code className="text-primary" size={20} />
                             Follow my journey
                         </h3>
@@ -236,7 +236,7 @@ const Contact = () => {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-3 rounded-lg bg-canvas hover:bg-primary-emphasis hover:text-white transition-all duration-300 transform hover:scale-105 border border-default group"
+                                        className="flex items-center gap-3 p-3 transition-all duration-300 transform border rounded-lg bg-canvas hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default group"
                                     >
                                         <Icon size={18} className="flex-shrink-0" />
                                         <span className="text-sm font-medium capitalize group-hover:text-white">
@@ -251,17 +251,17 @@ const Contact = () => {
 
                 {/* Enhanced Contact Form */}
                 <div className="lg:col-span-3">
-                    <div className="bg-canvas-subtle rounded-lg p-8 border border-default">
+                    <div className="p-8 border rounded-lg bg-canvas-subtle border-default">
                         <div className="flex items-center gap-3 mb-8">
                             <MessageCircle className="text-primary" size={28} />
                             <div>
                                 <h2 className="text-2xl font-bold text-default">Send me a message</h2>
-                                <p className="text-muted text-sm">I'll get back to you as soon as possible</p>
+                                <p className="text-sm text-muted">I'll get back to you as soon as possible</p>
                             </div>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid gap-6 md:grid-cols-2">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="block text-sm font-semibold text-default">
                                         Full Name *
@@ -273,7 +273,7 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
+                                        className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                         placeholder="your name"
                                     />
                                 </div>
@@ -289,7 +289,7 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
+                                        className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                         placeholder="your.name@example.com"
                                     />
                                 </div>
@@ -305,7 +305,7 @@ const Contact = () => {
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
-                                    className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted transition-all duration-200"
+                                    className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                     placeholder="What would you like to discuss?"
                                 />
                             </div>
@@ -321,7 +321,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     rows={6}
-                                    className="w-full px-4 py-3 bg-canvas border-2 border-default rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted resize-none transition-all duration-200"
+                                    className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg resize-none bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                     placeholder="Tell me about your project, ask a question, or just say hello! I'm always excited to hear from fellow developers and potential collaborators."
                                 />
                             </div>
@@ -330,11 +330,11 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="flex items-center justify-center gap-2 px-12 py-4 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-semibold shadow-lg hover:shadow-primary-muted/20 transform hover:scale-105"
+                                    className="flex items-center justify-center gap-2 px-12 py-4 font-semibold text-white transition-all duration-300 transform rounded-lg shadow-lg bg-primary-emphasis hover:bg-primary-emphasis/90 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-primary-muted/20 hover:scale-105"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
+                                            <div className="w-5 h-5 border-2 border-white rounded-full animate-spin border-t-transparent"></div>
                                             <span>Sending...</span>
                                         </>
                                     ) : (
@@ -349,9 +349,9 @@ const Contact = () => {
                     </div>
 
                     {/* Additional Info */}
-                    <div className="mt-6 p-6 bg-gradient-to-r from-canvas-subtle to-canvas-muted rounded-lg border border-default">
-                        <h3 className="font-semibold text-default mb-3">What can we discuss?</h3>
-                        <div className="grid sm:grid-cols-2 gap-3 text-sm">
+                    <div className="p-6 mt-6 border rounded-lg bg-gradient-to-r from-canvas-subtle to-canvas-muted border-default">
+                        <h3 className="mb-3 font-semibold text-default">What can we discuss?</h3>
+                        <div className="grid gap-3 text-sm sm:grid-cols-2">
                             <div className="flex items-center gap-2">
                                 <span className="text-primary">●</span>
                                 <span className="text-muted">Full-stack development projects</span>

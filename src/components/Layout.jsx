@@ -5,8 +5,8 @@ import Header from './Header';
 
 const Layout = () => {
     return (
-        <div className="min-h-screen bg-canvas transition-colors duration-300">
-            <div className="flex flex-col lg:flex-row max-w-7xl mx-auto">
+        <div className="min-h-screen transition-colors duration-300 bg-canvas">
+            <div className="flex flex-col mx-auto lg:flex-row max-w-7xl">
                 {/* Sidebar */}
                 <div className="lg:w-80 lg:min-h-screen">
                     <Sidebar />
@@ -15,7 +15,7 @@ const Layout = () => {
                 {/* Main Content */}
                 <div className="flex-1 lg:ml-6">
                     <Header />
-                    <main className="px-4 lg:px-6 pb-8">
+                    <main className="px-4 pb-8 lg:px-6">
                         <Outlet />
                     </main>
                 </div>

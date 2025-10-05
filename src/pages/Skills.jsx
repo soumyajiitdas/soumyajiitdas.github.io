@@ -146,8 +146,8 @@ const Skills = () => {
         <div className="space-y-8">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="text-4xl font-bold text-default mb-4">Skills & Certifications <span className='text-primary'>:</span></h1>
-                <p className="text-muted max-w-2xl">
+                <h1 className="mb-4 text-4xl font-bold text-default">Skills & Certifications <span className='text-primary'>:</span></h1>
+                <p className="max-w-2xl text-muted">
                     My technical skills, tools I work with, and certifications I've earned throughout my learning journey.
                 </p>
             </div>
@@ -159,7 +159,7 @@ const Skills = () => {
                     <h2 className="text-3xl font-bold text-default">Technical Skills</h2>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-8">
+                <div className="grid gap-8 lg:grid-cols-2">
                     {skillCategories.map((category) => {
                         const Icon = category.icon;
                         const categorySkills = skills[category.key];
@@ -167,7 +167,7 @@ const Skills = () => {
                         return (
                             <div
                                 key={category.key}
-                                className="bg-canvas-subtle rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300"
+                                className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
                             >
                                 <div className="flex items-center gap-3 mb-4">
                                     <Icon className={`${category.color}`} size={20} />
@@ -176,7 +176,7 @@ const Skills = () => {
                                     </h3>
                                 </div>
 
-                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
                                     {categorySkills.map((skill, index) => {
                                         const SkillIcon = getSkillIcon(skill.name);
                                         const skillColor = getSkillColor(skill.name);
@@ -184,11 +184,11 @@ const Skills = () => {
                                         return (
                                             <div
                                                 key={index}
-                                                className="flex flex-col items-center p-4 bg-canvas rounded-xl border border-default hover:border-primary-muted transition-all duration-200 hover:shadow-md group"
+                                                className="flex flex-col items-center p-4 transition-all duration-200 border bg-canvas rounded-xl border-default hover:border-primary-muted hover:shadow-md group"
                                             >
                                                 <SkillIcon size={28} className={`${skillColor} mb-3 group-hover:scale-110 transition-transform duration-200`} />
                                                 <div className="text-center">
-                                                    <span className="text-sm font-medium text-default block">
+                                                    <span className="block text-sm font-medium text-default">
                                                         {skill.name}
                                                     </span>
                                                 </div>
@@ -209,18 +209,18 @@ const Skills = () => {
                     <h2 className="text-3xl font-bold text-default">Certifications</h2>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid gap-6 md:grid-cols-2">
                     {certifications.map((cert) => (
                         <div
                             key={cert.id}
-                            className="bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300 overflow-hidden"
+                            className="overflow-hidden transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
                         >
                             {/* Certificate Image */}
                             <div className="relative">
                                 <img
                                     src={cert.image}
                                     alt={cert.title}
-                                    className="w-full h-40 object-cover"
+                                    className="object-cover w-full h-40"
                                 />
                                 <div className="absolute top-3 right-3">
                                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${getCertificationStatusColor(cert.status)}`}>
@@ -232,14 +232,14 @@ const Skills = () => {
                             {/* Certificate Content */}
                             <div className="p-6">
                                 <div className="flex items-start justify-between mb-3">
-                                    <h3 className="text-lg font-semibold text-default leading-tight">
+                                    <h3 className="text-lg font-semibold leading-tight text-default">
                                         {cert.title}
                                     </h3>
                                 </div>
 
-                                <p className="text-primary font-medium mb-2">{cert.issuer}</p>
+                                <p className="mb-2 font-medium text-primary">{cert.issuer}</p>
 
-                                <div className="flex items-center gap-4 text-sm text-muted mb-4">
+                                <div className="flex items-center gap-4 mb-4 text-sm text-muted">
                                     <div className="flex items-center gap-1">
                                         <Calendar size={14} />
                                         <span>{cert.date}</span>
@@ -252,8 +252,8 @@ const Skills = () => {
                                     )}
                                 </div>
 
-                                <div className="flex items-center justify-between text-xs text-muted mb-4">
-                                    <span className="bg-primary-subtle text-primary px-2 py-1 rounded">
+                                <div className="flex items-center justify-between mb-4 text-xs text-muted">
+                                    <span className="px-2 py-1 rounded bg-primary-subtle text-primary">
                                         {cert.category}
                                     </span>
                                     <span>Expires: {cert.expiryDate}</span>
@@ -265,7 +265,7 @@ const Skills = () => {
                                         href={cert.verificationUrl}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 px-4 py-2 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-colors text-sm font-medium"
+                                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
                                     >
                                         <ExternalLink size={14} />
                                         <span>Verify Certificate</span>
@@ -278,9 +278,9 @@ const Skills = () => {
             </section>
 
             {/* Skills Summary */}
-            <section className="bg-canvas-subtle rounded-lg p-6 border border-default">
-                <h3 className="text-lg font-semibold text-default mb-4">Skills Summary</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <section className="p-6 border rounded-lg bg-canvas-subtle border-default">
+                <h3 className="mb-4 text-lg font-semibold text-default">Skills Summary</h3>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                     <div className="text-center">
                         <div className="text-2xl font-bold text-primary">
                             {Object.values(skills).flat().length}

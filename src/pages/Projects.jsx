@@ -36,16 +36,16 @@ const Projects = () => {
         <div className="space-y-8">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="text-4xl font-bold text-default mb-4">My Projects <span className='text-primary'>:</span></h1>
-                <p className="text-muted max-w-2xl">
+                <h1 className="mb-4 text-4xl font-bold text-default">My Projects <span className='text-primary'>:</span></h1>
+                <p className="max-w-2xl text-muted">
                     A collection of projects I've built while learning and exploring different technologies.
                     Each project represents a step in my journey as a developer.
                 </p>
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 p-2 bg-canvas-subtle rounded-lg border border-default">
-                <Filter size={20} className="text-muted mr-2 mt-2" />
+            <div className="flex flex-wrap gap-2 p-2 border rounded-lg bg-canvas-subtle border-default">
+                <Filter size={20} className="mt-2 mr-2 text-muted" />
                 {filters.map((filter) => (
                     <button
                         key={filter.id}
@@ -67,7 +67,7 @@ const Projects = () => {
             </div>
 
             {/* Projects Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-6 md:grid-cols-2">
                 {filteredProjects.map((project) => (
                     <div
                         key={project.id}
@@ -82,11 +82,11 @@ const Projects = () => {
                             <img
                                 src={project.image}
                                 alt={project.title}
-                                className="w-full h-48 object-cover rounded-t-lg"
+                                className="object-cover w-full h-48 rounded-t-lg"
                             />
                             {project.featured && (
                                 <div className="absolute top-3 left-3">
-                                    <div className="bg-primary-emphasis text-white px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                                    <div className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white rounded-full bg-primary-emphasis">
                                         <Star size={12} />
                                         Featured
                                     </div>
@@ -107,7 +107,7 @@ const Projects = () => {
                                 </h3>
                             </div>
 
-                            <p className="text-muted text-sm mb-4 leading-relaxed">
+                            <p className="mb-4 text-sm leading-relaxed text-muted">
                                 {project.description}
                             </p>
 
@@ -117,7 +117,7 @@ const Projects = () => {
                                     {project.technologies.map((tech, techIndex) => (
                                         <span
                                             key={techIndex}
-                                            className="bg-primary-subtle text-primary text-xs px-2 py-1 rounded"
+                                            className="px-2 py-1 text-xs rounded bg-primary-subtle text-primary"
                                         >
                                             {tech}
                                         </span>
@@ -126,13 +126,13 @@ const Projects = () => {
                             </div>
 
                             {/* Project Meta */}
-                            <div className="flex items-center justify-between text-xs text-muted mb-4">
+                            <div className="flex items-center justify-between mb-4 text-xs text-muted">
                                 <div className="flex items-center gap-1">
                                     <Calendar size={12} />
                                     <span>Updated {project.lastUpdated}</span>
                                 </div>
                                 {project.isDeployed && (
-                                    <span className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300 px-2 py-1 rounded-full">
+                                    <span className="px-2 py-1 text-green-700 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
                                         Live
                                     </span>
                                 )}
@@ -144,7 +144,7 @@ const Projects = () => {
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 bg-canvas border border-default rounded-lg hover:bg-canvas-muted transition-colors text-sm font-medium text-default"
+                                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border rounded-lg bg-canvas border-default hover:bg-canvas-muted text-default"
                                 >
                                     <Github size={16} />
                                     <span>Code</span>
@@ -155,7 +155,7 @@ const Projects = () => {
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-colors text-sm font-medium"
+                                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
                                     >
                                         <ExternalLink size={16} />
                                         <span>Live Demo</span>
@@ -169,9 +169,9 @@ const Projects = () => {
 
             {/* Empty State */}
             {filteredProjects.length === 0 && (
-                <div className="text-center py-12">
-                    <div className="text-6xl mb-4">🔍</div>
-                    <h3 className="text-xl font-semibold text-default mb-2">
+                <div className="py-12 text-center">
+                    <div className="mb-4 text-6xl">🔍</div>
+                    <h3 className="mb-2 text-xl font-semibold text-default">
                         No projects found
                     </h3>
                     <p className="text-muted">
@@ -181,9 +181,9 @@ const Projects = () => {
             )}
 
             {/* Project Stats */}
-            <div className="bg-canvas-subtle rounded-lg p-6 border border-default">
-                <h3 className="text-lg font-semibold text-default mb-4">Project Statistics</h3>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-6 border rounded-lg bg-canvas-subtle border-default">
+                <h3 className="mb-4 text-lg font-semibold text-default">Project Statistics</h3>
+                <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
                     <div className="text-center">
                         <div className="text-2xl font-bold text-primary">{projects.length}</div>
                         <div className="text-sm text-muted">Total Projects</div>

@@ -48,13 +48,13 @@ const Sidebar = () => {
     return (
         <>
             {/* Mobile Menu Button */}
-            <div className="lg:hidden flex justify-between items-center p-4 bg-canvas border-b border-default">
+            <div className="flex items-center justify-between p-4 border-b lg:hidden bg-canvas border-default">
                 <h1 className="text-xl font-bold text-default">
                     &lt; Somjit.03 /&gt;
                 </h1>
                 <button
                     onClick={toggleMobileMenu}
-                    className="p-2 rounded-lg hover:bg-canvas-subtle transition-colors"
+                    className="p-2 transition-colors rounded-lg hover:bg-canvas-subtle"
                 >
                     {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
@@ -66,39 +66,39 @@ const Sidebar = () => {
         `}>
                 <div className="p-4 lg:p-8">
                     {/* Profile Section */}
-                    <div className="text-center mb-6 lg:mb-8">
-                        <div className="w-20 h-20 lg:w-32 lg:h-32 mx-auto mb-3 lg:mb-4 rounded-full overflow-hidden border-4 border-default bg-canvas-subtle">
+                    <div className="mb-6 text-center lg:mb-8">
+                        <div className="w-20 h-20 mx-auto mb-3 overflow-hidden border-4 rounded-full lg:w-32 lg:h-32 lg:mb-4 border-default bg-canvas-subtle">
                             <img
                                 src="https://avatars.githubusercontent.com/u/116360739?v=4"
                                 alt={personalInfo.name}
-                                className="w-full h-full object-cover"
+                                className="object-cover w-full h-full"
                             />
                         </div>
-                        <h1 className="text-lg lg:text-2xl font-bold text-default mb-1 lg:mb-2">
+                        <h1 className="mb-1 text-lg font-bold lg:text-2xl text-default lg:mb-2">
                             {personalInfo.name}
                         </h1>
-                        <p className="text-muted text-xs lg:text-sm">
+                        <p className="text-xs text-muted lg:text-sm">
                             CS Undergrad | Learner | Tech Enthusiast
                         </p>
                     </div>
 
                     {/* Contact Info */}
-                    <div className="mb-6 lg:mb-8 space-y-2 lg:space-y-3">
+                    <div className="mb-6 space-y-2 lg:mb-8 lg:space-y-3">
                         <div className="flex items-center text-xs lg:text-sm text-muted">
-                            <MapPin size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
+                            <MapPin size={14} className="flex-shrink-0 mr-2 lg:mr-3 text-primary" />
                             <span className="truncate">{personalInfo.location}</span>
                         </div>
                         <div className="flex items-center text-xs lg:text-sm text-muted">
-                            <Phone size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
+                            <Phone size={14} className="flex-shrink-0 mr-2 lg:mr-3 text-primary" />
                             <span>{personalInfo.phone}</span>
                         </div>
                         <div className="flex items-center text-xs lg:text-sm text-muted">
-                            <ExternalLink size={14} className="mr-2 lg:mr-3 text-primary flex-shrink-0" />
+                            <ExternalLink size={14} className="flex-shrink-0 mr-2 lg:mr-3 text-primary" />
                             <a
                                 href={personalInfo.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="hover:text-primary transition-colors truncate"
+                                className="truncate transition-colors hover:text-primary"
                             >
                                 Visit My Portfolio
                             </a>
@@ -125,8 +125,8 @@ const Sidebar = () => {
                                                 }
                                             `}
                                         >
-                                            <Icon size={16} className="mr-2 lg:mr-3 flex-shrink-0" />
-                                            <span className="font-medium text-xs lg:text-sm">{item.label}</span>
+                                            <Icon size={16} className="flex-shrink-0 mr-2 lg:mr-3" />
+                                            <span className="text-xs font-medium lg:text-sm">{item.label}</span>
                                         </NavLink>
                                     </li>
                                 );
@@ -135,9 +135,9 @@ const Sidebar = () => {
                     </nav>
 
                     {/* Social Links */}
-                    <div className="pt-3 lg:pt-4 border-t border-default">
-                        <p className="text-xs lg:text-sm font-medium text-default mb-3 lg:mb-4">Connect with me</p>
-                        <div className="grid grid-cols-3 lg:flex lg:flex-wrap gap-2 lg:gap-3">
+                    <div className="pt-3 border-t lg:pt-4 border-default">
+                        <p className="mb-3 text-xs font-medium lg:text-sm text-default lg:mb-4">Connect with me</p>
+                        <div className="grid grid-cols-3 gap-2 lg:flex lg:flex-wrap lg:gap-3">
                             {Object.entries(personalInfo.socialLinks).map(([platform, url]) => {
                                 const Icon = socialIcons[platform];
                                 return (
@@ -146,7 +146,7 @@ const Sidebar = () => {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex flex-col items-center p-2 lg:p-2 rounded-lg bg-canvas-subtle hover:bg-primary-emphasis hover:text-white transition-all duration-200 transform hover:scale-105 border border-default"
+                                        className="flex flex-col items-center p-2 transition-all duration-200 transform border rounded-lg lg:p-2 bg-canvas-subtle hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default"
                                         title={platform}
                                     >
                                         <Icon size={16} className="mb-1" />
@@ -162,7 +162,7 @@ const Sidebar = () => {
             {/* Mobile Overlay */}
             {isMobileMenuOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+                    className="fixed inset-0 z-40 bg-black bg-opacity-50 lg:hidden"
                     style={{ left: '55%' }}
                     onClick={() => setIsMobileMenuOpen(false)}
                 />

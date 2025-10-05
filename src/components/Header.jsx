@@ -6,10 +6,10 @@ const Header = () => {
     const { theme, toggleTheme } = useTheme();
 
     return (
-        <header className="flex justify-end items-center p-4 lg:p-6">
+        <header className="flex items-center justify-end p-4 lg:p-6">
             <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg bg-canvas-subtle hover:bg-canvas-muted transition-colors duration-200"
+                className="p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted"
                 title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
                 {theme === 'light' ? (

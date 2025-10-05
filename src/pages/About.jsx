@@ -55,32 +55,32 @@ const About = () => {
         <div className="space-y-12">
             {/* Hero Section */}
             <section>
-                <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-12">
+                <div className="flex flex-col items-center gap-16 lg:flex-row lg:gap-12">
 
                     <div className="flex-1 text-center lg:text-left">
-                        <h1 className="text-4xl lg:text-5xl font-bold text-default mb-4">
+                        <h1 className="mb-4 text-4xl font-bold lg:text-5xl text-default">
                             Hi, I'm <span className="text-primary">Soumyajit</span> 👋
                         </h1>
-                        <div className="text-xl lg:text-2xl text-muted mb-6 h-8">
-                            I'm a <span className="text-primary font-medium">{displayText}</span>
+                        <div className="h-8 mb-6 text-xl lg:text-2xl text-muted">
+                            I'm a <span className="font-medium text-primary">{displayText}</span>
                             <span className="animate-pulse">|</span>
                         </div>
-                        <p className="text-muted leading-relaxed max-w-2xl mb-8">
+                        <p className="max-w-2xl mb-8 leading-relaxed text-muted">
                             Passionate Computer Science & Engineering student curious about AI, web development, and problem-solving. I love building real-world solutions and growing one project at a time. 🚀
                         </p>
                         
                         {/* Action Buttons */}
-                        <div className="flex-row justify-center lg:justify-start space-x-4">
+                        <div className="flex-row justify-center space-x-4 lg:justify-start">
                             <button
                                 onClick={handleDownloadResume}
-                                className="inline-flex items-center px-6 py-3 bg-primary-emphasis text-white rounded-lg hover:bg-primary-emphasis/90 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-muted/20"
+                                className="inline-flex items-center px-6 py-3 text-white transition-all duration-300 transform rounded-lg shadow-lg bg-primary-emphasis hover:bg-primary-emphasis/90 hover:scale-105 hover:shadow-primary-muted/20"
                             >
                                 <Download size={20} className="mr-2" />
                                 Download CV
                             </button>
                             <button
                                 onClick={handleViewProjects}
-                                className="inline-flex items-center px-6 py-3 border-2 border-primary-muted text-primary rounded-lg hover:bg-primary-emphasis hover:text-white hover:border-primary-emphasis transition-all duration-300 transform hover:scale-105"
+                                className="inline-flex items-center px-6 py-3 transition-all duration-300 transform border-2 rounded-lg border-primary-muted text-primary hover:bg-primary-emphasis hover:text-white hover:border-primary-emphasis hover:scale-105"
                             >
                                 <ExternalLink size={20} className="mr-2" />
                                 View Projects
@@ -91,43 +91,43 @@ const About = () => {
                     {/* Dev-style dynamic frame */}
                     <div className="relative w-64 h-56 group">
                         {/* Animated corner brackets */}
-                        <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute -top-2 -right-2 w-6 h-6 border-r-2 border-t-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute -bottom-2 -left-2 w-6 h-6 border-l-2 border-b-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
+                        <div className="absolute w-6 h-6 border-t-2 border-l-2 -top-2 -left-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
+                        <div className="absolute w-6 h-6 border-t-2 border-r-2 -top-2 -right-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
+                        <div className="absolute w-6 h-6 border-b-2 border-l-2 -bottom-2 -left-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
+                        <div className="absolute w-6 h-6 border-b-2 border-r-2 -bottom-2 -right-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
 
                         {/* Dynamic border animation */}
-                        <div className="absolute inset-0 border-2 border-dashed border-border animate-spin rounded-lg opacity-25" style={{ animationDuration: '20s' }}></div>
+                        <div className="absolute inset-0 border-2 border-dashed rounded-lg opacity-25 border-border animate-spin" style={{ animationDuration: '20s' }}></div>
 
                         {/* Code-style labels */}
-                        <div className="absolute -top-8 -left-5 text-xs font-mono text-accent bg-background px-2 py-1 opacity-70 group-hover:opacity-100 rounded border border-accent/20">
+                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -top-8 -left-5 text-accent bg-background opacity-70 group-hover:opacity-100 border-accent/20">
                             &lt;dev/&gt;
                         </div>
-                        <div className="absolute -bottom-8 -right-5 text-xs font-mono text-foreground bg-background-subtle px-2 py-1 rounded border border-accent/20 opacity-70 group-hover:opacity-100">
+                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -bottom-8 -right-5 text-foreground bg-background-subtle border-accent/20 opacity-70 group-hover:opacity-100">
                             ✨ <span className="text-primary">Asp. SDE</span>
                         </div>
 
                         {/* Terminal-style indicator */}
-                        <div className="absolute top-2 right-2 flex space-x-1">
+                        <div className="absolute flex space-x-1 top-2 right-2">
                             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                             <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                         </div>
 
                         {/* Main image container */}
-                        <div className="w-full h-full rounded-lg overflow-hidden border-4 border-background-subtle shadow-2xl bg-gradient-to-br from-accent/5 to-background-subtle opacity-85 hover:opacity-100 group-hover:shadow-accent/20 dark:border-black dark:hover:border-background-subtle group-hover:border-accent/30 transition-all duration-500">
+                        <div className="w-full h-full overflow-hidden transition-all duration-500 border-4 rounded-lg shadow-2xl border-background-subtle bg-gradient-to-br from-accent/5 to-background-subtle opacity-85 hover:opacity-100 group-hover:shadow-accent/20 dark:border-black dark:hover:border-background-subtle group-hover:border-accent/30">
                             <img
                                 src={profileImg}
                                 alt="<profileImg.src=Null>"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                             />
                         </div>
 
                         {/* Floating code snippets */}
-                        <div className="absolute -left-14 top-1/4 text-xs font-mono text-accent/60 bg-background/80 px-2 py-1 rounded backdrop-blur-sm border border-accent/10 opacity-70 group-hover:opacity-100 rotate-12 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>
+                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -left-14 top-1/4 text-accent/60 bg-background/80 backdrop-blur-sm border-accent/10 opacity-70 group-hover:opacity-100 rotate-12 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>
                             console.log()
                         </div>
-                        <div className="absolute -right-8 bottom-1/3 text-xs font-mono text-accent/60 bg-background/80 px-2 py-1 rounded backdrop-blur-sm border border-accent/10 opacity-70 group-hover:opacity-100 -rotate-12 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}>
+                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -right-8 bottom-1/3 text-accent/60 bg-background/80 backdrop-blur-sm border-accent/10 opacity-70 group-hover:opacity-100 -rotate-12 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}>
                             {`{ }`}
                         </div>
                     </div>
@@ -137,7 +137,7 @@ const About = () => {
             {/* What I Do Section */}
             <section className="space-y-8">
                 <h2 className="text-3xl font-bold text-default">What I Do❓</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {[
                         {
                             title: "Full Stack Development",
@@ -172,13 +172,13 @@ const About = () => {
                     ].map((item, index) => (
                         <div
                             key={index}
-                            className="bg-canvas-subtle rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 hover:shadow-md hover:shadow-primary-muted/10"
+                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted hover:shadow-md hover:shadow-primary-muted/10"
                         >
-                            <div className="text-3xl mb-4">{item.icon}</div>
-                            <h2 className="text-lg font-semibold text-default mb-2">
+                            <div className="mb-4 text-3xl">{item.icon}</div>
+                            <h2 className="mb-2 text-lg font-semibold text-default">
                                 {item.title}
                             </h2>
-                            <p className="text-muted text-sm leading-relaxed">
+                            <p className="text-sm leading-relaxed text-muted">
                                 {item.description}
                             </p>
                         </div>
@@ -189,7 +189,7 @@ const About = () => {
             {/* Quick Stats Section - Redesigned and Repositioned */}
             <section className="space-y-6">
                 <h2 className="text-3xl font-bold text-default">Quick Stats 🗓️</h2>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
                     {[
                         {
                             label: "Projects Completed",
@@ -224,15 +224,41 @@ const About = () => {
                                 {stat.icon}
                                 <span className="text-2xl font-bold text-primary">{stat.value}</span>
                             </div>
-                            <p className="text-muted text-sm font-medium">{stat.label}</p>
+                            <p className="text-sm font-medium text-muted">{stat.label}</p>
                         </div>
                     ))}
                 </div>
             </section>
 
+            {/* Enhanced "About me" Section */}
+            <section className="relative overflow-hidden">
+                <div className="relative p-8 border rounded-lg bg-gradient-to-r from-canvas-subtle to-background-muted border-default">
+                    {/* Background decorative elements */}
+                    <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-muted blur-3xl"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-primary-muted blur-2xl"></div>
+                    <div className="relative z-10">
+                    <h3 className="flex items-center mb-6 text-2xl font-bold text-default font-handwritten-bold">
+                            <span className="mr-3">👨🏻‍💻</span>
+                            <span>About me...</span>
+                        </h3>
+                        <div className="prose prose-lg max-w-none">
+                            <p className="text-lg leading-relaxed text-muted">
+                                {aboutMe.description}
+                            </p>
+                        </div>
+                        {/* Decorative quote */}
+                        <div className="pl-4 mt-6 border-l-4 border-primary-muted">
+                            <p className="italic font-medium text-primary">
+                                ~ "Code compiles dreams into reality, one commit at a time."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
             {/* Current Focus */}
-            <section className="bg-canvas-subtle rounded-lg p-8 border border-default">
-                <h2 className="text-2xl font-bold text-default mb-6">Current Focus <span className='text-primary'>–</span></h2>
+            <section className="p-8 border rounded-lg bg-canvas-subtle border-default">
+                <h2 className="mb-6 text-2xl font-bold text-default">✨ Current Focus <span className='text-primary'>–</span></h2>
 
                 <div className="space-y-4">
                     {[
@@ -243,36 +269,10 @@ const About = () => {
                         "🔍 Exploring advanced topics in machine learning and system design"
                     ].map((item, index) => (
                         <div key={index} className="flex items-start gap-3">
-                            <ChevronRight size={16} className="text-primary mt-1 flex-shrink-0" />
+                            <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
                             <span className="text-muted">{item}</span>
                         </div>
                     ))}
-                </div>
-            </section>
-
-            {/* Enhanced "About me" Section */}
-            <section className="relative overflow-hidden">
-                <div className="bg-gradient-to-r from-canvas-subtle to-background-muted rounded-lg p-8 border border-default relative">
-                    {/* Background decorative elements */}
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-primary-muted rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary-muted rounded-full blur-2xl"></div>
-                    <div className="relative z-10">
-                    <h3 className="text-2xl font-bold text-default mb-6 flex items-center font-handwritten-bold">
-                            <span className="mr-3">✨</span>
-                            <span>A little more about me...</span>
-                        </h3>
-                        <div className="prose prose-lg max-w-none">
-                            <p className="text-muted leading-relaxed text-lg">
-                                {aboutMe.description}
-                            </p>
-                        </div>
-                        {/* Decorative quote */}
-                        <div className="mt-6 pl-4 border-l-4 border-primary-muted">
-                            <p className="text-primary font-medium italic">
-                                ~ "Code compiles dreams into reality, one commit at a time."
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </section>
         </div>

@@ -7,8 +7,8 @@ const Experience = () => {
         <div className="space-y-8">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="text-4xl font-bold text-default mb-4">Education & Experience <span className='text-primary'>:</span></h1>
-                <p className="text-muted max-w-2xl">
+                <h1 className="mb-4 text-4xl font-bold text-default">Education & Experience <span className='text-primary'>:</span></h1>
+                <p className="max-w-2xl text-muted">
                     My professional journey and educational background in technology and software development.
                 </p>
             </div>
@@ -24,16 +24,16 @@ const Experience = () => {
                     {education.map((edu, index) => (
                         <div
                             key={edu.id}
-                            className="bg-canvas-subtle rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300"
+                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
                         >
-                            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-default mb-1">
+                                    <h3 className="mb-1 text-xl font-semibold text-default">
                                         {edu.degree}
                                     </h3>
-                                    <p className="text-primary font-medium mb-2">{edu.institution}</p>
+                                    <p className="mb-2 font-medium text-primary">{edu.institution}</p>
 
-                                    <div className="flex flex-wrap gap-4 text-sm text-muted mb-4">
+                                    <div className="flex flex-wrap gap-4 mb-4 text-sm text-muted">
                                         <div className="flex items-center gap-1">
                                             <Calendar size={16} />
                                             <span>{edu.duration}</span>
@@ -47,7 +47,7 @@ const Experience = () => {
 
                                 <div className="flex flex-col items-end gap-2">
                                     {edu.status === 'pursuing' && (
-                                        <span className="bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300 text-xs px-2 py-1 rounded-full">
+                                        <span className="px-2 py-1 text-xs text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                             In Progress
                                         </span>
                                     )}
@@ -69,12 +69,12 @@ const Experience = () => {
                             {/* Relevant Courses */}
                             {edu.relevantCourses && (
                                 <div className="mb-4">
-                                    <h4 className="text-sm font-medium text-default mb-2">Relevant Courses:</h4>
+                                    <h4 className="mb-2 text-sm font-medium text-default">Relevant Courses:</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {edu.relevantCourses.map((course, courseIndex) => (
                                             <span
                                                 key={courseIndex}
-                                                className="bg-primary-subtle text-primary text-xs px-3 py-1 rounded-full"
+                                                className="px-3 py-1 text-xs rounded-full bg-primary-subtle text-primary"
                                             >
                                                 {course}
                                             </span>
@@ -86,12 +86,12 @@ const Experience = () => {
                             {/* Subjects */}
                             {edu.subjects && (
                                 <div className="mb-4">
-                                    <h4 className="text-sm font-medium text-default mb-2">Subjects:</h4>
+                                    <h4 className="mb-2 text-sm font-medium text-default">Subjects:</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {edu.subjects.map((subject, subjectIndex) => (
                                             <span
                                                 key={subjectIndex}
-                                                className="bg-primary-subtle text-primary text-xs px-3 py-1 rounded-full"
+                                                className="px-3 py-1 text-xs rounded-full bg-primary-subtle text-primary"
                                             >
                                                 {subject}
                                             </span>
@@ -103,11 +103,11 @@ const Experience = () => {
                             {/* Achievements */}
                             {edu.achievements && (
                                 <div>
-                                    <h4 className="text-sm font-medium text-default mb-2">Achievements:</h4>
-                                    <ul className="text-sm text-muted space-y-1">
+                                    <h4 className="mb-2 text-sm font-medium text-default">Achievements:</h4>
+                                    <ul className="space-y-1 text-sm text-muted">
                                         {edu.achievements.map((achievement, achievementIndex) => (
                                             <li key={achievementIndex} className="flex items-start gap-2">
-                                                <Award size={14} className="text-primary mt-1 flex-shrink-0" />
+                                                <Award size={14} className="flex-shrink-0 mt-1 text-primary" />
                                                 <span>{achievement}</span>
                                             </li>
                                         ))}
@@ -130,16 +130,16 @@ const Experience = () => {
                     {experience.map((exp, index) => (
                         <div
                             key={exp.id}
-                            className="bg-canvas-subtle rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300"
+                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
                         >
-                            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
+                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
-                                    <h3 className="text-xl font-semibold text-default mb-1">
+                                    <h3 className="mb-1 text-xl font-semibold text-default">
                                         {exp.title}
                                     </h3>
-                                    <p className="text-primary font-medium mb-2">{exp.company}</p>
+                                    <p className="mb-2 font-medium text-primary">{exp.company}</p>
 
-                                    <div className="flex flex-wrap gap-4 text-sm text-muted mb-4">
+                                    <div className="flex flex-wrap gap-4 mb-4 text-sm text-muted">
                                         <div className="flex items-center gap-1">
                                             <Calendar size={16} />
                                             <span>{exp.duration}</span>
@@ -152,24 +152,24 @@ const Experience = () => {
                                 </div>
 
                                 {exp.endDate === 'present' && (
-                                    <span className="bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300 text-xs px-2 py-1 rounded-full">
+                                    <span className="px-2 py-1 text-xs text-green-800 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
                                         Current
                                     </span>
                                 )}
                             </div>
 
-                            <p className="text-muted mb-4 leading-relaxed">
+                            <p className="mb-4 leading-relaxed text-muted">
                                 {exp.detailedDescription}
                             </p>
 
                             {/* Technologies */}
                             <div className="mb-4">
-                                <h4 className="text-sm font-medium text-default mb-2">Technologies Used:</h4>
+                                <h4 className="mb-2 text-sm font-medium text-default">Technologies Used:</h4>
                                 <div className="flex flex-wrap gap-2">
                                     {exp.technologies.map((tech, techIndex) => (
                                         <span
                                             key={techIndex}
-                                            className="bg-primary-subtle text-primary text-xs px-3 py-1 rounded-full"
+                                            className="px-3 py-1 text-xs rounded-full bg-primary-subtle text-primary"
                                         >
                                             {tech}
                                         </span>
@@ -180,11 +180,11 @@ const Experience = () => {
                             {/* Projects */}
                             {exp.projects && (
                                 <div className="mb-4">
-                                    <h4 className="text-sm font-medium text-default mb-2">Key Projects:</h4>
-                                    <ul className="text-sm text-muted space-y-1">
+                                    <h4 className="mb-2 text-sm font-medium text-default">Key Projects:</h4>
+                                    <ul className="space-y-1 text-sm text-muted">
                                         {exp.projects.map((project, projectIndex) => (
                                             <li key={projectIndex} className="flex items-start gap-2">
-                                                <span className="text-primary mt-1">•</span>
+                                                <span className="mt-1 text-primary">•</span>
                                                 <span>{project}</span>
                                             </li>
                                         ))}
@@ -195,12 +195,12 @@ const Experience = () => {
                             {/* Skills Gained */}
                             {exp.skills_gained && (
                                 <div>
-                                    <h4 className="text-sm font-medium text-default mb-2">Skills Gained:</h4>
+                                    <h4 className="mb-2 text-sm font-medium text-default">Skills Gained:</h4>
                                     <div className="flex flex-wrap gap-2">
                                         {exp.skills_gained.map((skill, skillIndex) => (
                                             <span
                                                 key={skillIndex}
-                                                className="bg-canvas border border-default text-muted text-xs px-2 py-1 rounded"
+                                                className="px-2 py-1 text-xs border rounded bg-canvas border-default text-muted"
                                             >
                                                 {skill}
                                             </span>
