@@ -17,12 +17,14 @@ import {
     Phone,
     ExternalLink,
     Menu,
-    X
+    X,
+    Sun,
+    Moon
 } from 'lucide-react';
 
 const Sidebar = () => {
     const location = useLocation();
-    const { theme } = useTheme();
+    const { theme, toggleTheme } = useTheme();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const navItems = [
@@ -52,12 +54,25 @@ const Sidebar = () => {
                 <h1 className="text-xl font-bold text-default">
                     &lt; Somjit.03 /&gt;
                 </h1>
-                <button
-                    onClick={toggleMobileMenu}
-                    className="p-2 transition-colors rounded-lg hover:bg-canvas-subtle"
-                >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        onClick={toggleTheme}
+                        className="p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted"
+                        title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                    >
+                        {theme === 'light' ? (
+                            <Moon size={20} className="text-default" />
+                        ) : (
+                            <Sun size={20} className="text-default" />
+                        )}
+                    </button>
+                    <button
+                        onClick={toggleMobileMenu}
+                        className="p-2 transition-colors rounded-lg hover:bg-canvas-subtle"
+                    >
+                        {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    </button>
+                </div>
             </div>
 
             {/* Sidebar */}

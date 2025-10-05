@@ -6,11 +6,11 @@ const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('all');
 
     const filters = [
-        { id: 'all', label: 'All Projects' },
-        { id: 'webapps', label: 'Web Apps' },
-        { id: 'mobileapps', label: 'Mobile Apps' },
-        { id: 'aiml', label: 'AI/ML' },
-        { id: 'others', label: 'Others' }
+        { id: 'all', label: 'All Projects', inShort: 'All' },
+        { id: 'webapps', label: 'Web Apps', inShort: 'Web' },
+        { id: 'mobileapps', label: 'Mobile Apps', inShort: 'Mobile' },
+        { id: 'aiml', label: 'AI/ML Apps', inShort: 'AI/ML' },
+        { id: 'others', label: 'Others', inShort: 'Others' }
     ];
 
     const filteredProjects = activeFilter === 'all'
@@ -20,15 +20,15 @@ const Projects = () => {
     const getStatusColor = (status) => {
         switch (status) {
             case 'Live':
-                return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
+                return 'bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300';
             case 'In Development':
-                return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
+                return 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300';
             case 'Alpha Testing':
-                return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300';
+                return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300';
             case 'Prototype':
-                return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300';
+                return 'bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300';
             default:
-                return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300';
+                return 'bg-gray-100 text-gray-800 dark:bg-gray-900/50 dark:text-gray-300';
         }
     };
 
@@ -55,7 +55,8 @@ const Projects = () => {
                                 : 'text-muted hover:text-default hover:bg-canvas-muted'
                             }`}
                     >
-                        {filter.label}
+                        <span className='hidden sm:block'>{filter.label}</span>
+                        <span className='block sm:hidden'>{filter.inShort}</span>
                     </button>
                 ))}
             </div>
@@ -72,9 +73,9 @@ const Projects = () => {
                     <div
                         key={project.id}
                         className={`
-              bg-canvas-subtle rounded-lg border border-default 
-              hover:border-primary-muted transition-all duration-300 hover:shadow-lg
-              ${project.featured ? 'ring-2 ring-primary-muted' : ''}
+            bg-canvas-subtle rounded-lg border border-default 
+            hover:border-primary-muted transition-all duration-300 hover:shadow-lg
+            ${project.featured ? 'ring-2 ring-primary-muted' : ''}
             `}
                     >
                         {/* Project Image */}
@@ -147,7 +148,7 @@ const Projects = () => {
                                     className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border rounded-lg bg-canvas border-default hover:bg-canvas-muted text-default"
                                 >
                                     <Github size={16} />
-                                    <span>Code</span>
+                                    <span>Source Code</span>
                                 </a>
 
                                 {project.demo && project.demo !== '#' && (

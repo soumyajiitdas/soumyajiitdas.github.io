@@ -188,7 +188,7 @@ const Skills = () => {
                                             >
                                                 <SkillIcon size={28} className={`${skillColor} mb-3 group-hover:scale-110 transition-transform duration-200`} />
                                                 <div className="text-center">
-                                                    <span className="block text-sm font-medium text-default">
+                                                    <span className="block text-sm font-medium break-all text-default">
                                                         {skill.name}
                                                     </span>
                                                 </div>
@@ -239,7 +239,7 @@ const Skills = () => {
 
                                 <p className="mb-2 font-medium text-primary">{cert.issuer}</p>
 
-                                <div className="flex items-center gap-4 mb-4 text-sm text-muted">
+                                <div className="flex items-center justify-between gap-4 mb-4 text-sm text-muted">
                                     <div className="flex items-center gap-1">
                                         <Calendar size={14} />
                                         <span>{cert.date}</span>
@@ -247,7 +247,7 @@ const Skills = () => {
                                     {cert.credentialId !== 'Null' && (
                                         <div className="flex items-center gap-1">
                                             <CheckCircle size={14} />
-                                            <span>ID: {cert.credentialId}</span>
+                                            <span className='break-word'>ID: {cert.credentialId}</span>
                                         </div>
                                     )}
                                 </div>

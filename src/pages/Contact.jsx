@@ -154,7 +154,7 @@ const Contact = () => {
 
     return (
         <div className="space-y-12">
-            {/* Enhanced Page Header */}
+            {/* Page Header */}
             <section className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
                     <h1 className="text-4xl font-bold lg:text-5xl text-default">
@@ -183,15 +183,15 @@ const Contact = () => {
             </section>
 
             <div className="grid gap-8 lg:grid-cols-5">
-                {/* Enhanced Contact Information Sidebar */}
+                {/* Contact Information Sidebar */}
                 <div className="space-y-6 lg:col-span-2">
                     {/* Contact Methods */}
                     <div className="space-y-4">
-                        <h2 className="mb-6 text-2xl font-bold text-default">Get in touch</h2>
+                        <h2 className="mb-6 text-2xl font-bold text-default">Get in touch <span className='text-primary'>:</span></h2>
                         {contactMethods.map((method, index) => (
                             <div
                                 key={index}
-                                className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform hover:scale-[1.02]`}
+                                className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform scale-[.98] hover:scale-[1.02]`}
                             >
                                 <div className="flex items-start gap-4">
                                     <div className="p-2 rounded-lg bg-canvas">
@@ -221,7 +221,7 @@ const Contact = () => {
                         ))}
                     </div>
 
-                    {/* Enhanced Social Links */}
+                    {/* Social Links */}
                     <div className="p-6 border rounded-lg bg-canvas-subtle border-default">
                         <h3 className="flex items-center gap-2 mb-6 text-xl font-bold text-default">
                             <Code className="text-primary" size={20} />
@@ -236,10 +236,10 @@ const Contact = () => {
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-3 transition-all duration-300 transform border rounded-lg bg-canvas hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default group"
+                                        className="flex items-center gap-3 p-3 transition-all duration-300 transform border rounded-lg scale-98 bg-canvas hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default group"
                                     >
                                         <Icon size={18} className="flex-shrink-0" />
-                                        <span className="text-sm font-medium capitalize group-hover:text-white">
+                                        <span className="text-sm font-medium capitalize truncate group-hover:text-white">
                                             {platform}
                                         </span>
                                     </a>
@@ -249,7 +249,7 @@ const Contact = () => {
                     </div>
                 </div>
 
-                {/* Enhanced Contact Form */}
+                {/* Contact Form */}
                 <div className="lg:col-span-3">
                     <div className="p-8 border rounded-lg bg-canvas-subtle border-default">
                         <div className="flex items-center gap-3 mb-8">
@@ -321,7 +321,7 @@ const Contact = () => {
                                     onChange={handleChange}
                                     required
                                     rows={6}
-                                    className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg resize-none bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
+                                    className="w-full px-4 py-2 transition-all duration-200 border-2 rounded-lg resize-none bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                     placeholder="Tell me about your project, ask a question, or just say hello! I'm always excited to hear from fellow developers and potential collaborators."
                                 />
                             </div>
@@ -330,7 +330,7 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
-                                    className="flex items-center justify-center gap-2 px-12 py-4 font-semibold text-white transition-all duration-300 transform rounded-lg shadow-lg bg-primary-emphasis hover:bg-primary-emphasis/90 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-primary-muted/20 hover:scale-105"
+                                    className="flex items-center justify-center gap-2 px-12 py-4 font-semibold text-white transition-all duration-300 transform rounded-lg shadow-lg scale-98 bg-primary-emphasis hover:bg-primary-emphasis/90 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-primary-muted/20 hover:scale-105"
                                 >
                                     {isSubmitting ? (
                                         <>
@@ -350,7 +350,7 @@ const Contact = () => {
 
                     {/* Additional Info */}
                     <div className="p-6 mt-6 border rounded-lg bg-gradient-to-r from-canvas-subtle to-canvas-muted border-default">
-                        <h3 className="mb-3 font-semibold text-default">What can we discuss?</h3>
+                        <h3 className="mb-3 font-semibold text-default">What can we discuss❓</h3>
                         <div className="grid gap-3 text-sm sm:grid-cols-2">
                             <div className="flex items-center gap-2">
                                 <span className="text-primary">●</span>

@@ -186,7 +186,7 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Quick Stats Section - Redesigned and Repositioned */}
+            {/* Quick Stats Section */}
             <section className="space-y-6">
                 <h2 className="text-3xl font-bold text-default">Quick Stats 🗓️</h2>
                 <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
@@ -230,7 +230,7 @@ const About = () => {
                 </div>
             </section>
 
-            {/* Enhanced "About me" Section */}
+            {/* About me Section */}
             <section className="relative overflow-hidden">
                 <div className="relative p-8 border rounded-lg bg-gradient-to-r from-canvas-subtle to-background-muted border-default">
                     {/* Background decorative elements */}

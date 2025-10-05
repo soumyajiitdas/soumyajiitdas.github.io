@@ -45,20 +45,20 @@ const Experience = () => {
                                     </div>
                                 </div>
 
-                                <div className="flex flex-col items-end gap-2">
+                                <div className="flex flex-row items-end justify-between gap-2 lg:flex-col lg:justify-between">
                                     {edu.status === 'pursuing' && (
                                         <span className="px-2 py-1 text-xs text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
                                             In Progress
                                         </span>
                                     )}
                                     {edu.gpa && (
-                                        <div className="text-right">
+                                        <div className="text-right underline underline-offset-4 decoration-blue-800">
                                             <span className="text-sm text-muted">GPA: </span>
                                             <span className="font-semibold text-primary">{edu.gpa}</span>
                                         </div>
                                     )}
                                     {edu.percentage && (
-                                        <div className="text-right">
+                                        <div className="text-right underline underline-offset-4 decoration-blue-800">
                                             <span className="text-sm text-muted">Score: </span>
                                             <span className="font-semibold text-primary">{edu.percentage}</span>
                                         </div>
@@ -152,7 +152,7 @@ const Experience = () => {
                                 </div>
 
                                 {exp.endDate === 'present' && (
-                                    <span className="px-2 py-1 text-xs text-green-800 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
+                                    <span className="px-2 py-1 text-xs text-center text-green-800 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
                                         Current
                                     </span>
                                 )}

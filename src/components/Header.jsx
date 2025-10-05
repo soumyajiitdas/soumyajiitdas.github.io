@@ -9,7 +9,7 @@ const Header = () => {
         <header className="flex items-center justify-end p-4 lg:p-6">
             <button
                 onClick={toggleTheme}
-                className="p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted"
+                className="hidden p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted lg:block"
                 title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
                 {theme === 'light' ? (
