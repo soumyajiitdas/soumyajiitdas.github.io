@@ -143,10 +143,10 @@ const Skills = () => {
     };
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 mt-14 lg:mt-0">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="mb-4 text-4xl font-bold text-default">Skills & Certifications <span className='text-primary'>:</span></h1>
+                <h1 className="mb-4 text-4xl font-bold text-default">Skills &  <span className='text-primary'>Certifications</span></h1>
                 <p className="max-w-2xl text-muted">
                     My technical skills, tools I work with, and certifications I've earned throughout my learning journey.
                 </p>
@@ -156,7 +156,7 @@ const Skills = () => {
             <section className="space-y-8">
                 <div className="flex items-center gap-3">
                     <SiPython className="text-primary" size={24} />
-                    <h2 className="text-3xl font-bold text-default">Technical Skills</h2>
+                    <h2 className="text-3xl font-bold text-default">Technical Skills <span className="text-primary">:</span></h2>
                 </div>
 
                 <div className="grid gap-8 lg:grid-cols-2">
@@ -206,7 +206,7 @@ const Skills = () => {
             <section className="space-y-6">
                 <div className="flex items-center gap-3">
                     <Award className="text-primary" size={24} />
-                    <h2 className="text-3xl font-bold text-default">Certifications</h2>
+                    <h2 className="text-3xl font-bold text-default">Certifications <span className="text-primary">:</span></h2>
                 </div>
 
                 <div className="grid gap-6 md:grid-cols-2">

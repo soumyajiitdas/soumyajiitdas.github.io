@@ -52,7 +52,7 @@ const About = () => {
     };
 
     return (
-        <div className="space-y-12">
+        <div className="space-y-12 mt-14 lg:mt-0">
             {/* Hero Section */}
             <section>
                 <div className="flex flex-col items-center gap-16 lg:flex-row lg:gap-12">

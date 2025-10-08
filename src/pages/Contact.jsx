@@ -153,7 +153,7 @@ const Contact = () => {
     ];
 
     return (
-        <div className="space-y-12">
+        <div className="space-y-12 mt-14 lg:mt-0">
             {/* Page Header */}
             <section className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">

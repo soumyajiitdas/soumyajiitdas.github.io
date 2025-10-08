@@ -33,10 +33,10 @@ const Projects = () => {
     };
 
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 mt-14 lg:mt-0">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="mb-4 text-4xl font-bold text-default">My Projects <span className='text-primary'>:</span></h1>
+                <h1 className="mb-4 text-4xl font-bold text-default">My  <span className='text-primary'>Projects</span></h1>
                 <p className="max-w-2xl text-muted">
                     A collection of projects I've built while learning and exploring different technologies.
                     Each project represents a step in my journey as a developer.

@@ -9,6 +9,7 @@ import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import Contact from './pages/Contact';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                             <Route path="contact" element={<Contact />} />
                         </Route>
                     </Routes>
+                    <ScrollToTop />
                 </BrowserRouter>
                 <Toaster />
             </div>

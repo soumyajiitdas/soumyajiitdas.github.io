@@ -51,8 +51,9 @@ const Sidebar = () => {
     return (
         <>
             {/* Mobile Menu Button */}
-            <div className="flex items-center justify-between p-4 border-b lg:hidden bg-canvas border-default">
-                <h1 className="text-xl font-bold text-default">
+            <div className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-5 py-3 bg-canvas/10 backdrop-blur-xl shadow-sm border-b border-blue-400/50 dark:border-blue-800/50 lg:hidden">
+
+                <h1 className="text-2xl font-bold text-default">
                     &lt; <span className='text-primary'>dev</span>folio /&gt;
                 </h1>
                 <div className="flex items-center gap-2">

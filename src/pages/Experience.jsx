@@ -4,10 +4,10 @@ import { Calendar, MapPin, Building, GraduationCap, Award, ExternalLink } from '
 
 const Experience = () => {
     return (
-        <div className="space-y-8">
+        <div className="space-y-8 mt-14 lg:mt-0">
             {/* Page Header */}
             <div className="text-center lg:text-left">
-                <h1 className="mb-4 text-4xl font-bold text-default">Education & Experience <span className='text-primary'>:</span></h1>
+                <h1 className="mb-4 text-4xl font-bold text-default">Education & <span className='text-primary'>Experience</span></h1>
                 <p className="max-w-2xl text-muted">
                     My professional journey and educational background in technology and software development.
                 </p>
@@ -17,7 +17,7 @@ const Experience = () => {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 mb-6">
                     <GraduationCap className="text-primary" size={24} />
-                    <h2 className="text-3xl font-bold text-default">Education</h2>
+                    <h2 className="text-3xl font-bold text-default">Education <span className="text-primary">:</span></h2>
                 </div>
 
                 <div className="space-y-6">
@@ -52,13 +52,13 @@ const Experience = () => {
                                         </span>
                                     )}
                                     {edu.gpa && (
-                                        <div className="text-right underline underline-offset-4 decoration-blue-800">
+                                        <div className="text-right underline underline-offset-4 decoration-blue-400 dark:decoration-blue-800">
                                             <span className="text-sm text-muted">GPA: </span>
                                             <span className="font-semibold text-primary">{edu.gpa}</span>
                                         </div>
                                     )}
                                     {edu.percentage && (
-                                        <div className="text-right underline underline-offset-4 decoration-blue-800">
+                                        <div className="text-right underline underline-offset-4 decoration-blue-400 dark:decoration-blue-800">
                                             <span className="text-sm text-muted">Score: </span>
                                             <span className="font-semibold text-primary">{edu.percentage}</span>
                                         </div>
@@ -123,7 +123,7 @@ const Experience = () => {
             <section className="space-y-6">
                 <div className="flex items-center gap-3 mb-6">
                     <Building className="text-primary" size={24} />
-                    <h2 className="text-3xl font-bold text-default">Professional Experience</h2>
+                    <h2 className="text-3xl font-bold text-default">Professional Experience <span className="text-primary">:</span></h2>
                 </div>
 
                 <div className="space-y-6">
