@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { aboutMe, typewriterTexts } from '../data/data';
-import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson } from 'lucide-react';
+import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson, Pencil, Trash2, Plus, Save, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import profileImg from '/assets/profileImg.jpg';
 import myResume from "/assets/Sample_Resume.pdf";
@@ -10,6 +10,27 @@ const About = () => {
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [displayText, setDisplayText] = useState('');
     const [isDeleting, setIsDeleting] = useState(false);
+
+    const defaultFocusList = [
+        "🎯 Completing my CSE degree with hands-on project experience",
+        "💼 Interning as a MERN Stack Developer at Ardent CompuTech",
+        "🚀 Building innovative web applications and AI-powered tools",
+        "📈 Contributing to open source projects and learning new technologies",
+        "🔍 Exploring advanced topics in machine learning and system design"
+    ];
+
+    const [focusList, setFocusList] = useState(() => {
+        const savedList = localStorage.getItem('focusList');
+        const parsedList = savedList ? JSON.parse(savedList) : null;
+        return parsedList && parsedList.length > 0 ? parsedList : defaultFocusList;
+    });
+    const [newItem, setNewItem] = useState('');
+    const [editingIndex, setEditingIndex] = useState(null);
+    const [editedItem, setEditedItem] = useState('');
+
+    useEffect(() => {
+        localStorage.setItem('focusList', JSON.stringify(focusList));
+    }, [focusList]);
 
     useEffect(() => {
         const currentFullText = typewriterTexts[currentTextIndex];
@@ -40,7 +61,7 @@ const About = () => {
 
     const handleDownloadResume = () => {
         const link = document.createElement('a');
-        link.href = {myResume};
+        link.href = myResume;
         link.download = 'Sample_Resume.pdf';
         document.body.appendChild(link);
         link.click();
@@ -49,6 +70,34 @@ const About = () => {
 
     const handleViewProjects = () => {
         navigate('/projects');
+    };
+
+    const handleAddItem = () => {
+        if (newItem.trim() !== '') {
+            setFocusList([...focusList, newItem.trim()]);
+            setNewItem('');
+        }
+    };
+
+    const handleDeleteItem = (index) => {
+        const updatedList = focusList.filter((_, i) => i !== index);
+        setFocusList(updatedList);
+    };
+
+    const handleEditItem = (index) => {
+        setEditingIndex(index);
+        setEditedItem(focusList[index]);
+    };
+
+    const handleSaveItem = (index) => {
+        const updatedList = [...focusList];
+        updatedList[index] = editedItem.trim();
+        setFocusList(updatedList);
+        setEditingIndex(null);
+    };
+
+    const handleCancelEdit = () => {
+        setEditingIndex(null);
     };
 
     return (
@@ -205,7 +254,7 @@ const About = () => {
                         },
                         {
                             label: "Github Commits",
-                            value: "340+",
+                            value: "350+",
                             icon: <GitBranch className="text-primary" size={24} />,
                             color: "from-purple-500/10 to-purple-600/10 border-purple-500/20"
                         },
@@ -261,18 +310,63 @@ const About = () => {
                 <h2 className="mb-6 text-2xl font-bold text-default">✨ Current Focus <span className='text-primary'>–</span></h2>
 
                 <div className="space-y-4">
-                    {[
-                        "🎯 Completing my CSE degree with hands-on project experience",
-                        "💼 Interning as a MERN Stack Developer at Ardent CompuTech",
-                        "🚀 Building innovative web applications and AI-powered tools",
-                        "📈 Contributing to open source projects and learning new technologies",
-                        "🔍 Exploring advanced topics in machine learning and system design"
-                    ].map((item, index) => (
-                        <div key={index} className="flex items-start gap-3">
-                            <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
-                            <span className="text-muted">{item}</span>
+                    {focusList.map((item, index) => (
+                        <div key={index} className="group flex items-center gap-3">
+                            <div className="flex items-center flex-grow gap-3">
+                                {editingIndex === index ? (
+                                    <>
+                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
+                                        <input
+                                            type="text"
+                                            value={editedItem}
+                                            onChange={(e) => setEditedItem(e.target.value)}
+                                            className="flex-grow px-2 py-1 rounded bg-transparent text-default"
+                                        />
+                                    </>
+                                ) : (
+                                    <>
+                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
+                                        <span className="text-muted">{item}</span>
+                                    </>
+                                )}
+                            </div>
+                            <div className="group flex gap-4 ml-auto">
+                                {editingIndex === index ? (
+                                    <>
+                                        <button onClick={() => handleSaveItem(index)} className="text-green-500 hover:text-green-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                            <Save size={15} />
+                                        </button>
+                                        <button onClick={() => handleCancelEdit()} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                            <X size={16} />
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button onClick={() => handleEditItem(index)} className="text-blue-500 hover:text-blue-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                            <Pencil size={15} />
+                                        </button>
+                                        <button onClick={() => handleDeleteItem(index)} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                            <Trash2 size={15} />
+                                        </button>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     ))}
+                </div>
+
+                <div className="flex items-center gap-3 mt-4">
+                    <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
+                    <input
+                        type="text"
+                        value={newItem}
+                        onChange={(e) => setNewItem(e.target.value)}
+                        placeholder="🐜 Add a new list item here..."
+                        className="flex-grow px-2 py-1 rounded bg-transparent text-md placeholder-grey"
+                    />
+                    <button onClick={handleAddItem} className="p-2 text-white rounded-full bg-primary-emphasis opacity-80">
+                        <Plus size={16} />
+                    </button>
                 </div>
             </section>
         </div>
