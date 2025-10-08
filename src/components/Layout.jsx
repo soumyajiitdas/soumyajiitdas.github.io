@@ -2,6 +2,7 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import Footer from './Footer';
 
 const Layout = () => {
     return (
@@ -13,11 +14,12 @@ const Layout = () => {
                 </div>
 
                 {/* Main Content */}
-                <div className="flex-1 lg:ml-6">
+                <div className="flex flex-col flex-1 lg:ml-6">
                     <Header />
-                    <main className="px-4 pb-8 lg:px-6">
+                    <main className="flex-1 px-4 pb-8 lg:px-6">
                         <Outlet />
                     </main>
+                    <Footer />
                 </div>
             </div>
         </div>

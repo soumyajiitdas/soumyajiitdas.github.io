@@ -45,7 +45,7 @@ const Projects = () => {
 
             {/* Filter Tabs */}
             <div className="flex flex-wrap gap-2 p-2 border rounded-lg bg-canvas-subtle border-default">
-                <Filter size={20} className="mt-2 mr-2 text-muted" />
+                <Filter size={20} className="mt-2 mr-2 text-primary opacity-90" />
                 {filters.map((filter) => (
                     <button
                         key={filter.id}
