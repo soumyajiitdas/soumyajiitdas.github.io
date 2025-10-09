@@ -24,6 +24,7 @@ const Header = () => {
                 onClick={toggleTheme}
                 className="hidden p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted lg:block"
                 title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
                 {theme === 'light' ? (
                     <Moon size={20} className="text-default" />

@@ -20,13 +20,19 @@ const Experience = () => {
                     <h2 className="text-3xl font-bold text-default">Education <span className="text-primary">:</span></h2>
                 </div>
 
-                <div className="space-y-6">
-                    {education.map((edu, index) => (
-                        <div
-                            key={edu.id}
-                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
-                        >
-                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
+                                <div className="space-y-6">
+
+                                    {education.map((edu, index) => (
+
+                                        <article
+
+                                            key={edu.id}
+
+                                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
+
+                                            aria-label={`Education: ${edu.degree} at ${edu.institution}`}
+
+                                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
                                     <h3 className="mb-1 text-xl font-semibold text-default">
                                         {edu.degree}
@@ -114,7 +120,7 @@ const Experience = () => {
                                     </ul>
                                 </div>
                             )}
-                        </div>
+                        </article>
                     ))}
                 </div>
             </section>
@@ -126,13 +132,19 @@ const Experience = () => {
                     <h2 className="text-3xl font-bold text-default">Professional Experience <span className="text-primary">:</span></h2>
                 </div>
 
-                <div className="space-y-6">
-                    {experience.map((exp, index) => (
-                        <div
-                            key={exp.id}
-                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
-                        >
-                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
+                                <div className="space-y-6">
+
+                                    {experience.map((exp, index) => (
+
+                                        <article
+
+                                            key={exp.id}
+
+                                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
+
+                                            aria-label={`Experience: ${exp.title} at ${exp.company}`}
+
+                                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
                                     <h3 className="mb-1 text-xl font-semibold text-default">
                                         {exp.title}
@@ -208,7 +220,7 @@ const Experience = () => {
                                     </div>
                                 </div>
                             )}
-                        </div>
+                        </article>
                     ))}
                 </div>
             </section>

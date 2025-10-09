@@ -34,28 +34,22 @@ const About = () => {
 
     useEffect(() => {
         const currentFullText = typewriterTexts[currentTextIndex];
-
         const timeout = setTimeout(() => {
             if (!isDeleting) {
-                // Typing effect
                 if (displayText.length < currentFullText.length) {
                     setDisplayText(currentFullText.substring(0, displayText.length + 1));
                 } else {
-                    // Start deleting after a pause
                     setTimeout(() => setIsDeleting(true), 1500);
                 }
             } else {
-                // Deleting effect
                 if (displayText.length > 0) {
                     setDisplayText(currentFullText.substring(0, displayText.length - 1));
                 } else {
-                    // Move to next text
                     setIsDeleting(false);
                     setCurrentTextIndex((prev) => (prev + 1) % typewriterTexts.length);
                 }
             }
         }, isDeleting ? 50 : 100);
-
         return () => clearTimeout(timeout);
     }, [displayText, isDeleting, currentTextIndex]);
 
@@ -101,178 +95,100 @@ const About = () => {
     };
 
     return (
-        <div className="space-y-12 mt-14 lg:mt-0">
+        <main className="space-y-12 mt-14 lg:mt-0" aria-label="About Soumyajit Das">
+            
             {/* Hero Section */}
-            <section>
-                <div className="flex flex-col items-center gap-16 lg:flex-row lg:gap-12">
-
+            <section aria-labelledby="hero-heading">
+                <header className="flex flex-col items-center gap-16 lg:flex-row lg:gap-12">
                     <div className="flex-1 text-center lg:text-left">
-                        <h1 className="mb-4 text-4xl font-bold lg:text-5xl text-default">
+                        <h1 id="hero-heading" className="mb-4 text-4xl font-bold lg:text-5xl text-default">
                             Hi, I'm <span className="text-primary">Soumyajit</span> 👋
                         </h1>
-                        <div className="h-8 mb-6 text-xl lg:text-2xl text-muted">
+                        <p className="h-8 mb-6 text-xl lg:text-2xl text-muted" aria-live="polite">
                             I'm a <span className="font-medium text-primary">{displayText}</span>
-                            <span className="animate-pulse">|</span>
-                        </div>
+                            <span aria-hidden="true" className="animate-pulse">|</span>
+                        </p>
                         <p className="max-w-2xl mb-8 leading-relaxed text-muted">
                             Passionate Computer Science & Engineering student curious about AI, web development, and problem-solving. I love building real-world solutions and growing one project at a time. 🚀
                         </p>
-                        
-                        {/* Action Buttons */}
-                        <div className="flex-row justify-center space-x-4 lg:justify-start">
+
+                        <nav className="flex-row justify-center space-x-4 lg:justify-start" aria-label="Action buttons">
                             <button
                                 onClick={handleDownloadResume}
+                                aria-label="Download resume as PDF"
                                 className="inline-flex items-center px-6 py-3 text-white transition-all duration-300 transform rounded-lg shadow-lg bg-primary-emphasis hover:bg-primary-emphasis/90 hover:scale-105 hover:shadow-primary-muted/20"
                             >
-                                <Download size={20} className="mr-2" />
+                                <Download size={20} aria-hidden="true" className="mr-2" />
                                 Download CV
                             </button>
                             <button
                                 onClick={handleViewProjects}
+                                aria-label="View all projects"
                                 className="inline-flex items-center px-6 py-3 transition-all duration-300 transform border-2 rounded-lg border-primary-muted text-primary hover:bg-primary-emphasis hover:text-white hover:border-primary-emphasis hover:scale-105"
                             >
-                                <ExternalLink size={20} className="mr-2" />
+                                <ExternalLink size={20} aria-hidden="true" className="mr-2" />
                                 View Projects
                             </button>
-                        </div>
+                        </nav>
                     </div>
-                    
-                    {/* Dev-style dynamic frame */}
-                    <div className="relative w-64 h-56 group">
-                        {/* Animated corner brackets */}
-                        <div className="absolute w-6 h-6 border-t-2 border-l-2 -top-2 -left-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute w-6 h-6 border-t-2 border-r-2 -top-2 -right-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute w-6 h-6 border-b-2 border-l-2 -bottom-2 -left-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
-                        <div className="absolute w-6 h-6 border-b-2 border-r-2 -bottom-2 -right-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse"></div>
 
-                        {/* Dynamic border animation */}
-                        <div className="absolute inset-0 border-2 border-dashed rounded-lg opacity-25 border-border animate-spin" style={{ animationDuration: '20s' }}></div>
-
-                        {/* Code-style labels */}
-                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -top-8 -left-5 text-accent bg-background opacity-70 group-hover:opacity-100 border-accent/20">
-                            &lt;dev/&gt;
-                        </div>
-                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -bottom-8 -right-5 text-foreground bg-background-subtle border-accent/20 opacity-70 group-hover:opacity-100">
-                            ✨ <span className="text-primary">Asp. SDE</span>
-                        </div>
-
-                        {/* Terminal-style indicator */}
-                        <div className="absolute flex space-x-1 top-2 right-2">
-                            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                            <div className="w-2 h-2 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                        </div>
-
-                        {/* Main image container */}
-                        <div className="w-full h-full overflow-hidden transition-all duration-500 border-4 rounded-lg shadow-2xl border-background-subtle bg-gradient-to-br from-accent/5 to-background-subtle opacity-85 hover:opacity-100 group-hover:shadow-accent/20 dark:border-black dark:hover:border-background-subtle group-hover:border-accent/30">
-                            <img
-                                src={profileImg}
-                                alt="<profileImg.src=Null>"
-                                loading="lazy"
-                                decoding="async"
-                                className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                            />
-                        </div>
-
-                        {/* Floating code snippets */}
-                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -left-14 top-1/4 text-accent/60 bg-background/80 backdrop-blur-sm border-accent/10 opacity-70 group-hover:opacity-100 rotate-12 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>
-                            console.log()
-                        </div>
-                        <div className="absolute px-2 py-1 font-mono text-xs border rounded -right-8 bottom-1/3 text-accent/60 bg-background/80 backdrop-blur-sm border-accent/10 opacity-70 group-hover:opacity-100 -rotate-12 animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}>
-                            {`{ }`}
-                        </div>
-                    </div>
-                </div>
+                    {/* Profile Image */}
+                    <figure className="relative w-64 h-56 group" aria-label="Profile Image with developer-themed frame">
+                        <img
+                            src={profileImg}
+                            alt="Portrait of Soumyajit Das"
+                            loading="lazy"
+                            decoding="async"
+                            className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105 rounded-lg"
+                        />
+                    </figure>
+                </header>
             </section>
 
             {/* What I Do Section */}
-            <section className="space-y-8">
-                <h2 className="text-3xl font-bold text-default">What I Do❓</h2>
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <section aria-labelledby="what-i-do">
+                <h2 id="what-i-do" className="text-3xl font-bold text-default">What I Do❓</h2>
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
                     {[
-                        {
-                            title: "Full Stack Development",
-                            description: "Building end-to-end web applications with React, Node.js, and modern technologies.",
-                            icon: "💻"
-                        },
-                        {
-                            title: "AI/ML Projects",
-                            description: "Exploring artificial intelligence and machine learning to create innovative solutions.",
-                            icon: "🤖"
-                        },
-                        {
-                            title: "Open Source",
-                            description: "Contributing to open source projects and building tools for the developer community.",
-                            icon: "🌟"
-                        },
-                        {
-                            title: "Problem Solving",
-                            description: "Passionate about algorithms, data structures, and solving complex technical challenges.",
-                            icon: "🧩"
-                        },
-                        {
-                            title: "Learning & Growth",
-                            description: "Continuously learning new technologies and sharing knowledge with others.",
-                            icon: "📚"
-                        },
-                        {
-                            title: "Team Collaboration",
-                            description: "Working effectively in teams and contributing to successful project outcomes.",
-                            icon: "🤝"
-                        }
+                        { title: "Full Stack Development", description: "Building end-to-end web applications with React, Node.js, and modern technologies.", icon: "💻" },
+                        { title: "AI/ML Projects", description: "Exploring artificial intelligence and machine learning to create innovative solutions.", icon: "🤖" },
+                        { title: "Open Source", description: "Contributing to open source projects and building tools for the developer community.", icon: "🌟" },
+                        { title: "Problem Solving", description: "Passionate about algorithms, data structures, and solving complex technical challenges.", icon: "🧩" },
+                        { title: "Learning & Growth", description: "Continuously learning new technologies and sharing knowledge with others.", icon: "📚" },
+                        { title: "Team Collaboration", description: "Working effectively in teams and contributing to successful project outcomes.", icon: "🤝" }
                     ].map((item, index) => (
-                        <div
+                        <article
                             key={index}
+                            role="listitem"
                             className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted hover:shadow-md hover:shadow-primary-muted/10"
+                            aria-label={item.title}
                         >
-                            <div className="mb-4 text-3xl">{item.icon}</div>
-                            <h2 className="mb-2 text-lg font-semibold text-default">
-                                {item.title}
-                            </h2>
-                            <p className="text-sm leading-relaxed text-muted">
-                                {item.description}
-                            </p>
-                        </div>
+                            <div className="mb-4 text-3xl" aria-hidden="true">{item.icon}</div>
+                            <h3 className="mb-2 text-lg font-semibold text-default">{item.title}</h3>
+                            <p className="text-sm leading-relaxed text-muted">{item.description}</p>
+                        </article>
                     ))}
                 </div>
             </section>
 
             {/* Quick Stats Section */}
-            <section className="space-y-6">
-                <h2 className="text-3xl font-bold text-default">Quick Stats 🗓️</h2>
+            <section aria-labelledby="quick-stats">
+                <h2 id="quick-stats" className="text-3xl font-bold text-default">Quick Stats 🗓️</h2>
                 <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
                     {[
-                        {
-                            label: "Projects Completed",
-                            value: "5+",
-                            icon: <FileJson className="text-primary" size={24} />,
-                            color: "from-blue-500/10 to-blue-600/10 border-blue-500/20"
-                        },
-                        {
-                            label: "Technologies Used",
-                            value: "10+",
-                            icon: <Brain className="text-primary" size={24} />,
-                            color: "from-green-500/10 to-green-600/10 border-green-500/20"
-                        },
-                        {
-                            label: "Github Commits",
-                            value: "350+",
-                            icon: <GitBranch className="text-primary" size={24} />,
-                            color: "from-purple-500/10 to-purple-600/10 border-purple-500/20"
-                        },
-                        {
-                            label: "Coffee Cups ☕",
-                            value: "∞",
-                            icon: <Coffee className="text-primary" size={24} />,
-                            color: "from-orange-500/10 to-orange-600/10 border-orange-500/20"
-                        }
+                        { label: "Projects Completed", value: "5+", icon: <FileJson size={24} />, color: "from-blue-500/10 to-blue-600/10 border-blue-500/20" },
+                        { label: "Technologies Used", value: "10+", icon: <Brain size={24} />, color: "from-green-500/10 to-green-600/10 border-green-500/20" },
+                        { label: "Github Commits", value: "350+", icon: <GitBranch size={24} />, color: "from-purple-500/10 to-purple-600/10 border-purple-500/20" },
+                        { label: "Coffee Cups ☕", value: "∞", icon: <Coffee size={24} />, color: "from-orange-500/10 to-orange-600/10 border-orange-500/20" }
                     ].map((stat, index) => (
                         <div
                             key={index}
+                            role="region"
+                            aria-label={stat.label}
                             className={`bg-gradient-to-br ${stat.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform hover:scale-105 hover:shadow-lg`}
                         >
                             <div className="flex items-center justify-between mb-4">
-                                {stat.icon}
+                                <span aria-hidden="true" className="text-primary">{stat.icon}</span>
                                 <span className="text-2xl font-bold text-primary">{stat.value}</span>
                             </div>
                             <p className="text-sm font-medium text-muted">{stat.label}</p>
@@ -281,97 +197,112 @@ const About = () => {
                 </div>
             </section>
 
-            {/* About me Section */}
-            <section className="relative overflow-hidden">
+            {/* About Me Section */}
+            <section aria-labelledby="about-me">
                 <div className="relative p-8 border rounded-lg bg-gradient-to-r from-canvas-subtle to-background-muted border-default">
-                    {/* Background decorative elements */}
-                    <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary-muted blur-3xl"></div>
-                    <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full bg-primary-muted blur-2xl"></div>
-                    <div className="relative z-10">
-                    <h3 className="flex items-center mb-6 text-2xl font-bold text-default font-handwritten-bold">
-                            <span className="mr-3">👨🏻‍💻</span>
-                            <span>About me...</span>
-                        </h3>
-                        <div className="prose prose-lg max-w-none">
-                            <p className="text-lg leading-relaxed text-muted">
-                                {aboutMe.description}
-                            </p>
-                        </div>
-                        {/* Decorative quote */}
-                        <div className="pl-4 mt-6 border-l-4 border-primary-muted">
+                    <h2 id="about-me" className="flex items-center mb-6 text-2xl font-bold text-default font-handwritten-bold">
+                        <span aria-hidden="true" className="mr-3">👨🏻‍💻</span> About me...
+                    </h2>
+                    <article>
+                        <p className="text-lg leading-relaxed text-muted">{aboutMe.description}</p>
+                        <blockquote className="pl-4 mt-6 border-l-4 border-primary-muted">
                             <p className="italic font-medium text-primary">
-                                ~ "Code compiles dreams into reality, one commit at a time."
+                                “Code compiles dreams into reality, one commit at a time.”
                             </p>
-                        </div>
-                    </div>
+                        </blockquote>
+                    </article>
                 </div>
             </section>
-            
+
             {/* Current Focus */}
-            <section className="p-8 border rounded-lg bg-canvas-subtle border-default">
-                <h2 className="mb-6 text-2xl font-bold text-default">✨ Current Focus <span className='text-primary'>–</span></h2>
+            <section aria-labelledby="current-focus" className="p-8 border rounded-lg bg-canvas-subtle border-default">
+                <h2 id="current-focus" className="mb-6 text-2xl font-bold text-default">
+                    ✨ Current Focus <span className='text-primary'>–</span>
+                </h2>
 
-                <div className="space-y-4">
+                <ul className="space-y-4" aria-label="Current focus list">
                     {focusList.map((item, index) => (
-                        <div key={index} className="group flex items-center gap-3">
-                            <div className="flex items-center flex-grow gap-3">
+                        <li key={index} className="group flex items-center gap-3" role="listitem">
+                            <ChevronRight size={16} aria-hidden="true" className="flex-shrink-0 mt-1 text-primary" />
+                            {editingIndex === index ? (
+                                <input
+                                    type="text"
+                                    value={editedItem}
+                                    onChange={(e) => setEditedItem(e.target.value)}
+                                    aria-label={`Edit focus item ${index + 1}`}
+                                    className="flex-grow px-2 py-1 rounded bg-transparent text-default"
+                                />
+                            ) : (
+                                <span className="text-muted">{item}</span>
+                            )}
+                            <div className="group flex gap-4 ml-auto" role="group" aria-label="Edit controls">
                                 {editingIndex === index ? (
                                     <>
-                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
-                                        <input
-                                            type="text"
-                                            value={editedItem}
-                                            onChange={(e) => setEditedItem(e.target.value)}
-                                            className="flex-grow px-2 py-1 rounded bg-transparent text-default"
-                                        />
+                                        <button
+                                            onClick={() => handleSaveItem(index)}
+                                            aria-label="Save item"
+                                            className="text-green-500 hover:text-green-400 opacity-0 group-hover:opacity-80"
+                                        >
+                                            <Save size={15} aria-hidden="true" />
+                                        </button>
+                                        <button
+                                            onClick={handleCancelEdit}
+                                            aria-label="Cancel edit"
+                                            className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80"
+                                        >
+                                            <X size={16} aria-hidden="true" />
+                                        </button>
                                     </>
                                 ) : (
                                     <>
-                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
-                                        <span className="text-muted">{item}</span>
-                                    </>
-                                )}
-                            </div>
-                            <div className="group flex gap-4 ml-auto">
-                                {editingIndex === index ? (
-                                    <>
-                                        <button onClick={() => handleSaveItem(index)} className="text-green-500 hover:text-green-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Save size={15} />
+                                        <button
+                                            onClick={() => handleEditItem(index)}
+                                            aria-label="Edit item"
+                                            className="text-blue-500 hover:text-blue-400 opacity-0 group-hover:opacity-80"
+                                        >
+                                            <Pencil size={15} aria-hidden="true" />
                                         </button>
-                                        <button onClick={() => handleCancelEdit()} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <X size={16} />
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <button onClick={() => handleEditItem(index)} className="text-blue-500 hover:text-blue-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Pencil size={15} />
-                                        </button>
-                                        <button onClick={() => handleDeleteItem(index)} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Trash2 size={15} />
+                                        <button
+                                            onClick={() => handleDeleteItem(index)}
+                                            aria-label="Delete item"
+                                            className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80"
+                                        >
+                                            <Trash2 size={15} aria-hidden="true" />
                                         </button>
                                     </>
                                 )}
                             </div>
-                        </div>
+                        </li>
                     ))}
-                </div>
+                </ul>
 
-                <div className="flex items-center gap-3 mt-4">
-                    <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" />
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleAddItem();
+                    }}
+                    className="flex items-center gap-3 mt-4"
+                    aria-label="Add new focus item"
+                >
+                    <ChevronRight size={16} aria-hidden="true" className="flex-shrink-0 mt-1 text-primary" />
                     <input
                         type="text"
                         value={newItem}
                         onChange={(e) => setNewItem(e.target.value)}
                         placeholder="🐜 Add a new list item here..."
+                        aria-label="New focus item input"
                         className="flex-grow px-2 py-1 rounded bg-transparent text-md placeholder-grey"
                     />
-                    <button onClick={handleAddItem} className="p-2 text-white rounded-full bg-primary-emphasis opacity-80">
-                        <Plus size={16} />
+                    <button
+                        type="submit"
+                        aria-label="Add new item"
+                        className="p-2 text-white rounded-full bg-primary-emphasis opacity-80"
+                    >
+                        <Plus size={16} aria-hidden="true" />
                     </button>
-                </div>
+                </form>
             </section>
-        </div>
+        </main>
     );
 };
 

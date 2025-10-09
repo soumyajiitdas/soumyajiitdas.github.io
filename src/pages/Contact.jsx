@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { personalInfo } from '../data/data';
 import { useToast } from '../hooks/use-toast';
 import {
@@ -40,7 +40,6 @@ const Contact = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        // Frontend validation
         if (!formData.name || !formData.email || !formData.message) {
             toast({
                 title: "Validation Error",
@@ -51,7 +50,6 @@ const Contact = () => {
             return;
         }
 
-        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             toast({
@@ -63,9 +61,7 @@ const Contact = () => {
             return;
         }
 
-        // Simulate form submission
         setTimeout(() => {
-            // Store in localStorage for demo purposes
             const submissions = JSON.parse(localStorage.getItem('contact-submissions') || '[]');
             const newSubmission = {
                 ...formData,
@@ -80,7 +76,6 @@ const Contact = () => {
                 description: "Thank you for reaching out. I'll get back to you soon.",
             });
 
-            // Reset form
             setFormData({
                 name: '',
                 email: '',
@@ -153,62 +148,61 @@ const Contact = () => {
     ];
 
     return (
-        <div className="space-y-12 mt-14 lg:mt-0">
+        <main className="space-y-12 mt-14 lg:mt-0" aria-label="Contact Page Main Content">
             {/* Page Header */}
-            <section className="space-y-6 text-center lg:text-left">
+            <header className="space-y-6 text-center lg:text-left">
                 <div className="space-y-4">
-                    <h1 className="text-4xl font-bold lg:text-5xl text-default">
+                    <h1 className="text-4xl font-bold text-default">
                         Let's <span className="text-primary">Connect...</span>
                     </h1>
-                    <p className="max-w-3xl text-xl text-muted">
+                    <p className="max-w-3xl text-muted">
                         I'm always excited to discuss new opportunities, collaborate on interesting projects, or just have a conversation about technology and innovation.
                     </p>
                 </div>
 
                 {/* Response Info Cards */}
-                <div className="grid gap-4 mt-8 sm:grid-cols-3">
+                <section className="grid gap-4 mt-8 sm:grid-cols-3" aria-label="Response Information">
                     {responseInfo.map((info, index) => (
-                        <div
+                        <article
                             key={index}
                             className="flex items-center gap-3 p-4 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
+                            aria-label={`${info.title}: ${info.description}`}
                         >
-                            <info.icon className="flex-shrink-0 text-primary" size={20} />
+                            <info.icon className="flex-shrink-0 text-primary" size={20} aria-hidden="true" />
                             <div className="text-left">
                                 <p className="text-sm font-medium text-default">{info.title}</p>
                                 <p className="text-xs text-muted">{info.description}</p>
                             </div>
-                        </div>
+                        </article>
                     ))}
-                </div>
-            </section>
+                </section>
+            </header>
 
             <div className="grid gap-8 lg:grid-cols-5">
-                {/* Contact Information Sidebar */}
-                <div className="space-y-6 lg:col-span-2">
+                {/* Sidebar */}
+                <aside className="space-y-6 lg:col-span-2" aria-label="Contact Sidebar">
                     {/* Contact Methods */}
-                    <div className="space-y-4">
+                    <section className="space-y-4" aria-label="Contact Methods">
                         <h2 className="mb-6 text-2xl font-bold text-default">Get in touch <span className='text-primary'>:</span></h2>
                         {contactMethods.map((method, index) => (
-                            <div
+                            <article
                                 key={index}
                                 className={`bg-gradient-to-br ${method.color} rounded-lg p-6 border border-default hover:border-primary-muted transition-all duration-300 transform scale-[.98] hover:scale-[1.02]`}
+                                aria-label={`${method.title} contact method`}
                             >
                                 <div className="flex items-start gap-4">
-                                    <div className="p-2 rounded-lg bg-canvas">
+                                    <div className="p-2 rounded-lg bg-canvas" aria-hidden="true">
                                         <method.icon className="text-primary" size={20} />
                                     </div>
                                     <div className="flex-1">
-                                        <h3 className="mb-1 font-semibold text-default">
-                                            {method.title}
-                                        </h3>
-                                        <p className="mb-2 text-xs text-muted">
-                                            {method.description}
-                                        </p>
+                                        <h3 className="mb-1 font-semibold text-default">{method.title}</h3>
+                                        <p className="mb-2 text-xs text-muted">{method.description}</p>
                                         {method.href ? (
                                             <a
                                                 href={method.href}
                                                 {...(method.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                                                 className="text-sm font-medium break-all transition-colors text-primary hover:text-primary-emphasis"
+                                                aria-label={`Open ${method.title} link`}
                                             >
                                                 {method.value}
                                             </a>
@@ -217,50 +211,52 @@ const Contact = () => {
                                         )}
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         ))}
-                    </div>
+                    </section>
 
                     {/* Social Links */}
-                    <div className="p-6 border rounded-lg bg-canvas-subtle border-default">
+                    <nav className="p-6 border rounded-lg bg-canvas-subtle border-default" aria-label="Social Media Links">
                         <h3 className="flex items-center gap-2 mb-6 text-xl font-bold text-default">
-                            <Code className="text-primary" size={20} />
+                            <Code className="text-primary" size={20} aria-hidden="true" />
                             Follow my journey
                         </h3>
-                        <div className="grid grid-cols-2 gap-3">
+                        <ul className="grid grid-cols-2 gap-3">
                             {Object.entries(personalInfo.socialLinks).map(([platform, url]) => {
                                 const Icon = socialIcons[platform];
                                 return (
-                                    <a
-                                        key={platform}
-                                        href={url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-3 transition-all duration-300 transform border rounded-lg scale-98 bg-canvas hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default group"
-                                    >
-                                        <Icon size={18} className="flex-shrink-0" />
-                                        <span className="text-sm font-medium capitalize truncate group-hover:text-white">
-                                            {platform}
-                                        </span>
-                                    </a>
+                                    <li key={platform}>
+                                        <a
+                                            href={url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Visit my ${platform} profile`}
+                                            className="flex items-center gap-3 p-3 transition-all duration-300 transform border rounded-lg scale-98 bg-canvas hover:bg-primary-emphasis hover:text-white hover:scale-105 border-default group"
+                                        >
+                                            <Icon size={18} className="flex-shrink-0" aria-hidden="true" />
+                                            <span className="text-sm font-medium capitalize truncate group-hover:text-white">
+                                                {platform}
+                                            </span>
+                                        </a>
+                                    </li>
                                 );
                             })}
-                        </div>
-                    </div>
-                </div>
+                        </ul>
+                    </nav>
+                </aside>
 
                 {/* Contact Form */}
-                <div className="lg:col-span-3">
-                    <div className="p-8 border rounded-lg bg-canvas-subtle border-default">
-                        <div className="flex items-center gap-3 mb-8">
-                            <MessageCircle className="text-primary" size={28} />
+                <section className="lg:col-span-3" aria-label="Contact Form Section">
+                    <article className="p-8 border rounded-lg bg-canvas-subtle border-default">
+                        <header className="flex items-center gap-3 mb-8">
+                            <MessageCircle className="text-primary" size={28} aria-hidden="true" />
                             <div>
                                 <h2 className="text-2xl font-bold text-default">Send me a message</h2>
                                 <p className="text-sm text-muted">I'll get back to you as soon as possible</p>
                             </div>
-                        </div>
+                        </header>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form onSubmit={handleSubmit} className="space-y-6" role="form" aria-label="Contact Form">
                             <div className="grid gap-6 md:grid-cols-2">
                                 <div className="space-y-2">
                                     <label htmlFor="name" className="block text-sm font-semibold text-default">
@@ -273,6 +269,8 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={handleChange}
                                         required
+                                        aria-required="true"
+                                        aria-label="Enter your full name"
                                         className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                         placeholder="your name"
                                     />
@@ -289,6 +287,8 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
+                                        aria-required="true"
+                                        aria-label="Enter your email address"
                                         className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                         placeholder="your.name@example.com"
                                     />
@@ -305,6 +305,7 @@ const Contact = () => {
                                     name="subject"
                                     value={formData.subject}
                                     onChange={handleChange}
+                                    aria-label="Enter the subject of your message"
                                     className="w-full px-4 py-3 transition-all duration-200 border-2 rounded-lg bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
                                     placeholder="What would you like to discuss?"
                                 />
@@ -320,9 +321,11 @@ const Contact = () => {
                                     value={formData.message}
                                     onChange={handleChange}
                                     required
+                                    aria-required="true"
+                                    aria-label="Enter your message"
                                     rows={6}
                                     className="w-full px-4 py-2 transition-all duration-200 border-2 rounded-lg resize-none bg-canvas border-default focus:outline-none focus:ring-2 focus:ring-primary-emphasis focus:border-primary-emphasis text-default placeholder-muted"
-                                    placeholder="Tell me about your project, ask a question, or just say hello! I'm always excited to hear from fellow developers and potential collaborators."
+                                    placeholder="Tell me about your project, ask a question, or just say hello!"
                                 />
                             </div>
 
@@ -330,72 +333,56 @@ const Contact = () => {
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}
+                                    aria-label="Submit contact form"
                                     className="flex items-center justify-center gap-2 px-12 py-4 font-semibold text-white transition-all duration-300 transform rounded-lg shadow-lg scale-98 bg-primary-emphasis hover:bg-primary-emphasis/90 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-primary-muted/20 hover:scale-105"
                                 >
                                     {isSubmitting ? (
                                         <>
-                                            <div className="w-5 h-5 border-2 border-white rounded-full animate-spin border-t-transparent"></div>
+                                            <div className="w-5 h-5 border-2 border-white rounded-full animate-spin border-t-transparent" aria-hidden="true"></div>
                                             <span>Sending...</span>
                                         </>
                                     ) : (
                                         <>
-                                            <Send size={20} />
+                                            <Send size={20} aria-hidden="true" />
                                             <span>Send Message</span>
                                         </>
                                     )}
                                 </button>
                             </div>
                         </form>
-                    </div>
+                    </article>
 
                     {/* Additional Info */}
-                    <div className="p-6 mt-6 border rounded-lg bg-gradient-to-r from-canvas-subtle to-canvas-muted border-default">
+                    <footer className="p-6 mt-6 border rounded-lg bg-gradient-to-r from-canvas-subtle to-canvas-muted border-default" role="contentinfo" aria-label="Discussion Topics and Contact Options">
                         <h3 className="mb-3 font-semibold text-default">What can we discuss❓</h3>
-                        <div className="grid gap-3 text-sm sm:grid-cols-2">
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">Full-stack development projects</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">AI/ML collaboration opportunities</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">Open source contributions</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">Tech mentorship & guidance</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">Freelance & internship opportunities</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <span className="text-primary">●</span>
-                                <span className="text-muted">Just saying hello! 👋</span>
-                            </div>
-                        </div>
+                        <ul className="grid gap-3 text-sm sm:grid-cols-2">
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Full-stack development projects</span></li>
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">AI/ML collaboration opportunities</span></li>
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Open source contributions</span></li>
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Tech mentorship & guidance</span></li>
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Freelance & internship opportunities</span></li>
+                            <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Just saying hello! 👋</span></li>
+                        </ul>
                         <div className="flex items-center justify-center gap-8 mt-4">
-                            <a href={`mailto:${personalInfo.email}`} className="flex items-center space-x-2">
-                                <Mail size={20} className='text-primary' />
+                            <a href={`mailto:${personalInfo.email}`} aria-label="Send an email directly" className="flex items-center space-x-2">
+                                <Mail size={20} className='text-primary' aria-hidden="true" />
                                 <span>Email Me Directly</span>
                             </a>
                             <a
                                 href={personalInfo.socialLinks.linkedin}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                aria-label="Connect with me on LinkedIn"
                                 className="flex items-center space-x-2"
                             >
-                                <Linkedin size={20} className='text-primary' />
+                                <Linkedin size={20} className='text-primary' aria-hidden="true" />
                                 <span>Connect on LinkedIn</span>
                             </a>
                         </div>
-                    </div>
-                </div>
+                    </footer>
+                </section>
             </div>
-        </div>
+        </main>
     );
 };
 
