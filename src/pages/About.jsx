@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { aboutMe, typewriterTexts } from '../data/data';
 import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson, Pencil, Trash2, Plus, Save, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import profileImg from '/assets/profileImg.jpg';
+import profileImg from '/assets/profileImg.webp';
 import myResume from "/assets/Sample_Resume.pdf";
 
 const About = () => {
@@ -168,6 +168,8 @@ const About = () => {
                             <img
                                 src={profileImg}
                                 alt="<profileImg.src=Null>"
+                                loading="lazy"
+                                decoding="async"
                                 className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                             />
                         </div>

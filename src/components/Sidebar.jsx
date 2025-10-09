@@ -91,6 +91,8 @@ const Sidebar = () => {
                             <img
                                 src="https://avatars.githubusercontent.com/u/116360739?v=4"
                                 alt={personalInfo.name}
+                                loading="lazy"
+                                decoding="async"
                                 className="object-cover w-full h-full"
                             />
                         </div>
