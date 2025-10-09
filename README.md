@@ -4,8 +4,10 @@
 <a href="#"><img src="https://img.shields.io/badge/CSS-1572B6?logo=css&logoColor=fff" alt="CSS3"/></a>
 <a href="#"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript"/></a>
 <a href="#"><img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black" alt="React"/></a>
-<a href="https://soumyajitdas.vercel.app"><img src="https://img.shields.io/badge/-Visit%20Portfolio-white?logo=github&logoColor=black&style=flat" alt="My portfolio"/></a>
+<a href="https://soumyajiitdas.github.io/"><img src="https://img.shields.io/badge/-Visit%20Portfolio-white?logo=github&logoColor=black&style=flat" alt="My portfolio"/></a>
 <a href="#"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103/" alt="Open Source"/></a>
+
+![site showcase](media/siteShowcase.png)
 
 This is my personal corner of the internet! I built this portfolio to showcase my journey as a developer, the projects I've worked on, and the skills I've picked up along the way. It's built with technologies like React, Vite, and Tailwind CSS.
 
@@ -58,7 +60,7 @@ I've set this up to deploy to GitHub Pages. The `deploy` script in the `package.
 npm run deploy
 ```
 
-## 📄 License
+## 📃 License
 
 This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
