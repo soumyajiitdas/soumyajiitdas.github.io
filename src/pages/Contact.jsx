@@ -122,7 +122,7 @@ const Contact = () => {
         {
             icon: ExternalLink,
             title: "Website",
-            value: "My Portfolio Website",
+            value: "My Personal Website",
             href: personalInfo.website,
             description: "Visit my portfolio",
             color: "from-orange-500/10 to-orange-600/10 border-orange-500/20"
@@ -364,7 +364,7 @@ const Contact = () => {
                             <li className="flex items-center gap-2"><span className="text-primary">●</span><span className="text-muted">Just saying hello! 👋</span></li>
                         </ul>
                         <div className="flex items-center justify-center gap-8 mt-4">
-                            <a href={`mailto:${personalInfo.email}`} aria-label="Send an email directly" className="flex items-center space-x-2">
+                            <a href={`mailto:${personalInfo.email}?subject=Hello%20Soumyajit&body=I%20wanted%20to%20reach%20out%20about...`} aria-label="Send an email directly" className="flex items-center space-x-2">
                                 <Mail size={20} className='text-primary' aria-hidden="true" />
                                 <span>Email Me Directly</span>
                             </a>

@@ -124,12 +124,12 @@ const Sidebar = () => {
                         <div className="flex items-center text-sm lg:text-sm text-muted">
                             <ExternalLink size={18} className="flex-shrink-0 mr-3 text-primary" />
                             <a
-                                href={personalInfo.website}
+                                href={`${personalInfo.socialLinks.github}/soumyajiitdas.github.io`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="truncate transition-colors hover:text-primary"
                             >
-                                Visit My Portfolio
+                                View Source Code
                             </a>
                         </div>
                     </address>
