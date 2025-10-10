@@ -95,8 +95,8 @@ const Sidebar = () => {
             >
                 <div className="p-4 lg:p-6">
                     {/* Profile Section */}
-                    <section className="mb-6 text-center lg:mb-6">
-                        <div className="w-28 h-28 mx-auto mb-4 overflow-hidden border-4 rounded-full lg:w-32 lg:h-32 lg:mb-4 border-default bg-canvas-subtle">
+                    <section className="mb-6 text-center">
+                        <div className="w-28 h-28 mx-auto mb-4 overflow-hidden border-4 rounded-full lg:w-32 lg:h-32 border-default bg-canvas-subtle">
                             <img
                                 src="https://avatars.githubusercontent.com/u/116360739?v=4"
                                 alt={personalInfo.name}
@@ -105,7 +105,7 @@ const Sidebar = () => {
                                 className="object-cover w-full h-full"
                             />
                         </div>
-                        <h1 className="mb-2 text-xl font-bold lg:text-2xl text-default lg:mb-2">
+                        <h1 className="mb-2 text-xl font-bold lg:text-2xl text-default">
                             {personalInfo.name}
                         </h1>
                         <p className="text-sm text-muted lg:text-sm">
@@ -137,8 +137,8 @@ const Sidebar = () => {
                     </address>
 
                     {/* Navigation */}
-                    <nav className="mb-6 lg:mb-6">
-                        <ul className="space-y-2 lg:space-y-2">
+                    <nav className="mb-6">
+                        <ul className="space-y-2">
                             {navItems.map((item) => {
                                 const Icon = item.icon;
                                 const isActive = location.pathname === item.path;
@@ -149,7 +149,7 @@ const Sidebar = () => {
                                             to={item.path}
                                             onClick={() => setIsMobileMenuOpen(false)}
                                             className={`
-                                                flex items-center px-4 lg:px-4 py-3 lg:py-3 rounded-lg transition-colors text-sm
+                                                flex items-center px-4 py-3 rounded-lg transition-colors text-sm
                                                 ${
                                                     isActive
                                                         ? 'bg-primary-emphasis text-white'
@@ -168,10 +168,10 @@ const Sidebar = () => {
                     </nav>
 
                     {/* Social Links */}
-                    <nav className="pt-4 border-t lg:pt-4 border-default">
+                    <nav className="pt-4 border-t border-default">
                         <p className="mb-4 text-sm font-medium text-default">Connect with me</p>
                         <ul className="grid grid-cols-3 gap-3 lg:flex lg:flex-wrap lg:gap-3">
-                            {Object.entries(personalInfo.socialLinks).map(([platform, url]) => {
+                            {Object.entries(personalInfo.socialLinks).slice(0, 5).map(([platform, url]) => {
                                 const Icon = socialIcons[platform];
                                 return (
                                     <li key={platform}>

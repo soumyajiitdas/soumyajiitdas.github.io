@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ExternalLink, Calendar, Clock, BookOpen, Loader2 } from 'lucide-react';
 import Giscus from '../components/Giscus';
+import './Blog.css';
 
 const Blog = () => {
     const [blogs, setBlogs] = useState([]);
@@ -97,7 +98,7 @@ const Blog = () => {
 
     if (selectedBlog) {
         return (
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto mt-14 lg:mt-0">
                 <button
                     onClick={() => setSelectedBlog(null)}
                     className="mb-6 text-sm font-medium transition-colors text-primary hover:text-primary-emphasis"
@@ -105,21 +106,21 @@ const Blog = () => {
                     ← Back to all blogs
                 </button>
 
-                <article className="p-6 rounded-lg bg-canvas-subtle border border-default">
-                    <h1 className="mb-4 text-3xl font-bold text-default lg:text-4xl">
+                <article className="p-4 lg:p-6 rounded-lg bg-canvas-subtle border border-default">
+                    <h1 className="mb-3 text-2xl font-bold text-default lg:text-3xl">
                         {selectedBlog.title}
                     </h1>
 
-                    <div className="flex flex-wrap items-center gap-4 pb-4 mb-6 text-sm border-b text-muted border-default">
-                        <div className="flex items-center gap-2">
-                            <Calendar size={16} />
+                    <div className="flex flex-wrap items-center gap-3 pb-3 mb-4 text-xs border-b text-muted border-default">
+                        <div className="flex items-center gap-1.5">
+                            <Calendar size={14} />
                             <span>{formatDate(selectedBlog.pubDate)}</span>
                         </div>
-                        <div className="flex items-center gap-2">
-                            <Clock size={16} />
+                        <div className="flex items-center gap-1.5">
+                            <Clock size={14} />
                             <span>{getReadingTime(selectedBlog.content)}</span>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-1.5">
                             <span>By {selectedBlog.author}</span>
                         </div>
                     </div>
@@ -128,24 +129,43 @@ const Blog = () => {
                         <img
                             src={selectedBlog.thumbnail}
                             alt={selectedBlog.title}
-                            className="object-cover w-full mb-6 rounded-lg h-72"
+                            className="object-cover w-full mb-4 rounded-lg h-48"
+                            style={{ maxHeight: '400px' }}
                         />
                     )}
 
-                    <div className="mb-8">
+                    {/* Blog Content */}
+                    <div 
+                        className="blog-content mb-6 prose prose-sm lg:prose-base max-w-none text-default
+                            prose-headings:text-default prose-p:text-default prose-a:text-primary 
+                            prose-strong:text-default prose-code:text-default prose-code:bg-canvas-muted
+                            prose-pre:bg-canvas-muted prose-pre:text-default prose-pre:border prose-pre:border-default
+                            prose-blockquote:text-muted prose-blockquote:border-primary
+                            prose-li:text-default prose-img:rounded-lg
+                            prose-table:border-default prose-th:bg-canvas-muted
+                            dark:prose-invert"
+                        dangerouslySetInnerHTML={{ __html: selectedBlog.content }}
+                    />
+
+                    {/* Read on Medium Link */}
+                    <div className="flex items-center justify-center py-4 mb-6 border-t border-b border-default">
                         <a
                             href={selectedBlog.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
+                            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
                         >
-                            <span>Read Full Article on Medium</span>
-                            <ExternalLink size={16} />
+                            <span>Read Original Article on Medium</span>
+                            <ExternalLink size={14} />
                         </a>
                     </div>
 
-                    <div className="mb-8">
-                        <h2 className="mb-4 text-xl font-semibold text-default">Comments</h2>
+                    {/* Comments Section */}
+                    <div className="mb-6">
+                        <h2 className="mb-3 text-xl font-bold text-default">Comments</h2>
+                        <p className="mb-3 text-xs text-muted">
+                            Share your thoughts and discuss this article with the community.
+                        </p>
                         <Giscus blogTitle={selectedBlog.title} />
                     </div>
                 </article>
@@ -155,10 +175,10 @@ const Blog = () => {
 
     return (
         <div className="max-w-6xl mx-auto mt-14 lg:mt-0">
-            <div className="mb-8">
-                <h1 className="mb-2 text-3xl font-bold text-default lg:text-4xl">Personal <span className='text-primary'>Feed</span></h1>
-                <p className="text-muted">
-                    My thoughts, stories, and ideas about technology, development, and more.
+            <div className="mb-8 text-center lg:text-left">
+                <h1 className="mb-4 text-4xl font-bold text-default">Personal <span className='text-primary'>Feed</span></h1>
+                <p className="max-w-2xl text-muted">
+                    My thoughts, learnings, notes and ideas about technology, development, lifestyle and more.
                 </p>
             </div>
 
@@ -204,11 +224,11 @@ const Blog = () => {
 
                                     <div className="flex flex-wrap items-center gap-3 mt-auto text-xs text-muted">
                                         <div className="flex items-center gap-1">
-                                            <Calendar size={14} />
+                                            <Calendar size={14} className='text-primary' />
                                             <span>{formatDate(blog.pubDate)}</span>
                                         </div>
                                         <div className="flex items-center gap-1">
-                                            <Clock size={14} />
+                                            <Clock size={14} className='text-primary' />
                                             <span>{getReadingTime(blog.content)}</span>
                                         </div>
                                     </div>

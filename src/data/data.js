@@ -10,6 +10,7 @@ export const personalInfo = {
         instagram: "https://instagram.com/soumyajiit_",
         facebook: "https://facebook.com/soumyajiitdas",
         twitter: "https://twitter.com/soumyajiit_",
+        medium: "https://medium.com/@soumyajit_"
     }
 };
 

@@ -11,6 +11,7 @@ import {
     Instagram,
     Facebook,
     Twitter,
+    Rss,
     ExternalLink,
     MessageCircle,
     Clock,
@@ -92,6 +93,7 @@ const Contact = () => {
         instagram: Instagram,
         facebook: Facebook,
         twitter: Twitter,
+        medium: Rss,
     };
 
     const contactMethods = [

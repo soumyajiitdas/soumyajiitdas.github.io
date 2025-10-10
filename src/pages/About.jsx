@@ -216,7 +216,8 @@ const About = () => {
                                 className="inline-flex items-center px-6 py-3 text-white transition-all duration-300 transform rounded-lg shadow-lg bg-primary-emphasis hover:bg-primary-emphasis/90 hover:scale-105 hover:shadow-primary-muted/20"
                             >
                                 <Download size={20} className="mr-2" aria-hidden="true" />
-                                Download CV
+                                <span className='hidden sm:block'>Download CV</span>
+                                <span className='block sm:hidden'>My Resume</span>
                             </button>
                             <button
                                 onClick={handleViewProjects}
@@ -224,7 +225,8 @@ const About = () => {
                                 className="inline-flex items-center px-6 py-3 transition-all duration-300 transform border-2 rounded-lg border-primary-muted text-primary hover:bg-primary-emphasis hover:text-white hover:border-primary-emphasis hover:scale-105"
                             >
                                 <ExternalLink size={20} className="mr-2" aria-hidden="true" />
-                                View Projects
+                                <span className='hidden sm:block'>View Projects</span>
+                                <span className='block sm:hidden'>Projects</span>
                             </button>
                         </div>
                     </div>
