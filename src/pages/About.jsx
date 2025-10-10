@@ -1,9 +1,71 @@
 import React, { useState, useEffect } from 'react';
 import { aboutMe, typewriterTexts } from '../data/data';
-import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson, Pencil, Trash2, Plus, Save, X } from 'lucide-react';
+import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJson, Pencil, Trash2, Plus, Save, X, GripVertical } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors, closestCenter, useDraggable, useDroppable } from '@dnd-kit/core';
 import profileImg from '/assets/profileImg.webp';
 import myResume from "/assets/Sample_Resume.pdf";
+
+// Simple helper to move array elements
+const arrayMove = (array, from, to) => {
+    const arr = [...array];
+    const [item] = arr.splice(from, 1);
+    arr.splice(to, 0, item);
+    return arr;
+};
+
+// Generate a reasonably unique id without extra deps
+const genId = () => `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`;
+
+// Normalize any persisted value to [{id, text}] shape
+const normalizeFocusList = (value, fallbackStrings) => {
+    const toObjects = (list) => list.map((text) => ({ id: genId(), text }));
+
+    if (!value) return toObjects(fallbackStrings);
+    try {
+        const parsed = typeof value === 'string' ? JSON.parse(value) : value;
+        if (Array.isArray(parsed)) {
+            if (parsed.length === 0) return toObjects(fallbackStrings);
+            if (typeof parsed[0] === 'string') return toObjects(parsed);
+            if (parsed[0] && typeof parsed[0] === 'object' && 'text' in parsed[0]) return parsed;
+        }
+        return toObjects(fallbackStrings);
+    } catch (e) {
+        return toObjects(fallbackStrings);
+    }
+};
+
+const FocusItem = ({ item, index, children, isEditing }) => {
+    // Make each item both draggable and a drop target
+    const { attributes, listeners, setNodeRef: setDragRef, transform, isDragging } = useDraggable({ id: item.id });
+    // Limit dragging to the handle only by attaching listeners to a handle element later
+    const handleProps = { ...attributes, ...listeners };
+    const { setNodeRef: setDropRef } = useDroppable({ id: item.id });
+
+    const style = transform ? { transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`, zIndex: 5 } : undefined;
+
+    return (
+        <li
+            key={item.id}
+            ref={(node) => {
+                setDragRef(node);
+                setDropRef(node);
+            }}
+            style={style}
+            className={`group flex items-center gap-3 rounded-md ${isDragging ? 'ring-1 ring-primary/40 bg-background-subtle' : ''} ${isEditing ? 'bg-background-subtle' : ''}`}
+        >
+            <button
+                type="button"
+                aria-label="Drag item"
+                className="p-1 text-muted hover:text-default rounded cursor-grab active:cursor-grabbing focus:outline-none focus:ring-1 focus:ring-primary/40"
+                {...handleProps}
+            >
+                <GripVertical size={16} className='text-primary' />
+            </button>
+            {children}
+        </li>
+    );
+};
 
 const About = () => {
     const navigate = useNavigate();
@@ -19,15 +81,17 @@ const About = () => {
         "🔍 Exploring advanced topics in machine learning and system design"
     ];
 
+    // Load from localStorage and normalize
     const [focusList, setFocusList] = useState(() => {
         const savedList = localStorage.getItem('focusList');
-        const parsedList = savedList ? JSON.parse(savedList) : null;
-        return parsedList && parsedList.length > 0 ? parsedList : defaultFocusList;
+        return normalizeFocusList(savedList ? JSON.parse(savedList) : null, defaultFocusList);
     });
+
     const [newItem, setNewItem] = useState('');
     const [editingIndex, setEditingIndex] = useState(null);
     const [editedItem, setEditedItem] = useState('');
 
+    // Persist to localStorage on changes
     useEffect(() => {
         localStorage.setItem('focusList', JSON.stringify(focusList));
     }, [focusList]);
@@ -74,7 +138,7 @@ const About = () => {
 
     const handleAddItem = () => {
         if (newItem.trim() !== '') {
-            setFocusList([...focusList, newItem.trim()]);
+            setFocusList([...focusList, { id: genId(), text: newItem.trim() }]);
             setNewItem('');
         }
     };
@@ -82,22 +146,48 @@ const About = () => {
     const handleDeleteItem = (index) => {
         const updatedList = focusList.filter((_, i) => i !== index);
         setFocusList(updatedList);
+        if (editingIndex === index) setEditingIndex(null);
     };
 
     const handleEditItem = (index) => {
         setEditingIndex(index);
-        setEditedItem(focusList[index]);
+        setEditedItem(focusList[index].text);
     };
 
     const handleSaveItem = (index) => {
         const updatedList = [...focusList];
-        updatedList[index] = editedItem.trim();
+        updatedList[index] = { ...updatedList[index], text: editedItem.trim() };
         setFocusList(updatedList);
         setEditingIndex(null);
     };
 
     const handleCancelEdit = () => {
         setEditingIndex(null);
+    };
+
+    // DnD-kit sensors
+    const sensors = useSensors(
+        useSensor(MouseSensor, { activationConstraint: { distance: 5 } }),
+        useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } })
+    );
+
+    const handleDragEnd = (event) => {
+        const { active, over } = event;
+        if (!over || active.id === over.id) return;
+        const oldIndex = focusList.findIndex((i) => i.id === active.id);
+        const newIndex = focusList.findIndex((i) => i.id === over.id);
+        if (oldIndex === -1 || newIndex === -1) return;
+        const newList = arrayMove(focusList, oldIndex, newIndex);
+        setFocusList(newList);
+
+        // Keep editingIndex pointing to the same item after reorder
+        if (editingIndex !== null) {
+            const editingId = focusList[editingIndex]?.id;
+            if (editingId) {
+                const idx = newList.findIndex((i) => i.id === editingId);
+                setEditingIndex(idx === -1 ? null : idx);
+            }
+        }
     };
 
     return (
@@ -148,7 +238,7 @@ const About = () => {
                         <div className="absolute w-6 h-6 border-b-2 border-r-2 -bottom-2 -right-2 border-accent opacity-70 group-hover:opacity-100 animate-pulse" aria-hidden="true"></div>
                         <div className="absolute inset-0 border-2 border-dashed rounded-lg opacity-25 border-border animate-spin" style={{ animationDuration: '20s' }} aria-hidden="true"></div>
                         <div className="absolute px-2 py-1 font-mono text-xs border rounded -top-8 -left-5 text-accent bg-background opacity-70 group-hover:opacity-100 border-accent/20" aria-hidden="true">
-                            &lt;dev/&gt;
+                            {"<dev/>"}
                         </div>
                         <div className="absolute px-2 py-1 font-mono text-xs border rounded -bottom-8 -right-5 text-foreground bg-background-subtle border-accent/20 opacity-70 group-hover:opacity-100" aria-hidden="true">
                             ✨ <span className="text-primary">Asp. SDE</span>
@@ -252,57 +342,57 @@ const About = () => {
             </section>
             
             {/* Current Focus */}
-            <section className="p-8 border rounded-lg bg-canvas-subtle border-default" aria-labelledby="current-focus-heading">
+            <section className="p-6 sm:p-8 border rounded-lg bg-canvas-subtle border-default" aria-labelledby="current-focus-heading">
                 <h2 id="current-focus-heading" aria-level="2" className="mb-6 text-2xl font-bold text-default">✨ Current Focus <span className='text-primary'>–</span></h2>
 
-                <ul className="space-y-4">
-                    {focusList.map((item, index) => (
-                        <li key={index} className="group flex items-center gap-3">
-                            <div className="flex items-center flex-grow gap-3">
-                                {editingIndex === index ? (
-                                    <>
-                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" aria-hidden="true" />
-                                        <input
-                                            type="text"
-                                            value={editedItem}
-                                            onChange={(e) => setEditedItem(e.target.value)}
-                                            aria-label={`Edit focus item: ${item}`}
-                                            className="flex-grow px-2 py-1 rounded bg-transparent text-default"
-                                        />
-                                    </>
-                                ) : (
-                                    <>
-                                        <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" aria-hidden="true" />
-                                        <span className="text-muted">{item}</span>
-                                    </>
-                                )}
-                            </div>
-                            <div className="group flex gap-4 ml-auto">
-                                {editingIndex === index ? (
-                                    <>
-                                        <button onClick={() => handleSaveItem(index)} aria-label={`Save changes for item: ${item}`} className="text-green-500 hover:text-green-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Save size={15} />
-                                        </button>
-                                        <button onClick={() => handleCancelEdit()} aria-label={`Cancel editing item: ${item}`} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <X size={16} />
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <button onClick={() => handleEditItem(index)} aria-label={`Edit item: ${item}`} className="text-blue-500 hover:text-blue-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Pencil size={15} />
-                                        </button>
-                                        <button onClick={() => handleDeleteItem(index)} aria-label={`Delete item: ${item}`} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
-                                            <Trash2 size={15} />
-                                        </button>
-                                    </>
-                                )}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
+                <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                    <ul className="space-y-4">
+                        {focusList.map((item, index) => (
+                            <FocusItem key={item.id} item={item} index={index} isEditing={editingIndex === index}>
+                                <div className="flex items-center flex-grow gap-3">
+                                    {editingIndex === index ? (
+                                        <>
+                                            <input
+                                                type="text"
+                                                value={editedItem}
+                                                onChange={(e) => setEditedItem(e.target.value)}
+                                                aria-label={`Edit focus item: ${item.text}`}
+                                                className="flex-grow px-2 py-1 rounded bg-transparent text-default"
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <span className="text-muted">{item.text}</span>
+                                        </>
+                                    )}
+                                </div>
+                                <div className="group flex  gap-3 sm:gap-4 ml-auto">
+                                    {editingIndex === index ? (
+                                        <>
+                                            <button onClick={() => handleSaveItem(index)} aria-label={`Save changes for item: ${item.text}`} className="text-green-500 hover:text-green-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                                <Save size={15} />
+                                            </button>
+                                            <button onClick={() => handleCancelEdit()} aria-label={`Cancel editing item: ${item.text}`} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                                <X size={16} />
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <button onClick={() => handleEditItem(index)} aria-label={`Edit item: ${item.text}`} className="text-blue-500 hover:text-blue-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                                <Pencil size={15} />
+                                            </button>
+                                            <button onClick={() => handleDeleteItem(index)} aria-label={`Delete item: ${item.text}`} className="text-red-500 hover:text-red-400 opacity-0 group-hover:opacity-80 group-hover:dark:opacity-50">
+                                                <Trash2 size={15} />
+                                            </button>
+                                        </>
+                                    )}
+                                </div>
+                            </FocusItem>
+                        ))}
+                    </ul>
+                </DndContext>
 
-                <div className="flex items-center gap-3 mt-4">
+                <div className="flex items-center gap-2 mt-4">
                     <ChevronRight size={16} className="flex-shrink-0 mt-1 text-primary" aria-hidden="true" />
                     <input
                         type="text"
