@@ -9,6 +9,7 @@ import {
     FolderOpen,
     Award,
     Mail,
+    BookOpen,
     Github,
     Linkedin,
     Instagram,
@@ -33,6 +34,7 @@ const Sidebar = () => {
         { path: '/experience', label: 'Experience', icon: Briefcase },
         { path: '/projects', label: 'Projects', icon: FolderOpen },
         { path: '/skills', label: 'Skills & Certs', icon: Award },
+        { path: '/blog', label: 'Blog Posts', icon: BookOpen },
         { path: '/contact', label: 'Contact', icon: Mail },
     ];
 
@@ -91,9 +93,9 @@ const Sidebar = () => {
                 bg-canvas-overlay lg:bg-transparent lg:sticky lg:top-0 lg:h-screen overflow-y-auto border-r border-default lg:border-r-0
             `}
             >
-                <div className="p-6 lg:p-8">
+                <div className="p-4 lg:p-6">
                     {/* Profile Section */}
-                    <section className="mb-8 text-center lg:mb-8">
+                    <section className="mb-6 text-center lg:mb-6">
                         <div className="w-28 h-28 mx-auto mb-4 overflow-hidden border-4 rounded-full lg:w-32 lg:h-32 lg:mb-4 border-default bg-canvas-subtle">
                             <img
                                 src="https://avatars.githubusercontent.com/u/116360739?v=4"
@@ -112,7 +114,7 @@ const Sidebar = () => {
                     </section>
 
                     {/* Contact Info */}
-                    <address className="mb-8 space-y-3 lg:mb-8 lg:space-y-3 not-italic">
+                    <address className="mb-6 space-y-3 lg:mb-6 lg:space-y-3 not-italic">
                         <div className="flex items-center text-sm lg:text-sm text-muted">
                             <MapPin size={18} className="flex-shrink-0 mr-3 text-primary" />
                             <span className="truncate">{personalInfo.location}</span>
@@ -135,7 +137,7 @@ const Sidebar = () => {
                     </address>
 
                     {/* Navigation */}
-                    <nav className="mb-8 lg:mb-8">
+                    <nav className="mb-6 lg:mb-6">
                         <ul className="space-y-2 lg:space-y-2">
                             {navItems.map((item) => {
                                 const Icon = item.icon;

@@ -23,7 +23,8 @@ This is my personal corner of the internet! I built this portfolio to showcase m
 -   🤩 **Interactive UI:** I've added some fun touches like a typewriter effect to keep things interesting.
 -   🔎 **Project Filtering:** Easily filter through my projects to see what I've been up to.
 -   📬 **Contact Form:** Want to say hi? You can send me a message directly from the site.
--   ✍️ **Editable Current Focus:** Easily update your current focus/status or easily drag-and-drop to reorder them. It uses browsers local storage to store data, meaning your edited data remain unchanged.
+-   📒 **Blog Section:** My medium blog posts. This is my digital notes section, you will get tech insights in simple language.(new)
+-   ✍️ **Editable Current Focus:** Easily update your current focus/status or easily drag-and-drop to reorder them. It uses browsers local storage to store data, meaning your edited data remain unchanged.(new)
 
 ## 🛠️ What I Used
 
