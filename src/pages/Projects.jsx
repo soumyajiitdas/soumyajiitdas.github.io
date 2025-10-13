@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { projects } from '../data/data';
-import { Github, ExternalLink, Calendar, Star, Filter } from 'lucide-react';
+import { projects, recentContributions } from '../data/data';
+import { Github, ExternalLink, Calendar, Star, Filter, GitFork } from 'lucide-react';
 
 const Projects = () => {
     const [activeFilter, setActiveFilter] = useState('all');
@@ -195,6 +195,52 @@ const Projects = () => {
                 </div>
             )}
 
+            {/* Recent Contributions Section */}
+            <div className="space-y-6">
+                <div className="text-center lg:text-left">
+                    <h2 className="mb-2 text-3xl font-bold text-default">
+                        Recent <span className="text-primary">Contributions</span>
+                    </h2>
+                    <p className="max-w-2xl text-muted">
+                        Open source projects I've recently contributed to, helping build better tools for the community.
+                    </p>
+                </div>
+
+                {/* Contributions Grid */}
+                <div className="grid gap-4 md:grid-cols-2">
+                    {recentContributions.map((contribution) => (
+                        <a
+                            key={contribution.id}
+                            href={contribution.repoUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block p-5 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted hover:shadow-lg group"
+                            data-testid={`contribution-card-${contribution.id}`}
+                        >
+                            <div className="flex items-start gap-3">
+                                <div className="p-2 rounded-lg bg-primary-subtle text-primary">
+                                    <GitFork size={20} />
+                                </div>
+                                <div className="flex-1 min-w-0">
+                                    <h3 className="mb-1 text-lg font-semibold transition-colors text-default group-hover:text-primary">
+                                        {contribution.repoName}
+                                    </h3>
+                                    <p className="mb-2 text-sm text-muted">
+                                        <span className="font-medium">@{contribution.owner}</span>
+                                    </p>
+                                    <p className="text-sm leading-relaxed text-muted line-clamp-2">
+                                        {contribution.description}
+                                    </p>
+                                </div>
+                                <div className="flex-shrink-0 transition-transform group-hover:translate-x-1">
+                                    <ExternalLink size={16} className="text-muted" />
+                                </div>
+                            </div>
+                        </a>
+                    ))}
+                </div>
+            </div>
+
             {/* Project Stats */}
             <div className="p-6 border rounded-lg bg-canvas-subtle border-default">
                 <h3 className="mb-4 text-lg font-semibold text-default">Project Statistics</h3>
@@ -206,9 +252,9 @@ const Projects = () => {
 
                     <article className="text-center" aria-label="Featured Projects">
                         <div className="text-2xl font-bold text-primary">
-                            {projects.filter(p => p.featured).length}
+                            {recentContributions.length}
                         </div>
-                        <div className="text-sm text-muted">Featured</div>
+                        <div className="text-sm text-muted">Contributions</div>
                     </article>
 
                     <article className="text-center" aria-label="Live Projects">

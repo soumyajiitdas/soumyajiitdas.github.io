@@ -139,7 +139,7 @@ export const projects = [
         featured: true,
         deploymentStatus: "In Development",
         lastUpdated: "September 2025",
-        isDeployed: false
+        isDeployed: true
     },
     {
         id: 2,
@@ -183,6 +183,33 @@ export const projects = [
         lastUpdated: "September 2025",
         isDeployed: true
     }
+];
+
+export const recentContributions = [
+    {
+        id: 1,
+        repoName: "Finance-Management-System",
+        owner: "BapiSarkar6294",
+        description: "Personal finance management system, a side project for internship at Ardent Computech.",
+        repoUrl: "https://github.com/BapiSarkar6294/Finance-Management-System",
+        lastUpdated: "Oct 2025",
+    },
+    {
+        id: 2,
+        repoName: "toto-booking-management-system ",
+        owner: "rajupilki-ctrl",
+        description: "A project aimed at simplifying and digitalizing local electric Toto booking and management.",
+        repoUrl: "https://github.com/rajupilki-ctrl/doctor-booking-management-system-",
+        lastUpdated: "Oct 2025",
+    },
+    {
+        id: 3,
+        repoName: "doctor-booking-management-system",
+        owner: "rajupilki-ctrl",
+        description: "A react application which helps locals to connect with the top doctors in town for better treatment.",
+        repoUrl: "https://github.com/rajupilki-ctrl/doctor-booking-management-system-",
+        lastUpdated: "Oct 2025",
+    },
 ];
 
 export const skills = {
