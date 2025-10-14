@@ -138,7 +138,7 @@ export const projects = [
         image: "https://plus.unsplash.com/premium_vector-1736772911342-08cd98a5d980?w=600&h=400&fit=crop",
         featured: true,
         deploymentStatus: "In Development",
-        lastUpdated: "September 2025",
+        lastUpdated: "Oct 2025",
         isDeployed: true
     },
     {
@@ -152,7 +152,7 @@ export const projects = [
         image: "https://plus.unsplash.com/premium_vector-1736773946114-bbd8f8ce1f72?w=600&h=400&fit=crop",
         featured: true,
         deploymentStatus: "Alpha Testing",
-        lastUpdated: "August 2025",
+        lastUpdated: "Oct 2025",
         isDeployed: true
     },
     {
@@ -166,7 +166,7 @@ export const projects = [
         image: "https://plus.unsplash.com/premium_vector-1736769580845-26f63bbd6990?w=600&h=400&fit=crop",
         featured: false,
         deploymentStatus: "Prototype",
-        lastUpdated: "August 2025",
+        lastUpdated: "Aug 2025",
         isDeployed: false
     },
     {
@@ -180,7 +180,7 @@ export const projects = [
         image: "https://plus.unsplash.com/premium_vector-1721386085379-8df3c43a062d?w=600&h=400&fit=crop",
         featured: false,
         deploymentStatus: "Live",
-        lastUpdated: "September 2025",
+        lastUpdated: "Oct 2025",
         isDeployed: true
     }
 ];

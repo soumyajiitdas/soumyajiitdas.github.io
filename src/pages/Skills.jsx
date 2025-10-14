@@ -180,7 +180,7 @@ const Skills = () => {
                                                 className="flex flex-col items-center p-4 transition-all duration-200 border bg-canvas rounded-xl border-default hover:border-primary-muted hover:shadow-md group"
                                                 aria-label={skill.name}
                                             >
-                                                <SkillIcon size={28} className={`${skillColor} mb-3 group-hover:scale-110 transition-transform duration-200`} />
+                                                <SkillIcon size={28} className={`${skillColor} mb-3 group-hover:animate-bounce transition-transform duration-300`} />
                                                 <div className="text-center">
                                                     <span className="block text-sm font-medium break-all text-default">
                                                         {skill.name}

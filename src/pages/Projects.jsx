@@ -57,11 +57,10 @@ const Projects = () => {
                     <button
                         key={filter.id}
                         onClick={() => setActiveFilter(filter.id)}
-                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                            activeFilter === filter.id
+                        className={`px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${activeFilter === filter.id
                                 ? 'bg-primary-emphasis text-white shadow-sm'
                                 : 'text-muted hover:text-default hover:bg-canvas-muted'
-                        }`}
+                            }`}
                         role="tab"
                         aria-selected={activeFilter === filter.id}
                         aria-label={`Show ${filter.label}`}
@@ -84,9 +83,8 @@ const Projects = () => {
                 {filteredProjects.map((project) => (
                     <article
                         key={project.id}
-                        className={`bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300 hover:shadow-lg ${
-                            project.featured ? 'ring-2 ring-primary-muted' : ''
-                        }`}
+                        className={`bg-canvas-subtle rounded-lg border border-default hover:border-primary-muted transition-all duration-300 hover:shadow-lg ${project.featured ? 'ring-2 ring-primary-muted' : ''
+                            }`}
                     >
                         {/* Project Image */}
                         <div className="relative">
@@ -98,7 +96,7 @@ const Projects = () => {
                             {project.featured && (
                                 <div className="absolute top-3 left-3">
                                     <div className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white rounded-full bg-primary-emphasis">
-                                        <Star size={12} />
+                                        <Star size={12} className='animate-pulse' />
                                         Featured
                                     </div>
                                 </div>
@@ -144,7 +142,7 @@ const Projects = () => {
                             <div className="flex items-center justify-between mb-4 text-xs text-muted">
                                 <div className="flex items-center gap-1">
                                     <Calendar size={12} />
-                                    <span>Updated {project.lastUpdated}</span>
+                                    <span>Last Updated<span className='text-primary'>: {project.lastUpdated}</span></span>
                                 </div>
                                 {project.isDeployed && (
                                     <span className="px-2 py-1 text-green-700 bg-green-100 rounded-full dark:bg-green-900 dark:text-green-300">
@@ -159,10 +157,10 @@ const Projects = () => {
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium transition-colors border rounded-lg bg-canvas border-default hover:bg-canvas-muted text-default"
+                                    className="group flex items-center gap-2 px-4 py-2 text-sm font-medium hover:scale-105 transition-colors border rounded-lg bg-canvas border-default hover:bg-canvas-muted text-default"
                                     aria-label={`View source code for ${project.title} on GitHub`}
                                 >
-                                    <Github size={16} />
+                                    <Github size={16} className='group-hover:animate-bounce' />
                                     <span>Source Code</span>
                                 </a>
 
@@ -171,10 +169,10 @@ const Projects = () => {
                                         href={project.demo}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
+                                        className="group flex items-center gap-2 px-4 py-2 text-sm font-medium hover:scale-105 text-white transition-colors rounded-lg bg-primary-emphasis hover:bg-primary-emphasis/90"
                                         aria-label={`View live demo of ${project.title}`}
                                     >
-                                        <ExternalLink size={16} />
+                                        <ExternalLink size={16} className='group-hover:rotate-45 transition-transform duration-300' />
                                         <span>Live Demo</span>
                                     </a>
                                 )}
@@ -198,9 +196,10 @@ const Projects = () => {
             {/* Recent Contributions Section */}
             <div className="space-y-6">
                 <div className="text-center lg:text-left">
-                    <h2 className="mb-2 text-3xl font-bold text-default">
-                        Recent <span className="text-primary">Contributions</span>
-                    </h2>
+                    <div className="flex items-center gap-3 mb-6">
+                        <GitFork className="text-primary" size={24} />
+                    <h2 className="text-3xl font-bold text-default">Recent Contributions <span className="text-primary">:</span></h2>
+                    </div>
                     <p className="max-w-2xl text-muted">
                         Open source projects I've recently contributed to, helping build better tools for the community.
                     </p>
@@ -218,8 +217,8 @@ const Projects = () => {
                             data-testid={`contribution-card-${contribution.id}`}
                         >
                             <div className="flex items-start gap-3">
-                                <div className="p-2 rounded-lg bg-primary-subtle text-primary">
-                                    <GitFork size={20} />
+                                <div className="group p-2 rounded-lg bg-primary-subtle text-primary">
+                                    <Github size={20} className='group-hover:animate-bounce' />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <h3 className="mb-1 text-lg font-semibold transition-colors text-default group-hover:text-primary">
@@ -231,9 +230,13 @@ const Projects = () => {
                                     <p className="text-sm leading-relaxed text-muted line-clamp-2">
                                         {contribution.description}
                                     </p>
+                                    <div className="flex items-center gap-1 mt-2 text-xs text-muted">
+                                        <Calendar size={12} />
+                                        <span>Last Contributed<span className='text-primary'>: {contribution.lastUpdated}</span></span>
+                                    </div>
                                 </div>
-                                <div className="flex-shrink-0 transition-transform group-hover:translate-x-1">
-                                    <ExternalLink size={16} className="text-muted" />
+                                <div className="flex-shrink-0">
+                                    <ExternalLink size={16} className="text-muted group-hover:rotate-45 transition-transform duration-300" />
                                 </div>
                             </div>
                         </a>
