@@ -4,7 +4,7 @@ import { ChevronRight, Download, ExternalLink, Coffee, GitBranch, Brain, FileJso
 import { useNavigate } from 'react-router-dom';
 import { DndContext, MouseSensor, TouchSensor, useSensor, useSensors, closestCenter, useDraggable, useDroppable } from '@dnd-kit/core';
 import profileImg from '/assets/profileImg.webp';
-import myResume from "/assets/Sample_Resume.pdf";
+import myResume from "/assets/SoumyajitDas_Resume.pdf";
 
 // Simple helper to move array elements
 const arrayMove = (array, from, to) => {
@@ -126,7 +126,7 @@ const About = () => {
     const handleDownloadResume = () => {
         const link = document.createElement('a');
         link.href = myResume;
-        link.download = 'Sample_Resume.pdf';
+        link.download = 'SoumyajitDas_Resume.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
