@@ -9,7 +9,7 @@ const Experience = () => {
             <div className="text-center lg:text-left">
                 <h1 className="mb-4 text-4xl font-bold text-default">Education & <span className='text-primary'>Experience</span></h1>
                 <p className="max-w-2xl text-muted">
-                    My professional journey and educational background in technology and software development.
+                    A glimpse into my academic foundation and professional journey. Showcasing the education that shaped my technical thinking and the experiences that refined it through real-world application.
                 </p>
             </div>
 
@@ -20,19 +20,13 @@ const Experience = () => {
                     <h2 className="text-3xl font-bold text-default">Education <span className="text-primary">:</span></h2>
                 </div>
 
-                                <div className="space-y-6">
-
-                                    {education.map((edu, index) => (
-
-                                        <article
-
-                                            key={edu.id}
-
-                                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
-
-                                            aria-label={`Education: ${edu.degree} at ${edu.institution}`}
-
-                                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="space-y-6">
+                    {education.map((edu, index) => (
+                        <article
+                            key={edu.id}
+                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
+                            aria-label={`Education: ${edu.degree} at ${edu.institution}`}
+                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
                                     <h3 className="mb-1 text-xl font-semibold text-default">
                                         {edu.degree}
@@ -132,25 +126,18 @@ const Experience = () => {
                     <h2 className="text-3xl font-bold text-default">Professional Experience <span className="text-primary">:</span></h2>
                 </div>
 
-                                <div className="space-y-6">
-
-                                    {experience.map((exp, index) => (
-
-                                        <article
-
-                                            key={exp.id}
-
-                                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
-
-                                            aria-label={`Experience: ${exp.title} at ${exp.company}`}
-
-                                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
+                <div className="space-y-6">
+                    {experience.map((exp, index) => (
+                        <article
+                            key={exp.id}
+                            className="p-6 transition-all duration-300 border rounded-lg bg-canvas-subtle border-default hover:border-primary-muted"
+                            aria-label={`Experience: ${exp.title} at ${exp.company}`}
+                        >                            <div className="flex flex-col mb-4 lg:flex-row lg:items-start lg:justify-between">
                                 <div className="flex-1">
                                     <h3 className="mb-1 text-xl font-semibold text-default">
                                         {exp.title}
                                     </h3>
                                     <p className="mb-2 font-medium text-primary">{exp.company}</p>
-
                                     <div className="flex flex-wrap gap-4 mb-4 text-sm text-muted">
                                         <div className="flex items-center gap-1">
                                             <Calendar size={16} />

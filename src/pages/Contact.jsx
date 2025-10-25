@@ -117,7 +117,7 @@ const Contact = () => {
             icon: MapPin,
             title: "Location",
             value: personalInfo.location,
-            href: null,
+            href: `${personalInfo.locationUrl}`,
             description: "Where I'm based",
             color: "from-purple-500/10 to-purple-600/10 border-purple-500/20"
         },

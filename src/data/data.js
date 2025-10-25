@@ -3,6 +3,7 @@ export const personalInfo = {
     email: "soumyajit302@gmail.com",
     phone: "+91 0000000000",
     location: "Murshidabad (W.B.), India",
+    locationUrl: "https://maps.app.goo.gl/Rditsor2XyrU4aAw5",
     website: "https://soumyajitdas.vercel.app",
     socialLinks: {
         github: "https://github.com/soumyajiitdas",

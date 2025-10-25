@@ -195,8 +195,8 @@ const Projects = () => {
 
             {/* Recent Contributions Section */}
             <div className="space-y-6">
-                <div className="text-center lg:text-left">
-                    <div className="flex items-center gap-3 mb-6">
+                <div className="text-left">
+                    <div className="flex items-center gap-3 mb-2">
                         <GitFork className="text-primary" size={24} />
                     <h2 className="text-3xl font-bold text-default">Recent Contributions <span className="text-primary">:</span></h2>
                     </div>

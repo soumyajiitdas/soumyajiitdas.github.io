@@ -22,8 +22,7 @@ const Header = () => {
             {/* Theme Toggle - Desktop Only */}
             <button
                 onClick={toggleTheme}
-                className="hidden p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted lg:block"
-                title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+                className="hidden p-2 transition-colors duration-300 rounded-lg bg-canvas-subtle hover:bg-canvas-muted lg:block"
                 aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
             >
                 {theme === 'light' ? (

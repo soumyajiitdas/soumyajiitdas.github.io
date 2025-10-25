@@ -63,7 +63,7 @@ const Sidebar = () => {
 
                     <button
                         onClick={toggleTheme}
-                        className="p-2 transition-colors duration-200 rounded-lg bg-canvas-subtle hover:bg-canvas-muted"
+                        className="p-2 rounded-lg"
                         title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
                         aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
                     >
@@ -117,11 +117,25 @@ const Sidebar = () => {
                     <address className="mb-6 space-y-3 lg:mb-6 lg:space-y-3 not-italic">
                         <div className="flex items-center text-sm lg:text-sm text-muted">
                             <MapPin size={18} className="flex-shrink-0 mr-3 text-primary" />
-                            <span className="truncate">{personalInfo.location}</span>
+                            <a
+                                href={`${personalInfo.locationUrl}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="truncate transition-colors hover:text-primary"
+                            >
+                                {personalInfo.location}
+                            </a>
                         </div>
                         <div className="flex items-center text-sm lg:text-sm text-muted">
                             <Phone size={18} className="flex-shrink-0 mr-3 text-primary" />
-                            <span>{personalInfo.phone}</span>
+                            <a
+                                href={`tel:${personalInfo.phone}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="truncate transition-colors hover:text-primary"
+                            >
+                                {personalInfo.phone}
+                            </a>
                         </div>
                         <div className="flex items-center text-sm lg:text-sm text-muted">
                             <ExternalLink size={18} className="flex-shrink-0 mr-3 text-primary" />

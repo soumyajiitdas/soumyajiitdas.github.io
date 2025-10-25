@@ -138,7 +138,7 @@ const Skills = () => {
                     Skills & <span className="text-primary">Certifications</span>
                 </h1>
                 <p className="max-w-2xl text-muted">
-                    My technical skills, tools I work with, and certifications I've earned throughout my learning journey.
+                    A snapshot of my technical expertise — from core programming skills to the tools that power my workflow. Includes certifications that validate my continuous learning and growth as a developer.
                 </p>
             </div>
 
