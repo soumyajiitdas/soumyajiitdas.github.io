@@ -259,6 +259,19 @@ export const skills = {
 export const certifications = [
     {
         id: 1,
+        title: "Certificate of Participation in Ignitathon",
+        issuer: "Unstop",
+        date: "Oct 2025",
+        image: "https://plus.unsplash.com/premium_vector-1736774838927-ac874601f828?w=400&h=300&fit=crop",
+        credentialId: "6607a816-6344-45bc-8a1e-7e38d5b1f47e",
+        status: "completed",
+        statusText: "Completed",
+        expiryDate: "Lifetime",
+        verificationUrl: "https://unstop.com/certificate-preview/6607a816-6344-45bc-8a1e-7e38d5b1f47e?utm_campaign=site-emails",
+        category: "AI/ML",
+    },
+    {
+        id: 2,
         title: "GenAI Intensive Course by Google",
         issuer: "Kaggle",
         date: "Apr 2025",
@@ -271,7 +284,7 @@ export const certifications = [
         category: "AI/ML",
     },
     {
-        id: 2,
+        id: 3,
         title: "Master Class in Artificial Intelligence",
         issuer: "NoviTech R&D Pvt. Ltd.",
         date: "Mar 2025",
@@ -284,7 +297,7 @@ export const certifications = [
         category: "AI/ML",
     },
     {
-        id: 3,
+        id: 4,
         title: "SQL complete Bootcamp",
         issuer: "Udemy",
         date: "Mar 2025",
@@ -297,7 +310,7 @@ export const certifications = [
         category: "Database",
     },
     {
-        id: 4,
+        id: 5,
         title: "Python programming (basic)",
         issuer: "HackerRank",
         date: "Feb 2025",
@@ -310,7 +323,7 @@ export const certifications = [
         category: "Programming",
     },
     {
-        id: 5,
+        id: 6,
         title: "Data Structures Algorithms in Python",
         issuer: "Udemy",
         date: "May 2024",
