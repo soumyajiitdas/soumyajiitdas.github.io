@@ -53,7 +53,7 @@ const Experience = () => {
                                     )}
                                     {edu.gpa && (
                                         <div className="text-right underline underline-offset-4 decoration-blue-400 dark:decoration-blue-800">
-                                            <span className="text-sm text-muted">GPA: </span>
+                                            <span className="text-sm text-muted">YGPA: </span>
                                             <span className="font-semibold text-primary">{edu.gpa}</span>
                                         </div>
                                     )}

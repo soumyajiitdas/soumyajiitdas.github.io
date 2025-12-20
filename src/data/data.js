@@ -52,7 +52,7 @@ export const experience = [
         location: "Kolkata, India • Hybrid",
         duration: "July 2025 - Dec 2025",
         startDate: "2025-07-13",
-        endDate: "present",
+        endDate: "2025-12-13",
         detailedDescription: "Completed Internship as a Full Stack Developer, contributed to end-to-end web application development. Responsibilities include designing interactive UIs with React, built robust APIs with Node.js/Express, optimized database queries, and collaborated in agile sprints to deliver production-ready features.",
         technologies: ["React", "Node.js", "MongoDB", "Express.js", "JavaScript"],
         projects: [
@@ -104,7 +104,7 @@ export const education = [
         degree: "Bachelor of Technology (CSE)",
         institution: "Murshidabad College of Engineering and Technology",
         location: "Berhampore, West Bengal, India",
-        duration: "2022 - 2026",
+        duration: "2022 - Present",
         startDate: "2022-08-01",
         endDate: "2026-06-30",
         status: "pursuing",
