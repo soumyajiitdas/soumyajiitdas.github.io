@@ -33,23 +33,36 @@ export const aboutMe = {
 export const experience = [
     {
         id: 1,
+        title: "Marketing Executive",
+        company: "Hen Harrier Education Pvt Ltd.",
+        location: "Berhampore, India • On-Site",
+        duration: "Dec 2025 - Present",
+        startDate: "2025-12-22",
+        endDate: "present",
+        detailedDescription: "I recently jointed Hen Harrier Education Pvt Ltd. (Berhampore branch) as a Marketing Executive. I’m looking forward to learning new skills, taking on responsibilities, and growing through real-world experience.",
+        technologies: [],
+        projects: [
+        ],
+        skills_gained: []
+    },
+    {
+        id: 2,
         title: "MERN Stack Developer Intern",
         company: "Ardent CompuTech Pvt. Ltd.",
         location: "Kolkata, India • Hybrid",
-        duration: "July 2025 - Present",
+        duration: "July 2025 - Dec 2025",
         startDate: "2025-07-13",
         endDate: "present",
-        detailedDescription: "Currently interning as a Full Stack Developer, contributing to end-to-end web application development. Responsibilities include designing interactive UIs with React, building robust APIs with Node.js/Express, optimizing MongoDB queries, and collaborating in agile sprints to deliver production-ready features.",
+        detailedDescription: "Completed Internship as a Full Stack Developer, contributed to end-to-end web application development. Responsibilities include designing interactive UIs with React, built robust APIs with Node.js/Express, optimized database queries, and collaborated in agile sprints to deliver production-ready features.",
         technologies: ["React", "Node.js", "MongoDB", "Express.js", "JavaScript"],
         projects: [
             "Online Doctor's Clinic App",
-            "Real-time Chat System",
             "API Gateway Implementation"
         ],
         skills_gained: ["TypeScript", "Docker", "Team Leadership", "System Design"]
     },
     {
-        id: 2,
+        id: 3,
         title: "Full Stack Developer Intern",
         company: "Pantech.AI",
         location: "Bangalore, India • Remote",
@@ -66,7 +79,7 @@ export const experience = [
         skills_gained: ["Advanced CSS", "Design Systems", "Development", "Cross-browser Testing"]
     },
     {
-        id: 3,
+        id: 4,
         title: "Open Source Contributor",
         company: "Various Projects",
         location: "Global • Remote",
@@ -130,58 +143,58 @@ export const education = [
 export const projects = [
     {
         id: 1,
+        title: "Yatramate: Vehicle Rental App",
+        description: "A comprehensive online vehicle rental system which supports various user roles including regular users, vendors, office staff, and administrators, each with tailored functionalities.",
+        technologies: ["NodeJs", "ReactJs", "MongoDB", "Express", "JavaScript", "Tailwind CSS", "ImageKit.io"],
+        categories: ["webapps"],
+        github: "https://github.com/soumyajiitdas/YatraMate-VehicleRentalSystem",
+        demo: "https://yatramate.vercel.app/",
+        image: "https://plus.unsplash.com/premium_vector-1750156054192-5e135456780f?w=600&h=400&fit=crop",
+        featured: true,
+        deploymentStatus: "In Development",
+        lastUpdated: "Dec 2025",
+        isDeployed: true
+    },
+    {
+        id: 2,
         title: "CareHive: Doctor's Clinic App",
         description: "A full-stack web application for an online doctor's clinic, which we are developing for side project at Ardent Computech Pvt. Ltd.",
-        technologies: ["Python", "ViteJs", "MongoDB", "NodeJs", "JavaScript", "Tailwind CSS"],
+        technologies: ["NodeJs", "ExpressJs", "ReactJs", "MongoDB", "JavaScript", "Tailwind CSS"],
         categories: ["webapps"],
         github: "https://github.com/soumyajiitdas/CareHive-Clinic",
         demo: "https://carehive-clinic.vercel.app/",
         image: "https://plus.unsplash.com/premium_vector-1736772911342-08cd98a5d980?w=600&h=400&fit=crop",
         featured: true,
-        deploymentStatus: "In Development",
-        lastUpdated: "Oct 2025",
-        isDeployed: true
-    },
-    {
-        id: 2,
-        title: "Visaria AI",
-        description: "Clairvoyance fork with added features. Stores recent history, modern interactive ui drag and drop support, and constantly developing.",
-        technologies: ["Next.js", "AI Integration", "React", "Tailwind CSS", "ImageDB"],
-        categories: ["webapps", "aiml"],
-        github: "https://github.com/soumyajiitdas/VisariaAI-Img2Audio",
-        demo: "https://visaria-ai.vercel.app/",
-        image: "https://plus.unsplash.com/premium_vector-1736773946114-bbd8f8ce1f72?w=600&h=400&fit=crop",
-        featured: true,
-        deploymentStatus: "Alpha Testing",
+        deploymentStatus: "Prototype",
         lastUpdated: "Oct 2025",
         isDeployed: true
     },
     {
         id: 3,
-        title: "Clairvoyance AI",
-        description: "A full stack app which generates caption using AI from an uploaded image and gives downloadable audio output. This is my first group project.",
-        technologies: ["Node.js", "React", "AI Integration", "Python", "Tailwind CSS", "JavaScript", "Docker"],
+        title: "Visaria AI",
+        description: "Clairvoyance fork with added features. Stores recent history, modern interactive ui drag and drop support, and constantly developing.",
+        technologies: ["Next.js", "AI Integration", "React", "Tailwind CSS", "JavaScript", "Python"],
         categories: ["webapps", "aiml"],
-        github: "https://github.com/awkwardish/Clairvoyance_prototype",
-        demo: "https://github.com/awkwardish/Clairvoyance_prototype",
+        github: "https://github.com/soumyajiitdas/VisariaAI-Img2Audio",
+        demo: "https://visaria-ai.vercel.app/",
         image: "https://plus.unsplash.com/premium_vector-1736769580845-26f63bbd6990?w=600&h=400&fit=crop",
         featured: false,
-        deploymentStatus: "Prototype",
-        lastUpdated: "Aug 2025",
-        isDeployed: false
+        deploymentStatus: "Alpha Testing",
+        lastUpdated: "Oct 2025",
+        isDeployed: true
     },
     {
         id: 4,
         title: "Syntax-Constellation",
         description: "A constellation of code and creativity – my personal developer portfolio. Each project is a star, together forming the map of my journey as a developer.",
-        technologies: ["Node.js", "React", "Tailwind CSS", "FastAPI", "API Integration", "NodeJs", "JavaScript"],
+        technologies: ["Node.js", "React", "Tailwind CSS", "FastAPI", "API Integration", "JavaScript"],
         categories: ["webapps"],
-        github: "#",
+        github: "https://github.com/soumyajiitdas/soumyajiitdas.github.io",
         demo: "https://soumyajitdas.vercel.app/",
         image: "https://plus.unsplash.com/premium_vector-1721386085379-8df3c43a062d?w=600&h=400&fit=crop",
         featured: false,
         deploymentStatus: "Live",
-        lastUpdated: "Oct 2025",
+        lastUpdated: "Dec 2025",
         isDeployed: true
     }
 ];

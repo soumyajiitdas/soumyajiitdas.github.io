@@ -162,22 +162,24 @@ const Experience = () => {
                             </p>
 
                             {/* Technologies */}
-                            <div className="mb-4">
-                                <h4 className="mb-2 text-sm font-medium text-default">Technologies Used:</h4>
-                                <div className="flex flex-wrap gap-2">
-                                    {exp.technologies.map((tech, techIndex) => (
-                                        <span
-                                            key={techIndex}
-                                            className="px-3 py-1 text-xs rounded-full bg-primary-subtle text-primary"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
+                            {exp.technologies?.length > 0 && (
+                                <div className="mb-4">
+                                    <h4 className="mb-2 text-sm font-medium text-default">Technologies Used:</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {exp.technologies.map((tech, techIndex) => (
+                                            <span
+                                                key={techIndex}
+                                                className="px-3 py-1 text-xs rounded-full bg-primary-subtle text-primary"
+                                            >
+                                                {tech}
+                                            </span>
+                                        ))}
+                                    </div>
                                 </div>
-                            </div>
+                            )}
 
                             {/* Projects */}
-                            {exp.projects && (
+                            {exp.projects?.length > 0 && (
                                 <div className="mb-4">
                                     <h4 className="mb-2 text-sm font-medium text-default">Key Projects:</h4>
                                     <ul className="space-y-1 text-sm text-muted">
@@ -192,7 +194,7 @@ const Experience = () => {
                             )}
 
                             {/* Skills Gained */}
-                            {exp.skills_gained && (
+                            {exp.skills_gained?.length > 0 && (
                                 <div>
                                     <h4 className="mb-2 text-sm font-medium text-default">Skills Gained:</h4>
                                     <div className="flex flex-wrap gap-2">
